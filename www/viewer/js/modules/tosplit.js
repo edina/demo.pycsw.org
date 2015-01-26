@@ -2,7 +2,7 @@
  * 
  */
 
-define(['jquery', 'leaflet'],function(){
+define(['modules/model','jquery', 'leaflet'],function(recordsModel){
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
@@ -220,6 +220,7 @@ define(['jquery', 'leaflet'],function(){
                 results = '<strong>Results ' + startposition + '-' + nextrecord + ' of ' + matched + ' record(s)</strong>';
 
                 $('#div-results').html(results);
+                recordsModel.createRecordsModel(xml);
 
                 $(escapeElementName('csw:Record'),xml).each(function(record) {
                     var rec = new CswRecord($(this));

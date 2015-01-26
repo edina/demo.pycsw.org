@@ -60,45 +60,6 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
         "WWW:LINK-1.0-http--image-thumbnail": ["Web image thumbnail (URL)", "thumb"],
     };
 
-    function BoundingBox(xml) {
-        var ll = $(xml).find(escapeElementName('ows:LowerCorner')).text().split(' ');
-        var ur = $(xml).find(escapeElementName('ows:UpperCorner')).text().split(' ');
-        this.minx = ll[1];
-        this.miny = ll[0];
-        this.maxx = ur[1];
-        this.maxy = ur[0];
-        this.csv = [ll[0], ll[1], ur[0], ur[1]].join();
-    }
-
-    function Link(xml) {
-        this.value = $(xml).text();
-        this.scheme = 'None';
-        var scheme = $(xml).attr('scheme');
-        if (scheme != 'None' && scheme != "") {
-            this.scheme = scheme;
-        }
-    }
-
-    function CswRecord(xml) {
-        this.identifier = $(xml).find(escapeElementName('dc:identifier')).text();
-        this.type = $(xml).find(escapeElementName('dc:type')).text();
-        this.title = $(xml).find(escapeElementName('dc:title')).text();
-        this.abstract = $(xml).find(escapeElementName('dct:abstract')).text();
-        this.publisher = $(xml).find(escapeElementName('dc:publisher')).text();
-        this.abstract2 = $(xml).find(escapeElementName('dct:abstract')).text();
-        this.source = $(xml).find(escapeElementName('dc:source')).text();
-        this.date = $(xml).find(escapeElementName('dc:date')).text();
-        this.modified = $(xml).find(escapeElementName('dct:modified')).text();
-        this.references = [];
-        this.bbox = new BoundingBox($(xml).find(escapeElementName('ows:BoundingBox')));
-
-        var self = this;
-
-        // get all links
-        $(xml).find(escapeElementName('dct:references')).each(function() {
-            self.references.push(new Link($(this)));
-        });
-    }
 
     function truncate(value, length) {
         if (value.length > length) {
@@ -190,22 +151,20 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
                 $('#div-csw-results-glass').toggle();
                 //alert(xml);
                 // derive results for paging
-                var matched = parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsMatched'));
-                var returned = parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsReturned'));
-                var nextrecord = parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('nextRecord'));
+                summary = recordsModel.resultsSummary(xml);
+
 
                 $('#input-startposition').val(startposition);
-                $('#input-nextrecord').val(nextrecord);
-                $('#input-matched').val(matched);
+                $('#input-nextrecord').val(summary.nextrecord);
+                $('#input-matched').val(summary.matched);
 
-                if (matched == 0) {
+                if (summary.isResults()) {
                     $('#div-results').html('');
                     $('#table-csw-results').html('<tr><td>No results</td></tr>');
                     return;
                 }
-                if (nextrecord == 0 || nextrecord >= matched) { // at the end
+                if (summary.moreRecords()) { // at the end
                     $('#li-next').attr('class', 'disabled');
-                    nextrecord = matched;
                 }
                 else {
                     $('#li-next').attr('class', 'active');
@@ -217,14 +176,13 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
                     $('#li-previous').attr('class', 'active');
                 }
 
-                results = '<strong>Results ' + startposition + '-' + nextrecord + ' of ' + matched + ' record(s)</strong>';
+                var results = '<strong>Results ' + startposition + '-' + summary.nextrecord + ' of ' + summary.matched + ' record(s)</strong>';
 
                 $('#div-results').html(results);
-                recordsModel.createRecordsModel(xml);
+                var cswRecords =recordsModel.createRecordsModel(xml);
 
-                $(escapeElementName('csw:Record'),xml).each(function(record) {
-                    var rec = new CswRecord($(this));
-                    $("#table-csw-results").append(style_record(rec));
+                $(cswRecords).each(function(record) {
+                    $("#table-csw-results").append(style_record(this));
                 })
             }
         });

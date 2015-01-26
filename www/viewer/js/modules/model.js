@@ -18,7 +18,7 @@ define(['jquery'], function () {
         bb.maxx = ur[1];
         bb.maxy = ur[0];
         bb.csv = [ll[0], ll[1], ur[0], ur[1]].join();
-        
+
         return bb;
     }
 
@@ -34,7 +34,7 @@ define(['jquery'], function () {
     }
 
     function createCswRecord(xml) {
-        
+
         var cswRecord = {};
 
         cswRecord.identifier = $(xml).find(escapeElementName('dc:identifier')).text();
@@ -55,28 +55,52 @@ define(['jquery'], function () {
             var linkRefsXml = this;
             cswRecord.references.push(createLink(linkRefsXml));
         });
-        
+
         return cswRecord;
     }
 
 
 
     var createRecordsModel = function (xml) {
-        console.log(xml);
-        var records = [];
-        
-        $(escapeElementName('csw:Record'), xml).each(function (record) {
-            var cswRecord = this;
-            var rec = createCswRecord(cswRecord);
-            records.push(rec);
-        });
-    };
+            console.log(xml);
+            var records = [];
+
+            $(escapeElementName('csw:Record'), xml).each(function (record) {
+                var cswRecord = this;
+                var rec = createCswRecord(cswRecord);
+                records.push(rec);
+            });
+
+            return records;
+        },
+
+        resultsSummary = function (xml) {
+            var resultsSummary = {
+                matched: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsMatched')),
+                returned: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsReturned')),
+                nextrecord: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('nextRecord')),
+                isResults: function () {
+                    return this.matched === 0;
+                },
+                moreRecords: function () {
+                    if (this.nextrecord === 0 || this.nextrecord >= this.matched) {
+                        this.nextrecord = this.matched;
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+
+            };
+            return resultsSummary;
+        };
 
 
 
     return {
-        createRecordsModel: createRecordsModel
-
+        createRecordsModel: createRecordsModel,
+        resultsSummary: resultsSummary
     };
 
 });

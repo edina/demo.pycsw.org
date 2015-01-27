@@ -5,6 +5,58 @@ define(['jquery'], function () {
     'use strict';
 
 
+    var protocols = {
+        "None": ["Unknown", "WWW"],
+        "ESRI:AIMS--http--configuration": ["ArcIMS Map Service Configuration File (*.AXL)", "ArcIMS"],
+        "ESRI:AIMS--http-get-feature": ["ArcIMS Internet Feature Map Service", "ArcIMS"],
+        "ESRI:AIMS--http-get-image": ["ArcIMS Internet Image Map Service", "ArcIMS"],
+        "GLG:KML-2.0-http-get-map": ["Google Earth KML service (ver 2.0)", "KML"],
+        "OGC:CSW": ["OGC-CSW Catalogue Service for the Web", "CSW"],
+        "OGC:KML": ["OGC-KML Keyhole Markup Language", "KML"],
+        "OGC:GML": ["OGC-GML Geography Markup Language", "GML"],
+        "OGC:ODS": ["OGC-ODS OpenLS Directory Service", "OpenLS"],
+        "OGC:OGS": ["OGC-ODS OpenLS Gateway Service", "OpenLS"],
+        "OGC:OUS": ["OGC-ODS OpenLS Utility Service", "OpenLS"],
+        "OGC:OPS": ["OGC-ODS OpenLS Presentation Service", "OpenLS"],
+        "OGC:ORS": ["OGC-ODS OpenLS Route Service", "OpenLS"],
+        "OGC:SOS": ["OGC-SOS Sensor Observation Service", "SOS"],
+        "OGC:SPS": ["OGC-SPS Sensor Planning Service", "SPS"],
+        "OGC:SAS": ["OGC-SAS Sensor Alert Service", "SAS"],
+        "OGC:WCS": ["OGC-WCS Web Coverage Service", "WCS"],
+        "OGC:WCS-1.1.0-http-get-capabilities": ["OGC-WCS Web Coverage Service (ver 1.1.0)", "WCS"],
+        "OGC:WCTS": ["OGC-WCTS Web Coordinate Transformation Service", "WCTS"],
+        "OGC:WFS": ["OGC-WFS Web Feature Service", "WFS"],
+        "OGC:WFS-1.0.0-http-get-capabilities": ["OGC-WFS Web Feature Service (ver 1.0.0)", "WFS"],
+        "OGC:WFS-G": ["OGC-WFS-G Gazzetteer Service", "WFS-G"],
+        "OGC:WMC-1.1.0-http-get-capabilities": ["OGC-WMC Web Map Context (ver 1.1)", "WMC"],
+        "OGC:WMS": ["OGC-WMS Web Map Service", "WMS"],
+        "OGC:WMS-1.1.1-http-get-capabilities": ["OGC-WMS Capabilities service (ver 1.1.1)", "WMS"],
+        "OGC:WMS-1.3.0-http-get-capabilities": ["OGC-WMS Capabilities service (ver 1.3.0)", "WMS"],
+        "OGC:WMS-1.1.1-http-get-map": ["OGC Web Map Service (ver 1.1.1)", "WMS"],
+        "OGC:WMS-1.3.0-http-get-map": ["OGC Web Map Service (ver 1.3.0)", "WMS"],
+        "OGC:SOS-1.0.0-http-get-observation": ["OGC-SOS Get Observation (ver 1.0.0)", "SOS"],
+        "OGC:SOS-1.0.0-http-post-observation": ["OGC-SOS Get Observation (POST) (ver 1.0.0)", "SOS"],
+        "OGC:WNS": ["OGC-WNS Web Notification Service", "WNS"],
+        "OGC:WPS": ["OGC-WPS Web Processing Service", "WPS"],
+        "WWW:DOWNLOAD-1.0-ftp--download": ["File for download through FTP", "FTP"],
+        "WWW:DOWNLOAD-1.0-http--download": ["File for download", "HTTP"],
+        "FILE:GEO": ["GIS file", "GIS"],
+        "FILE:RASTER": ["GIS RASTER file", "Raster"],
+        "WWW:LINK-1.0-http--ical": ["iCalendar (URL)", "iCal"],
+        "WWW:LINK-1.0-http--link": ["Web address (URL)", "WWW"],
+        "WWW:LINK-1.0-http--partners": ["Partner web address (URL)", "WWW"],
+        "WWW:LINK-1.0-http--related": ["Related link (URL)", "WWW"],
+        "WWW:LINK-1.0-http--rss": ["RSS News feed (URL)", "RSS"],
+        "WWW:LINK-1.0-http--samples": ["Showcase product (URL)", "WWW"],
+        "DB:POSTGIS": ["PostGIS database table", "PostGIS"],
+        "DB:ORACLE": ["ORACLE database table", "Oracle"],
+        "WWW:LINK-1.0-http--opendap": ["OPeNDAP URL", "OPeNDAP"],
+        "RBNB:DATATURBINE": ["Data Turbine", "turbine"],
+        "UKST": ["Unknown Service Type", "unknown"],
+        "WWW:LINK-1.0-http--image-thumbnail": ["Web image thumbnail (URL)", "thumb"]
+    };
+
+
     function escapeElementName(str) {
         return str.replace(':', '\\:').replace('.', '\\.');
     }
@@ -62,7 +114,6 @@ define(['jquery'], function () {
 
 
     var createRecordsModel = function (xml) {
-            console.log(xml);
             var records = [];
 
             $(escapeElementName('csw:Record'), xml).each(function (record) {
@@ -73,7 +124,6 @@ define(['jquery'], function () {
 
             return records;
         },
-
         resultsSummary = function (xml) {
             var resultsSummary = {
                 matched: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsMatched')),
@@ -94,13 +144,22 @@ define(['jquery'], function () {
 
             };
             return resultsSummary;
+        },
+        protocolShortCode = function (protocol) {
+            var protocolDetails = protocols[protocol]
+            var protocolShortCode = 1;
+            if (protocolDetails) {
+                return protocolDetails[protocolShortCode];
+            } else {
+                console.log('err no protocol found ' + protocol);
+                return protocols['None'][protocolShortCode];
+            }
         };
-
-
 
     return {
         createRecordsModel: createRecordsModel,
-        resultsSummary: resultsSummary
+        resultsSummary: resultsSummary,
+        protocolShortCode: protocolShortCode
     };
 
 });

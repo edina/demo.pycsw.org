@@ -1,64 +1,15 @@
 /**
- * 
+ *
  */
 
-define(['modules/model','jquery', 'leaflet'],function(recordsModel){
+define(['modules/model', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel) {
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
     var csw_ip_url = "http://localhost/pycsw-wsgi";
     var pagesize = 10;
 
-    var protocols = {
-        "None": ["Unknown", "WWW"],
-        "ESRI:AIMS--http--configuration": ["ArcIMS Map Service Configuration File (*.AXL)", "ArcIMS"],
-        "ESRI:AIMS--http-get-feature": ["ArcIMS Internet Feature Map Service", "ArcIMS"],
-        "ESRI:AIMS--http-get-image": ["ArcIMS Internet Image Map Service", "ArcIMS"],
-        "GLG:KML-2.0-http-get-map": ["Google Earth KML service (ver 2.0)", "KML"],
-        "OGC:CSW": ["OGC-CSW Catalogue Service for the Web", "CSW"],
-        "OGC:KML": ["OGC-KML Keyhole Markup Language", "KML"],
-        "OGC:GML": ["OGC-GML Geography Markup Language", "GML"],
-        "OGC:ODS": ["OGC-ODS OpenLS Directory Service", "OpenLS"],
-        "OGC:OGS": ["OGC-ODS OpenLS Gateway Service", "OpenLS"],
-        "OGC:OUS": ["OGC-ODS OpenLS Utility Service", "OpenLS"],
-        "OGC:OPS": ["OGC-ODS OpenLS Presentation Service", "OpenLS"],
-        "OGC:ORS": ["OGC-ODS OpenLS Route Service", "OpenLS"],
-        "OGC:SOS": ["OGC-SOS Sensor Observation Service", "SOS"],
-        "OGC:SPS": ["OGC-SPS Sensor Planning Service", "SPS"],
-        "OGC:SAS": ["OGC-SAS Sensor Alert Service", "SAS"],
-        "OGC:WCS": ["OGC-WCS Web Coverage Service", "WCS"],
-        "OGC:WCS-1.1.0-http-get-capabilities": ["OGC-WCS Web Coverage Service (ver 1.1.0)", "WCS"],
-        "OGC:WCTS": ["OGC-WCTS Web Coordinate Transformation Service", "WCTS"],
-        "OGC:WFS": ["OGC-WFS Web Feature Service", "WFS"],
-        "OGC:WFS-1.0.0-http-get-capabilities": ["OGC-WFS Web Feature Service (ver 1.0.0)", "WFS"],
-        "OGC:WFS-G": ["OGC-WFS-G Gazzetteer Service", "WFS-G"],
-        "OGC:WMC-1.1.0-http-get-capabilities": ["OGC-WMC Web Map Context (ver 1.1)", "WMC"],
-        "OGC:WMS": ["OGC-WMS Web Map Service", "WMS"],
-        "OGC:WMS-1.1.1-http-get-capabilities": ["OGC-WMS Capabilities service (ver 1.1.1)", "WMS"],
-        "OGC:WMS-1.3.0-http-get-capabilities": ["OGC-WMS Capabilities service (ver 1.3.0)", "WMS"],
-        "OGC:WMS-1.1.1-http-get-map": ["OGC Web Map Service (ver 1.1.1)", "WMS"],
-        "OGC:WMS-1.3.0-http-get-map": ["OGC Web Map Service (ver 1.3.0)", "WMS"],
-        "OGC:SOS-1.0.0-http-get-observation": ["OGC-SOS Get Observation (ver 1.0.0)", "SOS"],
-        "OGC:SOS-1.0.0-http-post-observation": ["OGC-SOS Get Observation (POST) (ver 1.0.0)", "SOS"],
-        "OGC:WNS": ["OGC-WNS Web Notification Service", "WNS"],
-        "OGC:WPS": ["OGC-WPS Web Processing Service", "WPS"],
-        "WWW:DOWNLOAD-1.0-ftp--download": ["File for download through FTP", "FTP"],
-        "WWW:DOWNLOAD-1.0-http--download": ["File for download", "HTTP"],
-        "FILE:GEO": ["GIS file", "GIS"],
-        "FILE:RASTER": ["GIS RASTER file", "Raster"],
-        "WWW:LINK-1.0-http--ical": ["iCalendar (URL)", "iCal"],
-        "WWW:LINK-1.0-http--link": ["Web address (URL)", "WWW"],
-        "WWW:LINK-1.0-http--partners": ["Partner web address (URL)", "WWW"],
-        "WWW:LINK-1.0-http--related": ["Related link (URL)", "WWW"],
-        "WWW:LINK-1.0-http--rss": ["RSS News feed (URL)", "RSS"],
-        "WWW:LINK-1.0-http--samples": ["Showcase product (URL)", "WWW"],
-        "DB:POSTGIS": ["PostGIS database table", "PostGIS"],
-        "DB:ORACLE": ["ORACLE database table", "Oracle"],
-        "WWW:LINK-1.0-http--opendap": ["OPeNDAP URL", "OPeNDAP"],
-        "RBNB:DATATURBINE": ["Data Turbine", "turbine"],
-        "UKST": ["Unknown Service Type", "unknown"],
-        "WWW:LINK-1.0-http--image-thumbnail": ["Web image thumbnail (URL)", "thumb"],
-    };
+
 
 
     function truncate(value, length) {
@@ -68,9 +19,7 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
         return value;
     }
 
-    function escapeElementName(str) {
-        return str.replace(':', '\\:').replace('.', '\\.');
-    }
+
     function bbox2polygon(bbox) {
         if (bbox == null) {
             return new L.Polygon();
@@ -86,6 +35,7 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
 
     function style_record(rec) {
         var snippet = "<tr><td>";
+        snippet += "<a id='showFullRec' href='#'>An anchor</a></tr></td><tr><td>";
         var links = "";
         // get all links
         for (var i = 0; i < rec.references.length; i++) {
@@ -93,15 +43,15 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
                 if (rec.references[i].scheme == 'OGC:WMS-1.1.1-http-get-map') {
                     urlbase = rec.references[i].value.split('?')[0];
                     links += '<span id="' + rec.references[i].value + '##' + rec.title + '" class="btn btn-primary btn-sm">Add to map</span>';
-                }
-                else {
-                    links += ' <a class="btn btn-primary btn-sm" title="' + rec.references[i].scheme + '" href="' + rec.references[i].value + '">' + protocols[rec.references[i].scheme][1] + '</a> ';
+                } else {
+                    var shortCode = recordsModel.protocolShortCode(rec.references[i].scheme);
+                    links += ' <a class="btn btn-primary btn-sm" title="' + rec.references[i].scheme + '" href="' + rec.references[i].value + '">' + shortCode + '</a> ';
                 }
             }
         }
 
         url = csw_ip_url + "?service=CSW&version=2.0.2&request=GetRecordById&elementsetname=full&id=" + rec.identifier;
-        title2 = '<a id="' + rec.bbox.csv + '" class="a-record" target="_blank" title="' + rec.title + '" href="' + url  + '">' + rec.title + '</a>';
+        title2 = '<a id="' + rec.bbox.csv + '" class="a-record" target="_blank" title="' + rec.title + '" href="' + url + '">' + rec.title + '</a>';
         snippet += '<h5>' + title2 + '</h5>';
         snippet += '<h5>' + truncate(rec.abstract, 255) + '</h5>';
         snippet += '<em>' + rec.publisher + '</em><br/>';
@@ -110,6 +60,7 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
         snippet += '</td></tr>';
         return snippet;
     }
+
     function search(startposition) {
         $('#div-csw-results-glass').toggle();
 
@@ -119,7 +70,7 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
         var freetext = $('#input-anytext').val().trim();
         var bbox_enabled = $('#input-bbox').is(':checked');
         var sortby = $('#select-sortby option:selected').val();
-       
+
         if (bbox_enabled && map != null) {
             bounds = map.getBounds();
             qbbox = '<ogc:BBOX><ogc:PropertyName>ows:BoundingBox</ogc:PropertyName><gml:Envelope xmlns:gml="http://www.opengis.net/gml"><gml:lowerCorner>' + bounds.getSouth() + ' ' + bounds.getWest() + '</gml:lowerCorner><gml:upperCorner>' + bounds.getNorth() + ' ' + bounds.getEast() + '</gml:upperCorner></gml:Envelope></ogc:BBOX>';
@@ -129,12 +80,10 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
         if (freetext != '') {
             if (bbox_enabled && map != null) {
                 data += '<csw:Constraint version="1.1.0"><ogc:Filter><ogc:And><ogc:PropertyIsLike escapeChar="\\" singleChar="_" wildCard="%"><ogc:PropertyName>csw:AnyText</ogc:PropertyName><ogc:Literal>%' + $("#input-anytext").val().trim() + '%</ogc:Literal></ogc:PropertyIsLike>' + qbbox + '</ogc:And></ogc:Filter></csw:Constraint>';
-            }
-            else {
+            } else {
                 data += '<csw:Constraint version="1.1.0"><ogc:Filter><ogc:PropertyIsLike escapeChar="\\" singleChar="_" wildCard="%"><ogc:PropertyName>csw:AnyText</ogc:PropertyName><ogc:Literal>%' + $("#input-anytext").val().trim() + '%</ogc:Literal></ogc:PropertyIsLike></ogc:Filter></csw:Constraint>';
             }
-        }
-        else if (bbox_enabled && map != null) {
+        } else if (bbox_enabled && map != null) {
             data += '<csw:Constraint version="1.1.0"><ogc:Filter>' + qbbox + '</ogc:Filter></csw:Constraint>';
         }
 
@@ -146,7 +95,7 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
             contentType: "text/xml",
             data: data,
             dataType: "text",
-            success: function(xml) {
+            success: function (xml) {
                 $('#table-csw-results').empty();
                 $('#div-csw-results-glass').toggle();
                 //alert(xml);
@@ -165,37 +114,58 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
                 }
                 if (summary.moreRecords()) { // at the end
                     $('#li-next').attr('class', 'disabled');
-                }
-                else {
+                } else {
                     $('#li-next').attr('class', 'active');
                 }
                 if (startposition == 1) {
                     $('#li-previous').attr('class', 'disabled');
-                }
-                else {
+                } else {
                     $('#li-previous').attr('class', 'active');
                 }
 
                 var results = '<strong>Results ' + startposition + '-' + summary.nextrecord + ' of ' + summary.matched + ' record(s)</strong>';
 
                 $('#div-results').html(results);
-                var cswRecords =recordsModel.createRecordsModel(xml);
+                var cswRecords = recordsModel.createRecordsModel(xml);
 
-                $(cswRecords).each(function(record) {
+                $(cswRecords).each(function (record) {
                     $("#table-csw-results").append(style_record(this));
                 })
             }
         });
     }
-    $(document).ready(function(){
+    $(document).ready(function () {
         // init the map
+
+        $(document).on('click', '#showFullRec', function () {
+            $("#dialog-message").dialog({
+                modal: true,
+                draggable: false,
+                resizable: false,
+                position: ['center', 'top'],
+                show: 'blind',
+                hide: 'blind',
+                width: 400,
+                dialogClass: 'ui-dialog-osx',
+                buttons: {
+                    "I've read and understand this": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            $("#dialog-message").removeClass('hidden');
+        });
         polygon_layer = null;
         map = L.map('div-map').setView([10, 0], 1);
         basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
         map.addLayer(basemap);
-        map_layers_control = L.control.layers({"basemap": basemap}, {}, {'collapsed': true}).addTo(map);
+        map_layers_control = L.control.layers({
+            "basemap": basemap
+        }, {}, {
+            'collapsed': true
+        }).addTo(map);
         // init the results table with CSW results
         search();
         // handle CSW searches
@@ -205,24 +175,24 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
                 return false;
             }
         });
-        $('#a-previous').click(function(event){
-            event.preventDefault(); 
-            startposition2 = $('#input-startposition').val()-pagesize;
+        $('#a-previous').click(function (event) {
+            event.preventDefault();
+            startposition2 = $('#input-startposition').val() - pagesize;
             if (startposition2 < 1) {
                 return;
             }
             search(startposition2);
-        }); 
-        $('#a-next').click(function(event){
-            event.preventDefault(); 
+        });
+        $('#a-next').click(function (event) {
+            event.preventDefault();
             nextrecord2 = parseInt($('#input-nextrecord').val());
             matched2 = parseInt($('#input-matched').val());
-            if (nextrecord2 == 0 || nextrecord2>=matched2) {
+            if (nextrecord2 == 0 || nextrecord2 >= matched2) {
                 return;
             }
             search(nextrecord2);
-        }); 
-        $("table").on("click", "span", function(event) {
+        });
+        $("table").on("click", "span", function (event) {
             var tokens = $(this).attr('id').split('##');
             var getmap = tokens[0].split('?');
             var url = getmap[0];
@@ -248,8 +218,8 @@ define(['modules/model','jquery', 'leaflet'],function(recordsModel){
             });
             map_layers_control.addOverlay(layer, tokens[1]);
             map.addLayer(layer);
-        }); 
-        $("table").on("mouseenter", "td", function(event) {
+        });
+        $("table").on("mouseenter", "td", function (event) {
             bbox = $(this).find('[id]').attr('id');
             if (polygon_layer != null && map.hasLayer(polygon_layer)) {
                 map.removeLayer(polygon_layer);

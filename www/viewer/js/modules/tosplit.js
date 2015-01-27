@@ -2,7 +2,7 @@
  *
  */
 
-define(['modules/model', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel) {
+define(['modules/model', 'modules/controller','jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
@@ -35,23 +35,24 @@ define(['modules/model', 'jquery', 'leaflet', 'jqueryui'], function (recordsMode
 
     function style_record(rec) {
         var snippet = "<tr><td>";
-        snippet += "<a id='showFullRec' href='#'>An anchor</a></tr></td><tr><td>";
+        var url = csw_ip_url + "?service=CSW&version=2.0.2&request=GetRecordById&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&id=" + rec.identifier;
+        snippet += "<span class='showFullRecord btn btn-primary btn-sm' id='"+ url   +"' >Full Record</span></tr></td><tr><td>";
         var links = "";
         // get all links
         for (var i = 0; i < rec.references.length; i++) {
             if (rec.references[i].value != "None" && rec.references[i].value.lastIndexOf("http", 0) === 0) {
                 if (rec.references[i].scheme == 'OGC:WMS-1.1.1-http-get-map') {
                     urlbase = rec.references[i].value.split('?')[0];
-                    links += '<span id="' + rec.references[i].value + '##' + rec.title + '" class="btn btn-primary btn-sm">Add to map</span>';
+                    links += '<span id="' + rec.references[i].value + '##' + rec.title + '" class="test btn btn-primary btn-sm">Add to map</span>';
                 } else {
                     var shortCode = recordsModel.protocolShortCode(rec.references[i].scheme);
-                    links += ' <a class="btn btn-primary btn-sm" title="' + rec.references[i].scheme + '" href="' + rec.references[i].value + '">' + shortCode + '</a> ';
+                    links += ' <a class="test btn btn-primary btn-sm" title="' + rec.references[i].scheme + '" href="' + rec.references[i].value + '">' + shortCode + '</a> ';
                 }
             }
         }
 
-        url = csw_ip_url + "?service=CSW&version=2.0.2&request=GetRecordById&elementsetname=full&id=" + rec.identifier;
-        title2 = '<a id="' + rec.bbox.csv + '" class="a-record" target="_blank" title="' + rec.title + '" href="' + url + '">' + rec.title + '</a>';
+        
+        var title2 = '<a id="' + rec.bbox.csv + '" class="a-record" target="_blank" title="' + rec.title + '" href="' + url + '">' + rec.title + '</a>';
         snippet += '<h5>' + title2 + '</h5>';
         snippet += '<h5>' + truncate(rec.abstract, 255) + '</h5>';
         snippet += '<em>' + rec.publisher + '</em><br/>';
@@ -137,23 +138,9 @@ define(['modules/model', 'jquery', 'leaflet', 'jqueryui'], function (recordsMode
     $(document).ready(function () {
         // init the map
 
-        $(document).on('click', '#showFullRec', function () {
-            $("#dialog-message").dialog({
-                modal: true,
-                draggable: false,
-                resizable: false,
-                position: ['center', 'top'],
-                show: 'blind',
-                hide: 'blind',
-                width: 400,
-                dialogClass: 'ui-dialog-osx',
-                buttons: {
-                    "I've read and understand this": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-            $("#dialog-message").removeClass('hidden');
+        $(document).on('click', '.showFullRecord', function () {
+            var fullRecordUrl = $(this).attr('id');
+            controller.showFullRecord(fullRecordUrl);
         });
         polygon_layer = null;
         map = L.map('div-map').setView([10, 0], 1);
@@ -192,7 +179,7 @@ define(['modules/model', 'jquery', 'leaflet', 'jqueryui'], function (recordsMode
             }
             search(nextrecord2);
         });
-        $("table").on("click", "span", function (event) {
+        $("table").on("click", "span .test", function (event) {
             var tokens = $(this).attr('id').split('##');
             var getmap = tokens[0].split('?');
             var url = getmap[0];

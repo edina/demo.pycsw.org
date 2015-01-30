@@ -5,8 +5,6 @@ define(['modules/model', 'jquery'], function (model) {
 
 
 
-
-
     var run = function () {
 
         var url = 'http://localhost/www/viewer/tests/testdoc.xml';

@@ -7,7 +7,8 @@ require.config({
         'jqueryxpath': 'libs/jquery.xpath',
         'leaflet': 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet',
         'jqueryui': 'http://code.jquery.com/ui/1.11.1/jquery-ui.min',
-        'QUnit': '//code.jquery.com/qunit/qunit-1.17.1'
+        'QUnit': '//code.jquery.com/qunit/qunit-1.17.1',
+        'underscore': 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min'
     },
 
     shim: {

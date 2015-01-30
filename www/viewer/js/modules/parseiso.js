@@ -62,7 +62,7 @@ define(['jquery', 'jqueryxpath', 'underscore'], function () {
             console.log(mappings[key]);
             isoModel[key] = getValueFromXPath(mappings[key], MD_metadata_element);
         };
-        console.log(isoModel);
+        return isoModel;
 
     };
     return {

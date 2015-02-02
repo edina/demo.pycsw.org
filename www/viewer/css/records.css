@@ -1,1 +1,12 @@
-.hidden { display: none }
+.hidden {
+    display: none
+}
+
+.rdTitle {
+    font-size: 120%;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    color: #3d4d59;
+    font-family: arial;
+}

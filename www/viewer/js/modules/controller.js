@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, define, console */
 
-define(['modules/model', 'jquery'], function (model) {
+define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore'], function (model, rdView) {
     'use strict';
 
     var showFullRecord = function (url) {
@@ -31,14 +31,12 @@ define(['modules/model', 'jquery'], function (model) {
                 $("#dialog-message").removeClass('hidden');
                 _.templateSettings.variable = "rc";
 
-                // Grab the HTML out of our template tag and pre-compile it.
-                var template = _.template(
-                    $("script.template").html()
-                );
 
+
+                var compiled_template = _.template(rdView);
 
                 $("#my-message").html(
-                    template(templateData)
+                    compiled_template(templateData)
                 );
             },
             error: function () {

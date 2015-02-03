@@ -1,19 +1,68 @@
-<div class='rdTitle'>
-    Title heres</div>
-<h2>
+<div class="recordDetails">
+    <div class='rdTitle bar'>
+        <%- rc.title %>
+    </div>
+    <div class='item bar'>
+        <%- rc.abstract %>
+    </div>
+    <div class='item bar'>
+        <div onclick="toggleFieldset(this, Ext.getDom('toggledd143139e38335'));" class="toggle button tgDown">&nbsp;</div>Identification info</div>
+
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>
+                <%- rc.title %>
+            </td>
+        </tr>
+        <tr>
+            <td>Alternate title</td>
+            <td>
+                <%- rc.alternateTitle %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>
+                <%- rc.date %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date type</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Unique resource identifier</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Codespace</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Abstract</td>
+            <td>
+                <%- rc.abstract %>
+            </td>
+        </tr>
+    </table>
+
+
+    <h2>
             keywords test
             <%- rc.listTitle %>
         </h2>
 
-<ul>
-    <% _.each( rc.keywords, function( keyword ){ %>
+    <ul>
+        <% _.each( rc.keywords, function( keyword ){ %>
 
-        <li>
+            <li>
 
-            <%- keyword %>
+                <%- keyword %>
 
 
-        </li>
+            </li>
 
-        <% }); %>
-</ul>
+            <% }); %>
+    </ul>
+</div>

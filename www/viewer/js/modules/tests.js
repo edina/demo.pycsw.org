@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, define, console */
 
-define(['modules/model', 'jquery'], function (model) {
+define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model, mappings) {
 
 
 
@@ -10,7 +10,7 @@ define(['modules/model', 'jquery'], function (model) {
         var url = 'http://localhost/www/viewer/tests/testdoc.xml';
         test('test parse xml', function (assert) {
 
-            assert.expect(4);
+            assert.expect(6);
             var done1 = assert.async();
             $.ajax({
                 type: "GET",
@@ -33,7 +33,55 @@ define(['modules/model', 'jquery'], function (model) {
             });
 
         });
-    };
+
+        test("test metadatamappings", function (assert) {
+
+            assert.ok(mappings, "got mappings");
+
+            function isObject(prop) {
+                return prop !== null && typeof prop === 'object';
+
+            }
+
+
+            function recursiveParse(model, map, context) {
+
+                if (map.hasOwnProperty('context')) {
+                    context = context + map.context + '/';
+                }
+
+                for (var key in map) {
+                    //skip context nodes
+                    if (key === 'context') {
+                        continue;
+                    }
+                    if (map.hasOwnProperty(key)) {
+                        var prop = map[key];
+                        if (!isObject(prop)) {
+
+                            console.log(key + " -> " + context + map[key]);
+                            model[key] = map[key];
+
+                        } else {
+
+                            if (key !== 'value') {
+                                var details = {};
+                                model[key] = details;
+                                model = details;
+                            }
+                            recursiveParse(model, prop, context);
+                        }
+                    }
+                }
+            }
+            var mymodel = {};
+            recursiveParse(mymodel, mappings, '/');
+            console.dir(mymodel);
+
+
+        });
+    }
+
     return {
         run: run
     };

@@ -17,10 +17,10 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                     modal: true,
                     draggable: false,
                     resizable: false,
-                    position: ['center', 'top'],
+                    position: ['center', 'center'],
                     show: 'blind',
                     hide: 'blind',
-                    width: 400,
+                    width: 800,
                     dialogClass: 'ui-dialog-osx',
                     buttons: {
                         "I've read and understand this": function () {

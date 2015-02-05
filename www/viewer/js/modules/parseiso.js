@@ -80,7 +80,7 @@ define(['jquery', 'jqueryxpath', 'underscore'], function () {
         };
 
     return {
-
+        getValueFromXPath: getValueFromXPath,
         buildIsoDoc: buildIsoDoc
     };
 });

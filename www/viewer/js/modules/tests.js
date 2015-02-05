@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, define, console */
 
-define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model, mappings) {
+define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery'], function (model, mappings, parseiso) {
 
 
 
@@ -25,6 +25,7 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
                     assert.equal(m.dateType, "creation", "dateType");
                     assert.equal(m.uniqueResourceIdentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
                     assert.equal(m.codeSpace, "", "codeSpace");
+                    testMappings(xml);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {
@@ -34,52 +35,58 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
 
         });
 
-        test("test metadatamappings", function (assert) {
 
-            assert.ok(mappings, "got mappings");
+        function isObject(prop) {
+            return prop !== null && typeof prop === 'object';
 
-            function isObject(prop) {
-                return prop !== null && typeof prop === 'object';
+        }
 
+
+        function recursiveParse(model, map, context, xml) {
+
+            if (map.hasOwnProperty('context')) {
+                context = context + map.context + '/';
             }
 
-
-            function recursiveParse(model, map, context) {
-
-                if (map.hasOwnProperty('context')) {
-                    context = context + map.context + '/';
+            for (var key in map) {
+                //skip context nodes
+                if (key === 'context') {
+                    continue;
                 }
+                if (map.hasOwnProperty(key)) {
+                    var prop = map[key];
+                    if (!isObject(prop)) {
 
-                for (var key in map) {
-                    //skip context nodes
-                    if (key === 'context') {
-                        continue;
-                    }
-                    if (map.hasOwnProperty(key)) {
-                        var prop = map[key];
-                        if (!isObject(prop)) {
+                        console.log(key + " -> " + context + map[key]);
+                        var xpath = context + map[key];
+                        var f = parseiso.getValueFromXPath(xpath, xml);
+                        model[key] = f;
 
-                            console.log(key + " -> " + context + map[key]);
-                            model[key] = map[key];
+                    } else {
 
-                        } else {
-
-                            if (key !== 'value') {
-                                var details = {};
-                                model[key] = details;
-                                model = details;
-                            }
-                            recursiveParse(model, prop, context);
+                        if (key !== 'value') {
+                            var details = {};
+                            model[key] = details;
+                            model = details;
                         }
+                        recursiveParse(model, prop, context, xml);
                     }
                 }
             }
+        }
+
+
+
+        function testMappings(xml) {
+
             var mymodel = {};
-            recursiveParse(mymodel, mappings, '/');
+            recursiveParse(mymodel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/', xml);
             console.dir(mymodel);
 
 
-        });
+
+
+        }
     }
 
     return {

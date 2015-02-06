@@ -61,7 +61,7 @@
             </gmd:CI_ResponsibleParty>
         </gmd:contact>
         <gmd:dateStamp>
-            <gco:Date>2014-10-20</gco:Date>
+            <gco:DateTime>2000-01-01T12:00:00</gco:DateTime>
         </gmd:dateStamp>
         <gmd:metadataStandardName>
             <gco:CharacterString>NERC profile of ISO19115:2003</gco:CharacterString>

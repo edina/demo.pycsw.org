@@ -73,13 +73,21 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
         },
 
         buildIsoDoc = function (xml) {
-            var isoModel = {};
-            recursiveParse(isoModel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/', xml);
+            var isoModel = {},
+                xpathOr = " or ";
+            recursiveParse(isoModel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/');
 
-            function recursiveParse(model, map, context, xml) {
+            function recursiveParse(model, map, context) {
 
                 if (map.hasOwnProperty('context')) {
-                    context = context + map.context + '/';
+                    //what if context has or xpath operator;
+                    if (map.context.indexOf(xpathOr) > -1) {
+                        context = handleXpathOrOperationInContext(map.context, context);
+                    } else {
+                        context = context + map.context;
+
+                    }
+                    context = context + '/';
                 }
 
                 for (var key in map) {
@@ -89,28 +97,73 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     }
                     if (map.hasOwnProperty(key)) {
                         var prop = map[key];
+                        //debug
+                        if (key == 'identification') {
+                            console.log(key);
+                        }
+
                         if (!isObject(prop)) {
 
                             console.log(key + " -> " + context + map[key]);
-                            var xpath = context + map[key];
-                            var f = getValueFromXPath(xpath, xml);
-                            model[key] = f;
+                            var xpath = map[key];
+
+                            //test expression has an operator as it doesn't work in this impl
+                            var xpathResult = undefined;
+                            if (xpath.indexOf(xpathOr) > -1) {
+                                xpathResult = handleXpathOrOperation(xpath, context);
+                            } else {
+                                xpathResult = getValueFromXPath(context + xpath, xml);
+                            }
+                            model[key] = xpathResult;
 
                         } else {
-
+                            var details = {};
                             if (key !== 'value') {
-                                var details = {};
+
                                 model[key] = details;
-                                model = details;
+
+                            } else {
+                                details = model;
                             }
-                            recursiveParse(model, prop, context, xml);
+
+
+                            recursiveParse(details, prop, context);
                         }
                     }
                 }
             }
 
+            function handleXpathOrOperationInContext(xpath, context) {
+                var xpaths = xpath.split(" or "),
+                    emptyResult = function (res) {
+                        return !res || (res.constructor === Array && res.length === 0);
+                    },
+                    xpathResult = getValueFromXPath(context + xpaths[0], xml);
 
-            console.dir(isoModel);
+                // if empty result try othe path
+                if (emptyResult(xpathResult)) {
+
+                    return context + xpaths[1];
+
+
+                }
+                return context + xpaths[0];
+            }
+
+            function handleXpathOrOperation(xpath, context) {
+                var xpaths = xpath.split(" or "),
+                    emptyResult = function (res) {
+                        return !res || (res.constructor === Array && res.length === 0);
+                    },
+                    xpathResult = getValueFromXPath(context + xpaths[0], xml);
+                // if empty result try othe path
+                if (emptyResult(xpathResult)) {
+
+                    xpathResult = getValueFromXPath(context + xpaths[1], xml);
+
+                }
+                return xpathResult;
+            }
 
             return isoModel;
 

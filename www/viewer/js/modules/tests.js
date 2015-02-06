@@ -19,13 +19,14 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
                 success: function (xml) {
                     var m = model.createRecordDetailsModel(xml);
                     assert.ok(xml, 'got xml');
-
+                    assert.equal(m.datestamp,
+                        "2000-01-01T12:00:00", "datestamp test xpath or operation");
                     assert.equal(m.date, "1990", "date");
                     assert.equal(m.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
                     assert.equal(m.dateType, "creation", "dateType");
                     assert.equal(m.uniqueResourceIdentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
                     assert.equal(m.codeSpace, "", "codeSpace");
-                    testMappings(xml);
+                    //testMappings(xml);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {
@@ -79,9 +80,6 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
 
         function testMappings(xml) {
 
-            var mymodel = {};
-            recursiveParse(mymodel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/', xml);
-            console.dir(mymodel);
 
 
 

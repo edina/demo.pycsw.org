@@ -38,3 +38,7 @@ div.button {
     min-width: 15px;
     min-height: 15px;
 }
+
+.ui-dialog {
+    z-index: 1000 !important;
+}

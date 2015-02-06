@@ -1,8 +1,15 @@
 /*jslint browser: true*/
 /*global $, define, console */
 
-define(['jquery', 'jqueryxpath', 'underscore'], function () {
+define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], function (mappings) {
     'use strict';
+
+
+    function isObject(prop) {
+        return prop !== null && typeof prop === 'object';
+
+    }
+
 
 
 
@@ -19,27 +26,27 @@ define(['jquery', 'jqueryxpath', 'underscore'], function () {
             'csw': "http://www.opengis.net/cat/csw/2.0.2"
         },
 
+        /*
+                mappings = {
+                    "identifier": "gmd:fileIdentifier/gco:CharacterString",
+                    "title": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString",
+                    "alternateTitle": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:alternateTitle",
+                    "abstract": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString",
+                    "date": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date",
+                    "dateType": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:dateType",
+                    "uniqueResourceIdentifier": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
+                    "codeSpace": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:codeSpace/gco:CharacterString",
+                    "language": "gmd:language/gmd:LanguageCode/@codeListValue",
+                    "keywords": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword",
+                    "parentidentifier": "gmd:parentIdentifier/gco:CharacterString",
+                    "dataseturi": "gmd:dataSetURI/gco:CharacterString",
+                    "languagecode": "gmd:language/gmd:LanguageCode",
+                    "datestamp": "gmd:dateStamp/gco:Date or gmd:dateStamp/gco:DateTime",
+                    "charset": "gmd:characterSet/gmd:MD_CharacterSetCode/@codeListValue",
+                    "hierarchy": "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue",
+                    "datetimestamp": "gmd:dateStamp/gco:DateTime"
 
-        mappings = {
-            "identifier": "gmd:fileIdentifier/gco:CharacterString",
-            "title": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString",
-            "alternateTitle": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:alternateTitle",
-            "abstract": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString",
-            "date": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date",
-            "dateType": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:dateType",
-            "uniqueResourceIdentifier": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
-            "codeSpace": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:codeSpace/gco:CharacterString",
-            "language": "gmd:language/gmd:LanguageCode/@codeListValue",
-            "keywords": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword",
-            "parentidentifier": "gmd:parentIdentifier/gco:CharacterString",
-            "dataseturi": "gmd:dataSetURI/gco:CharacterString",
-            "languagecode": "gmd:language/gmd:LanguageCode",
-            "datestamp": "gmd:dateStamp/gco:Date or gmd:dateStamp/gco:DateTime",
-            "charset": "gmd:characterSet/gmd:MD_CharacterSetCode/@codeListValue",
-            "hierarchy": "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue",
-            "datetimestamp": "gmd:dateStamp/gco:DateTime"
-
-        },
+                },*/
 
 
 
@@ -66,21 +73,51 @@ define(['jquery', 'jqueryxpath', 'underscore'], function () {
         },
 
         buildIsoDoc = function (xml) {
-            var MD_metadata_element = $(xml).xpath('/csw:GetRecordByIdResponse/gmd:MD_Metadata', isoNamespaces),
+            var isoModel = {};
+            recursiveParse(isoModel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/', xml);
 
-                isoModel = {},
-                key;
-            for (key in mappings) {
-                console.log(key);
-                console.log(mappings[key]);
-                isoModel[key] = getValueFromXPath(mappings[key], MD_metadata_element);
+            function recursiveParse(model, map, context, xml) {
+
+                if (map.hasOwnProperty('context')) {
+                    context = context + map.context + '/';
+                }
+
+                for (var key in map) {
+                    //skip context nodes
+                    if (key === 'context') {
+                        continue;
+                    }
+                    if (map.hasOwnProperty(key)) {
+                        var prop = map[key];
+                        if (!isObject(prop)) {
+
+                            console.log(key + " -> " + context + map[key]);
+                            var xpath = context + map[key];
+                            var f = getValueFromXPath(xpath, xml);
+                            model[key] = f;
+
+                        } else {
+
+                            if (key !== 'value') {
+                                var details = {};
+                                model[key] = details;
+                                model = details;
+                            }
+                            recursiveParse(model, prop, context, xml);
+                        }
+                    }
+                }
             }
+
+
+            console.dir(isoModel);
+
             return isoModel;
 
         };
 
     return {
-        getValueFromXPath: getValueFromXPath,
+
         buildIsoDoc: buildIsoDoc
     };
 });

@@ -8,9 +8,9 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
     var run = function () {
 
         var url = 'http://localhost/www/viewer/tests/testdoc.xml';
-        test('test parse xml', function (assert) {
+        test('Test parse xml record to iso data model', function (assert) {
 
-            assert.expect(6);
+            assert.expect(9);
             var done1 = assert.async();
             $.ajax({
                 type: "GET",
@@ -19,13 +19,18 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
                 success: function (xml) {
                     var m = model.createRecordDetailsModel(xml);
                     assert.ok(xml, 'got xml');
+
+                    assert.equal(m.identification.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
+                    assert.equal(m.identification.alternatetitle, "alternate title", "Alternate title");
                     assert.equal(m.datestamp,
                         "2000-01-01T12:00:00", "datestamp test xpath or operation");
-                    assert.equal(m.date, "1990", "date");
-                    assert.equal(m.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
-                    assert.equal(m.dateType, "creation", "dateType");
-                    assert.equal(m.uniqueResourceIdentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
-                    assert.equal(m.codeSpace, "", "codeSpace");
+                    assert.equal(m.identification.date.date, "1990", "date");
+
+                    assert.equal(m.identification.date.type, "creation", "dateType");
+                    assert.equal(m.identification.uniqueresourceidentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
+                    assert.equal(m.identification.codeSpace, undefined, "codeSpace");
+                    assert.equal(m.identification.abstract, "abstract here", "abstract");
+
                     //testMappings(xml);
                     done1();
                 },

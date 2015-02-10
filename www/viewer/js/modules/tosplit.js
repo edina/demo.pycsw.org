@@ -2,7 +2,7 @@
  *
  */
 
-define(['modules/model', 'modules/controller','jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
+define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
@@ -36,7 +36,7 @@ define(['modules/model', 'modules/controller','jquery', 'leaflet', 'jqueryui'], 
     function style_record(rec) {
         var snippet = "<tr><td>";
         var url = csw_ip_url + "?service=CSW&version=2.0.2&request=GetRecordById&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&id=" + rec.identifier;
-        snippet += "<span class='showFullRecord btn btn-primary btn-sm' id='"+ url   +"' >Full Record</span></tr></td><tr><td>";
+        snippet += "<span class='showFullRecord btn btn-primary btn-sm' id='" + url + "' >Full Record</span></tr></td><tr><td>";
         var links = "";
         // get all links
         for (var i = 0; i < rec.references.length; i++) {
@@ -51,7 +51,7 @@ define(['modules/model', 'modules/controller','jquery', 'leaflet', 'jqueryui'], 
             }
         }
 
-        
+
         var title2 = '<a id="' + rec.bbox.csv + '" class="a-record" target="_blank" title="' + rec.title + '" href="' + url + '">' + rec.title + '</a>';
         snippet += '<h5>' + title2 + '</h5>';
         snippet += '<h5>' + truncate(rec.abstract, 255) + '</h5>';
@@ -142,6 +142,12 @@ define(['modules/model', 'modules/controller','jquery', 'leaflet', 'jqueryui'], 
             var fullRecordUrl = $(this).attr('id');
             controller.showFullRecord(fullRecordUrl);
         });
+
+        $(document).on('click', 'div.toggleTableButton', function () {
+
+            controller.toggleTable(this);
+        });
+
         polygon_layer = null;
         map = L.map('div-map').setView([10, 0], 1);
         basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

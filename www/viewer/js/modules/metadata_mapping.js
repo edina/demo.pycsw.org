@@ -65,6 +65,7 @@ define(function () {
                     }
 
                 },
+                "uniqueresourceidentifier": "gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
                 "uselimitation": "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation/gco:CharacterString",
                 "accessconstraints": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode",
                 "classification": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_ClassificationCode/@codeListValue",
@@ -75,7 +76,7 @@ define(function () {
                 "distance": "gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance",
                 "uom": "gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance/@uom",
                 "resourcelanguage": "gmd:language/gmd:LanguageCode",
-                //TODO deal with xpath where
+                //TODO deal with wh
                 //"creator": "gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName where gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_Role/@codeListValue == creator",
                 //"publisher": "gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName where gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_Role/@codeListValue == publisher",
                 //"originator": "gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName where gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_Role/@codeListValue == originator",

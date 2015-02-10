@@ -110,6 +110,9 @@
                         <gmd:title>
                             <gco:CharacterString>Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection</gco:CharacterString>
                         </gmd:title>
+                        <gmd:alternateTitle>
+                            <gco:CharacterString>alternate title</gco:CharacterString>
+                        </gmd:alternateTitle>
                         <gmd:date>
                             <gmd:CI_Date>
                                 <gmd:date>
@@ -130,7 +133,7 @@
                     </gmd:CI_Citation>
                 </gmd:citation>
                 <gmd:abstract>
-                    <gco:CharacterString>This index is a list of specimens and slides taken from the John Smith Collection and placed in the Type and Stratigraphical (T&amp;S) Collection of Scotland and Northern England. To some extent it is the digital equivalent to part of the T&amp;S analogue card index which is held in BGS Edinburgh. The data, however, appears to have been derived from the 5 leather bound volumes of the T&amp;S register. The latter are held in BGS Keyworth, but equivalent information (microfilm and paper records) is held in BGS Edinburgh. The MS Access database (BGS_SMITH_GSE) contains 1123 records, it links the T&amp;S register with that of the John Smith Collection (8 bound volumes held at BGS Edinburgh) and provides limited information on taxonomy, nomenclatural status and chronostratigraphy. It also has provision for stating where the specimen is housed. The repository of BGS John Smith specimens is the Edinburgh office.</gco:CharacterString>
+                    <gco:CharacterString>abstract here</gco:CharacterString>
                 </gmd:abstract>
                 <gmd:pointOfContact>
                     <gmd:CI_ResponsibleParty>
@@ -451,7 +454,7 @@
                                         <gmd:authority>
                                             <gmd:CI_Citation>
                                                 <gmd:title>
-                                                    <gco:CharacterString>British Geological Survey Gazetteer: Geographical hierarchy from Geosaurus</gco:CharacterString>
+                                                    <gco:CharacterString>ritish Geological Survey Gazetteer: Geographical hierarchy from Geosaurus</gco:CharacterString>
                                                 </gmd:title>
                                                 <gmd:date>
                                                     <gmd:CI_Date>

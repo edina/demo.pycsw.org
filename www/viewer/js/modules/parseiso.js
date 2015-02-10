@@ -78,7 +78,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
             recursiveParse(isoModel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/');
 
             function recursiveParse(model, map, context) {
-
+                var key;
                 if (map.hasOwnProperty('context')) {
                     //what if context has or xpath operator;
                     if (map.context.indexOf(xpathOr) > -1) {
@@ -90,7 +90,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     context = context + '/';
                 }
 
-                for (var key in map) {
+                for (key in map) {
                     //skip context nodes
                     if (key === 'context') {
                         continue;
@@ -98,13 +98,11 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     if (map.hasOwnProperty(key)) {
                         var prop = map[key];
                         //debug
-                        if (key == 'identification') {
+                        if (key == 'alternatetitle') {
                             console.log(key);
                         }
 
                         if (!isObject(prop)) {
-
-                            console.log(key + " -> " + context + map[key]);
                             var xpath = map[key];
 
                             //test expression has an operator as it doesn't work in this impl

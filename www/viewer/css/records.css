@@ -19,7 +19,8 @@
 }
 
 .item {
-    font-size: 80%;
+    font-size: 110%;
+    font-weight: bold;
     padding-bottom: 5px;
     padding-top: 15px;
 }
@@ -32,7 +33,7 @@
     background-image: url("images/bullet_arrow_right.png");
 }
 
-div.button {
+div.toggleTableButton {
     float: left;
     background-repeat: no-repeat;
     min-width: 15px;
@@ -41,4 +42,25 @@ div.button {
 
 .ui-dialog {
     z-index: 1000 !important;
+}
+
+.left-col {
+    background-color: #EBF5FA;
+    width: 25%;
+    padding: 7px 0px 7px 7px;
+    vertical-align: top;
+    text-align: left;
+    color: #3D4D59;
+    border-bottom: 1px solid #B3D4E6;
+    font-size: 80%;
+}
+
+.right-col {
+    width: 25%;
+    padding: 7px 0px 7px 7px;
+    vertical-align: top;
+    text-align: left;
+    color: #3D4D59;
+    border-bottom: 1px solid #B3D4E6;
+    font-size: 80%;
 }

@@ -160,7 +160,6 @@ define(['modules/parseiso', 'jquery'], function (iso) {
             }
         },
         createRecordDetailsModel = function (xml) {
-            console.log(xml);
 
             var dataModel = iso.buildIsoDoc(xml);
 

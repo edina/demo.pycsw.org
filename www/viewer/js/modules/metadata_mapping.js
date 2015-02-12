@@ -85,7 +85,8 @@ define(function () {
                 "purpose": "gmd:purpose/gco:CharacterString",
                 "status": "gmd:status/gmd:MD_ProgressCode/@codeListValue",
                 "contact": {
-                    "context": "gmd:pointOfContact/gmd:CI_ResponsibleParty",
+                    //TODO deal with multiple points of contact
+                    "context": "gmd:pointOfContact[1]/gmd:CI_ResponsibleParty",
                     "value": {
                         "name": "gmd:individualName/gco:CharacterString",
                         "organization": "gmd:organisationName/gco:CharacterString",

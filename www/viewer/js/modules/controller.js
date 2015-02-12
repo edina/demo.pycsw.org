@@ -35,7 +35,7 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
 
                     var compiled_template = _.template(rdView);
 
-                    $("#my-message").html(
+                    $("#record-details").html(
                         compiled_template(templateData)
                     );
                 },

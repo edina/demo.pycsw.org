@@ -7,44 +7,57 @@
     </div>
     <div class='item bar'>
         <div class="toggleTableButton button tgDown">&nbsp;</div>Identification info</div>
-
     <table>
         <tr>
-            <td class="left-col">Title</td>
+            <td>Title</td>
             <td>
-                <%- rc.title %>
+                <%- rc.identification.title %>
             </td>
         </tr>
         <tr>
-            <td class="left-col">Alternate title</td>
+            <td>Alternate title</td>
             <td>
-                <%- rc.alternateTitle %>
+                <%- rc.identification.alternatetitle %>
             </td>
         </tr>
         <tr>
-            <td class="left-col">Date</td>
+            <td>Date</td>
             <td>
-                <%- rc.date %>
+                <%- rc.identification.date.date %>
             </td>
         </tr>
         <tr>
-            <td class="left-col">Date type</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="left-col">Unique resource identifier</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="left-col">Codespace</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="left-col">Abstract</td>
+            <td>Date type</td>
             <td>
-                <%- rc.abstract %>
+                <%- rc.identification.date.type %>
             </td>
         </tr>
+        <tr>
+            <td>Date stamp</td>
+            <td>
+                <%- rc.datestamp %>
+            </td>
+        </tr>
+        <tr>
+            <td>Unique resource identifier</td>
+            <td>
+                <%- rc.identification.uniqueresourceidentifier %>
+            </td>
+        </tr>
+        <% if ( rc.identification.codeSpace ){ %>
+            <tr>
+                <td>Codespace</td>
+                <td>
+                    <%- rc.identification.codeSpace %>
+                </td>
+            </tr>
+            <% } %>
+                <tr>
+                    <td>Abstract</td>
+                    <td>
+                        <%- rc.identification.abstract %>
+                    </td>
+                </tr>
     </table>
 
 

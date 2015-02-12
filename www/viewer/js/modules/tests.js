@@ -1,16 +1,19 @@
 /*jslint browser: true*/
-/*global $, define, console */
+/*global $, define, console, test*/
 
 define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery'], function (model, mappings, parseiso) {
+    'use strict';
 
-
-
+    /* titles to test for  UK Earthquake Seismogram Data 
+    Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection
+    graffiti edinburgh
+    */
     var run = function () {
 
         var url = 'http://localhost/www/viewer/tests/testdoc.xml';
         test('Test parse xml record to iso data model', function (assert) {
 
-            assert.expect(9);
+            assert.expect(1);
             var done1 = assert.async();
             $.ajax({
                 type: "GET",
@@ -18,20 +21,14 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
                 dataType: "xml",
                 success: function (xml) {
                     var m = model.createRecordDetailsModel(xml);
-                    assert.ok(xml, 'got xml');
+                    assert.ok(xml, 'got test xml result');
 
-                    assert.equal(m.identification.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
-                    assert.equal(m.identification.alternatetitle, "alternate title", "Alternate title");
-                    assert.equal(m.datestamp,
-                        "2000-01-01T12:00:00", "datestamp test xpath or operation");
-                    assert.equal(m.identification.date.date, "1990", "date");
 
-                    assert.equal(m.identification.date.type, "creation", "dateType");
-                    assert.equal(m.identification.uniqueresourceidentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
-                    assert.equal(m.identification.codeSpace, undefined, "codeSpace");
-                    assert.equal(m.identification.abstract, "abstract here", "abstract");
+                    testMainIdentification(m);
 
-                    //testMappings(xml);
+                    testIdentificationPointOfContact(m);
+
+
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {
@@ -40,56 +37,41 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             });
 
         });
+    }
 
 
-        function isObject(prop) {
-            return prop !== null && typeof prop === 'object';
+    function testMainIdentification(m) {
+        test('Main indentification Elements', function (assert) {
+            assert.equal(m.identification.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
+            assert.equal(m.identification.alternatetitle, "alternate title", "Alternate title");
+            assert.equal(m.datestamp, "2000-01-01T12:00:00", "datestamp test xpath or operation");
+            assert.equal(m.identification.date.date, "1990", "date");
+            assert.equal(m.identification.date.type, "creation", "dateType");
+            assert.equal(m.identification.uniqueresourceidentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
+            assert.equal(m.identification.codeSpace, undefined, "codeSpace doesn't come back from pycsw");
+            assert.equal(m.identification.abstract, "abstract here", "abstract");
 
-        }
+        });
 
-
-        function recursiveParse(model, map, context, xml) {
-
-            if (map.hasOwnProperty('context')) {
-                context = context + map.context + '/';
-            }
-
-            for (var key in map) {
-                //skip context nodes
-                if (key === 'context') {
-                    continue;
-                }
-                if (map.hasOwnProperty(key)) {
-                    var prop = map[key];
-                    if (!isObject(prop)) {
-
-                        console.log(key + " -> " + context + map[key]);
-                        var xpath = context + map[key];
-                        var f = parseiso.getValueFromXPath(xpath, xml);
-                        model[key] = f;
-
-                    } else {
-
-                        if (key !== 'value') {
-                            var details = {};
-                            model[key] = details;
-                            model = details;
-                        }
-                        recursiveParse(model, prop, context, xml);
-                    }
-                }
-            }
-        }
+    };
 
 
 
-        function testMappings(xml) {
+    function testIdentificationPointOfContact(m) {
+        test('Indentification point of contact Elements', function (assert) {
+            assert.equal(m.identification.contact.organization, "British Geological Survey", "Organisation name");
+            assert.equal(m.identification.contact.role, "originator", "role");
+            assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
 
+            assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");
+            assert.equal(m.identification.contact.city, "EDINBURGH", "City");
+            assert.equal(m.identification.contact.region, "LOTHIAN", "Administrative area");
+            assert.equal(m.identification.contact.postcode, "EH9 3LA", "Postal code");
+            assert.equal(m.identification.contact.country, "United Kingdom", "Country");
+            assert.equal(m.identification.contact.email, "enquiries@bgs.ac.uk", "Electronic mail");
 
+        });
 
-
-
-        }
     }
 
     return {

@@ -137,6 +137,9 @@
                 </gmd:abstract>
                 <gmd:pointOfContact>
                     <gmd:CI_ResponsibleParty>
+                        <gmd:individualName>
+                            <gco:CharacterString>Tony</gco:CharacterString>
+                        </gmd:individualName>
                         <gmd:organisationName>
                             <gco:CharacterString>British Geological Survey</gco:CharacterString>
                         </gmd:organisationName>

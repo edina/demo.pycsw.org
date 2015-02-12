@@ -6,7 +6,7 @@
         <%- rc.abstract %>
     </div>
     <div class='item bar'>
-        <div class="toggleTableButton button tgDown">&nbsp;</div>Identification info</div>
+        <div class="toggleTableButton tgDown">&nbsp;</div>Identification info</div>
     <table>
         <tr>
             <td>Title</td>
@@ -59,6 +59,76 @@
                     </td>
                 </tr>
     </table>
+
+
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>Point of Contact</div>
+    <table>
+        <tr>
+            <td>Individual Name</td>
+            <td>
+                <%- rc.identification.contact.name %>
+            </td>
+        </tr>
+        <tr>
+            <td>Organisation name</td>
+            <td>
+                <%- rc.identification.contact.organization %>
+            </td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>
+                <%- rc.identification.contact.role %>
+            </td>
+        </tr>
+        <tr>
+            <td>Voice</td>
+            <td>
+                <%- rc.identification.contact.phone %>
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery point</td>
+            <td>
+                <%- rc.identification.contact.address %>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <%- rc.identification.contact.city %>
+            </td>
+        </tr>
+        <tr>
+            <td>Administrative area</td>
+            <td>
+                <%- rc.identification.contact.region %>
+            </td>
+        </tr>
+        <% if ( rc.identification.contact.postcode){ %>
+            <tr>
+                <td>Postal code</td>
+                <td>
+                    <%- rc.identification.contact.postcode %>
+                </td>
+            </tr>
+            <% } %>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <%- rc.identification.contact.country %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Electronic mail</td>
+                    <td>
+                        <%- rc.identification.contact.email %>
+                    </td>
+                </tr>
+
+    </table>
+
 
 
     <h2>

@@ -59,8 +59,10 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
 
     function testIdentificationPointOfContact(m) {
         test('Indentification point of contact Elements', function (assert) {
+
+            assert.equal(m.identification.contact.name, "Tony", "Individual name");
             assert.equal(m.identification.contact.organization, "British Geological Survey", "Organisation name");
-            assert.equal(m.identification.contact.role, "originator", "role");
+            assert.equal(m.identification.contact.role, "originator", "Role");
             assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
 
             assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");

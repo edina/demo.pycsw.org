@@ -80,8 +80,9 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
         test('Keywords and Descriptions plus Maintenance', function (assert) {
 
             assert.equal(m.identification.maintenance, "notPlanned", "Maintenance and update frequency");
-            assert.deepEqual(m.identification.keywords.keywords, ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen", "NERC_DDC"], "Keywords");
-            assert.equal(m.identification.keywords.thesaurus, "BGS Thesaurus of Geosciences", "Thesaurus");
+            assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
+            assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
+            assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
             assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
 
             assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");

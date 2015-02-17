@@ -151,13 +151,16 @@
 
 
     s
-    <h2>keywords test <%- rc.listTitle %></h2>
+    <h2>keywords test <%- rc.identification.keywords.keywords %></h2>
 
     <ul>
-        <% _.each( rc.keywords, function( keyword ){ %>
+        <% _.each( rc.identification.keywords.keywords, function( keyword, index ){ %>
 
             <li>
                 <%- keyword %>
+                    <%- index %>
+                        Thesaurus
+                        <%- rc.identification.keywords.thesaurus[index] %>
             </li>
             <% }); %>
     </ul>

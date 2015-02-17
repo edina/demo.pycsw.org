@@ -14,7 +14,7 @@ define(function () {
         "language": "gmd:language/gco:CharacterString",
         "dataseturi": "gmd:dataSetURI/gco:CharacterString",
         "languagecode": "gmd:language/gmd:LanguageCode",
-        "datestamp": "gmd:dateStamp/gco:Date or gmd:dateStamp/gco:DateTime",
+        "datestamp": "gmd:dateStamp/*",
         "charset": "gmd:characterSet/gmd:MD_CharacterSetCode/@codeListValue",
         "hierarchy": "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue",
         "contact": {
@@ -60,7 +60,7 @@ define(function () {
                 "date": {
                     "context": "gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date",
                     "value": {
-                        "date": "gmd:date/gco:Date or gmd:date/gco:DateTime",
+                        "date": "gmd:date/*",
                         "type": "gmd:dateType/gmd:CI_DateTypeCode/@codeListValue"
                     }
 
@@ -112,21 +112,16 @@ define(function () {
                     }
 
                 },
-                "keywords2": "gmd:descriptiveKeywords",
+
                 "keywords": {
                     "context": "gmd:descriptiveKeywords",
                     "value": {
                         "type": "gmd:MD_Keywords/gmd:type/gmd:MD_KeywordTypeCode/@codeListValue",
-                        "thesaurus": {
-                            "context": "gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation",
-                            "value": {
-                                "title": "gmd:title/gco:CharacterString",
-                                "date": "gmd:date/gmd:CI_Date/gmd:date/gco:Date",
-                                "datetype": "gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode"
-                            }
-                        },
-                        "keywords": "gmd:MD_Keywords/gmd:keyword/*"
+                        "keywords": "gmd:MD_Keywords/gmd:keyword/*",
 
+                        "thesaurus": "gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString",
+                        "thesaurusdate": "gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date",
+                        "thesaurusdatetype": "gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode"
                     }
 
                 },

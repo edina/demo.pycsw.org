@@ -56,29 +56,8 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
 
         },
 
-        getValueFromXPath = function (cxt, path, xml, xpathFromCtx) {
-            //debug
-            cxt = cxt.slice(0, -1);
-            if (cxt.indexOf("gmd:descriptiveKeywords") != -1) {
-                var testArr = $(xml).xpath(cxt, isoNamespaces);
-                var b = [];
-                for (var i = 0; i < testArr.length; i++) {
-                    var res = $(testArr[i]).xpath(xpathFromCtx, isoNamespaces);
-                    var arr = [];
+        getValueFromXPathSimple = function (path, xml) {
 
-                    res.each(function () {
-                        arr.push($.trim(this.textContent));
-                    });
-                    console.log(res);
-                    if (arr.length === 1) {
-                        b[i] = arr[0];
-                    } else {
-                        b[i] = arr;
-                    }
-                }
-                return b;
-            }
-            /*
             var xpathResult = $(xml).xpath(path, isoNamespaces),
                 arr = [];
             xpathResult.each(function () {
@@ -89,7 +68,47 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                 return arr[0];
             } else {
                 return arr;
-            }*/
+            }
+
+        },
+
+        getValueFromXPath = function (cxt, path, xml, xpathFromCtx) {
+            //debug
+            cxt = cxt.slice(0, -1);
+            if (cxt.indexOf("gmd:dateStamp") != -1) {
+                console.log('debug');
+            }
+            if (true) {
+                var testArr = $(xml).xpath(cxt, isoNamespaces);
+                var b = [];
+                for (var i = 0; i < testArr.length; i++) {
+                    var res = $(testArr[i]).xpath(xpathFromCtx, isoNamespaces);
+                    var arr = [];
+
+                    res.each(function (index) {
+                        arr[index] = ($.trim(this.textContent));
+                    });
+                    console.log(res);
+                    if (arr.length === 1) {
+                        b[i] = arr[0];
+                    } else {
+                        b[i] = arr;
+                    }
+                }
+                return b;
+            }
+
+            var xpathResult = $(xml).xpath(path, isoNamespaces),
+                arr = [];
+            xpathResult.each(function () {
+                arr.push($.trim(this.textContent));
+
+            });
+            if (arr.length === 1) {
+                return arr[0];
+            } else {
+                return arr;
+            }
 
         },
 
@@ -161,7 +180,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     emptyResult = function (res) {
                         return !res || (res.constructor === Array && res.length === 0);
                     },
-                    xpathResult = getValueFromXPath(context, context + xpaths[0], xml, xpaths[0]);
+                    xpathResult = getValueFromXPathSimple(context + xpaths[0], xml);
 
                 // if empty result try other path
                 if (emptyResult(xpathResult)) {

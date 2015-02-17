@@ -28,7 +28,7 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
 
                     testIdentificationPointOfContact(m);
 
-
+                    testKeywordsAndMaintenance(m);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {
@@ -63,6 +63,25 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.contact.name, "Tony", "Individual name");
             assert.equal(m.identification.contact.organization, "British Geological Survey", "Organisation name");
             assert.equal(m.identification.contact.role, "originator", "Role");
+            assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
+
+            assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");
+            assert.equal(m.identification.contact.city, "EDINBURGH", "City");
+            assert.equal(m.identification.contact.region, "LOTHIAN", "Administrative area");
+            assert.equal(m.identification.contact.postcode, "EH9 3LA", "Postal code");
+            assert.equal(m.identification.contact.country, "United Kingdom", "Country");
+            assert.equal(m.identification.contact.email, "enquiries@bgs.ac.uk", "Electronic mail");
+
+        });
+
+    }
+
+    function testKeywordsAndMaintenance(m) {
+        test('Keywords and Descriptions plus Maintenance', function (assert) {
+
+            assert.equal(m.identification.maintenance, "notPlanned", "Maintenance and update frequency");
+            assert.deepEqual(m.identification.keywords.keywords, ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen", "NERC_DDC"], "Keywords");
+            assert.equal(m.identification.keywords.thesaurus, "BGS Thesaurus of Geosciences", "Thesaurus");
             assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
 
             assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");

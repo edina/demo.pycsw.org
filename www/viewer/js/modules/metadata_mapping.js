@@ -65,6 +65,8 @@ define(function () {
                     }
 
                 },
+
+                "maintenance": "gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode",
                 "uniqueresourceidentifier": "gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
                 "uselimitation": "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation/gco:CharacterString",
                 "accessconstraints": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode",
@@ -110,19 +112,20 @@ define(function () {
                     }
 
                 },
+                "keywords2": "gmd:descriptiveKeywords",
                 "keywords": {
                     "context": "gmd:descriptiveKeywords",
                     "value": {
                         "type": "gmd:MD_Keywords/gmd:type/gmd:MD_KeywordTypeCode/@codeListValue",
                         "thesaurus": {
-                            "context": "gmd:thesaurusName/gmd:CI_Citation",
+                            "context": "gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation",
                             "value": {
                                 "title": "gmd:title/gco:CharacterString",
                                 "date": "gmd:date/gmd:CI_Date/gmd:date/gco:Date",
                                 "datetype": "gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode"
                             }
                         },
-                        "keywords": "gmd:MD_Keywords/gmd:keyword/gco:CharacterString"
+                        "keywords": "gmd:MD_Keywords/gmd:keyword/*"
 
                     }
 

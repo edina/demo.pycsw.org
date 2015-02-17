@@ -6,7 +6,9 @@
         <%- rc.abstract %>
     </div>
     <div class='item bar'>
-        <div class="toggleTableButton tgDown">&nbsp;</div>Identification info</div>
+        <div class="toggleTableButton tgDown">&nbsp;</div>
+        Identification info
+    </div>
     <table>
         <tr>
             <td>Title</td>
@@ -62,7 +64,9 @@
 
 
     <div class='item bar'>
-        <div class="toggleTableButton  tgDown">&nbsp;</div>Point of Contact</div>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Point of Contact
+    </div>
     <table>
         <tr>
             <td>Individual Name</td>
@@ -126,26 +130,35 @@
                         <%- rc.identification.contact.email %>
                     </td>
                 </tr>
+                <tr>
+                    <td>Maintenance and update frequency</td>
+                    <td>
+                        <td>
+                            <%- rc.identification.maintenance %>
+                        </td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Keywords</td>
+                    <td>
+                        <td>
+                            <%- rc.identification.keywords.keywords %>
+                        </td>
+                    </td>
+                </tr>
 
     </table>
 
 
-
-    <h2>
-            keywords test
-            <%- rc.listTitle %>
-        </h2>
+    s
+    <h2>keywords test <%- rc.listTitle %></h2>
 
     <ul>
         <% _.each( rc.keywords, function( keyword ){ %>
 
             <li>
-
                 <%- keyword %>
-
-
             </li>
-
             <% }); %>
     </ul>
 </div>

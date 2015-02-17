@@ -56,8 +56,29 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
 
         },
 
-        getValueFromXPath = function (path, xml) {
+        getValueFromXPath = function (cxt, path, xml, xpathFromCtx) {
+            //debug
+            cxt = cxt.slice(0, -1);
+            if (cxt.indexOf("gmd:descriptiveKeywords") != -1) {
+                var testArr = $(xml).xpath(cxt, isoNamespaces);
+                var b = [];
+                for (var i = 0; i < testArr.length; i++) {
+                    var res = $(testArr[i]).xpath(xpathFromCtx, isoNamespaces);
+                    var arr = [];
 
+                    res.each(function () {
+                        arr.push($.trim(this.textContent));
+                    });
+                    console.log(res);
+                    if (arr.length === 1) {
+                        b[i] = arr[0];
+                    } else {
+                        b[i] = arr;
+                    }
+                }
+                return b;
+            }
+            /*
             var xpathResult = $(xml).xpath(path, isoNamespaces),
                 arr = [];
             xpathResult.each(function () {
@@ -68,7 +89,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                 return arr[0];
             } else {
                 return arr;
-            }
+            }*/
 
         },
 
@@ -77,7 +98,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                 xpathOr = " or ";
             recursiveParse(isoModel, mappings, '/csw:GetRecordByIdResponse/gmd:MD_Metadata/');
 
-            function recursiveParse(model, map, context) {
+            function recursiveParse(model, map, context, xpathContext) {
                 var key;
                 if (map.hasOwnProperty('context')) {
                     //what if context has or xpath operator;
@@ -85,6 +106,8 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                         context = handleXpathOrOperationInContext(map.context, context);
                     } else {
                         context = context + map.context;
+
+
 
                     }
                     context = context + '/';
@@ -98,7 +121,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     if (map.hasOwnProperty(key)) {
                         var prop = map[key];
                         //debug
-                        if (key == 'organization') {
+                        if (key == 'thesaurus') {
                             console.log(key);
                         }
 
@@ -110,8 +133,10 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                             if (xpath.indexOf(xpathOr) > -1) {
                                 xpathResult = handleXpathOrOperation(xpath, context);
                             } else {
-                                xpathResult = getValueFromXPath(context + xpath, xml);
+                                xpathResult = getValueFromXPath(context, context + xpath, xml, xpath);
+                                console.log(xpath);
                             }
+
                             model[key] = xpathResult;
 
                         } else {
@@ -136,9 +161,9 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     emptyResult = function (res) {
                         return !res || (res.constructor === Array && res.length === 0);
                     },
-                    xpathResult = getValueFromXPath(context + xpaths[0], xml);
+                    xpathResult = getValueFromXPath(context, context + xpaths[0], xml, xpaths[0]);
 
-                // if empty result try othe path
+                // if empty result try other path
                 if (emptyResult(xpathResult)) {
 
                     return context + xpaths[1];
@@ -153,11 +178,11 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                     emptyResult = function (res) {
                         return !res || (res.constructor === Array && res.length === 0);
                     },
-                    xpathResult = getValueFromXPath(context + xpaths[0], xml);
+                    xpathResult = getValueFromXPath(context, context + xpaths[0], xml, xpaths[0]);
                 // if empty result try othe path
                 if (emptyResult(xpathResult)) {
 
-                    xpathResult = getValueFromXPath(context + xpaths[1], xml);
+                    xpathResult = getValueFromXPath(context, context + xpaths[1], xml, xpaths[1]);
 
                 }
                 return xpathResult;

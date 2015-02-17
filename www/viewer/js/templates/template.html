@@ -41,6 +41,26 @@
             </td>
         </tr>
         <tr>
+            <td>Resource language</td>
+            <td>
+                <%- rc.identification.resourcelanguage %>
+            </td>
+        </tr>
+        <tr>
+            <td>Topic category</td>
+            <td>
+                <%- rc.identification.topiccategory %>
+            </td>
+        </tr>
+        <tr>
+            <td>Maintenance and update frequency</td>
+
+            <td>
+                <%- rc.identification.maintenance %>
+            </td>
+
+        </tr>
+        <tr>
             <td>Unique resource identifier</td>
             <td>
                 <%- rc.identification.uniqueresourceidentifier %>
@@ -65,7 +85,7 @@
 
     <div class='item bar'>
         <div class="toggleTableButton  tgDown">&nbsp;</div>
-        Point of Contact
+        Point of Contacts
     </div>
     <table>
         <tr>
@@ -130,38 +150,44 @@
                         <%- rc.identification.contact.email %>
                     </td>
                 </tr>
-                <tr>
-                    <td>Maintenance and update frequency</td>
-                    <td>
-                        <td>
-                            <%- rc.identification.maintenance %>
-                        </td>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Keywords</td>
-                    <td>
-                        <td>
-                            <%- rc.identification.keywords.keywords %>
-                        </td>
-                    </td>
-                </tr>
+
 
     </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Keywords
+    </div>
+    <table>
 
-
-    s
-    <h2>keywords test <%- rc.identification.keywords.keywords %></h2>
-
-    <ul>
         <% _.each( rc.identification.keywords.keywords, function( keyword, index ){ %>
 
-            <li>
-                <%- keyword %>
-                    <%- index %>
-                        Thesaurus
-                        <%- rc.identification.keywords.thesaurus[index] %>
-            </li>
+            <tr>
+                <td>Keyword</td>
+                <td>
+                    <%- keyword %>
+                        <% if ( rc.identification.keywords.thesaurus[index]){ %> (Thesaurus -
+                            <%- rc.identification.keywords.thesaurus[index] %>)
+                                <% } %>
+                </td>
+            </tr>
             <% }); %>
-    </ul>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Contraints
+    </div>
+    <table>
+        <tr>
+            <td>Use Limitation</td>
+            <td>
+                <%- rc.identification.uselimitation %>
+            </td>
+        </tr>
+        <tr>
+            <td>Legal Use Limitation</td>
+            <td>
+                <%- rc.identification.uselimitationlegal %>
+            </td>
+        </tr>
+    </table>
 </div>

@@ -69,6 +69,7 @@ define(function () {
                 "maintenance": "gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode",
                 "uniqueresourceidentifier": "gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
                 "uselimitation": "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation/gco:CharacterString",
+                "uselimitationlegal": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString",
                 "accessconstraints": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode",
                 "classification": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_ClassificationCode/@codeListValue",
                 "otherconstraints": "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints/gco:CharacterString",

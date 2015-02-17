@@ -404,6 +404,13 @@
                         </gmd:otherConstraints>
                     </gmd:MD_LegalConstraints>
                 </gmd:resourceConstraints>
+                          <gmd:resourceConstraints>
+            <gmd:MD_Constraints>
+              <gmd:useLimitation>
+                <gco:CharacterString>This dataset was derived from an Isle of Mull soil survey, but not enough information available to ascertain if soil map contains any residual data from the Ordnance Survey? If it can be determined that there is, please read click the url below to read the Ordnance Survey Data Sub-licence Agreement with Digimap. http://edina.ac.uk/digimap/osterms.html</gco:CharacterString>
+              </gmd:useLimitation>
+            </gmd:MD_Constraints>
+          </gmd:resourceConstraints>
                 <gmd:spatialResolution>
                     <gmd:MD_Resolution>
                         <gmd:equivalentScale>

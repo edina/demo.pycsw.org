@@ -6,6 +6,9 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
 
     /* titles to test for  UK Earthquake Seismogram Data 
     Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection
+    or search for gui
+    9df8df51-631c-37a8-e044-0003ba9b0d98
+    
     graffiti edinburgh
     */
     var run = function () {
@@ -29,6 +32,8 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
                     testIdentificationPointOfContact(m);
 
                     testKeywordsAndMaintenance(m);
+
+                    testConstraints(m);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {
@@ -37,7 +42,7 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             });
 
         });
-    }
+    };
 
 
     function testMainIdentification(m) {
@@ -45,6 +50,9 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.title, "Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection", "title");
             assert.equal(m.identification.alternatetitle, "alternate title", "Alternate title");
             assert.equal(m.datestamp, "2000-01-01T12:00:00", "datestamp test xpath or operation");
+            assert.equal(m.identification.resourcelanguage, "English", "Language");
+            assert.equal(m.identification.topiccategory, "geoscientificInformation", "Topic category code ");
+
             assert.equal(m.identification.date.date, "1990", "date");
             assert.equal(m.identification.date.type, "creation", "dateType");
             assert.equal(m.identification.uniqueresourceidentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
@@ -52,7 +60,6 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.abstract, "abstract here", "abstract");
 
         });
-
     };
 
 
@@ -83,17 +90,21 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
             assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
             assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
-            assert.equal(m.identification.contact.phone, "+44 131 667 1000 Ex:354", "Voice");
-
-            assert.equal(m.identification.contact.address, "Murchison House,West Mains Road", "Delivery point ");
-            assert.equal(m.identification.contact.city, "EDINBURGH", "City");
-            assert.equal(m.identification.contact.region, "LOTHIAN", "Administrative area");
-            assert.equal(m.identification.contact.postcode, "EH9 3LA", "Postal code");
-            assert.equal(m.identification.contact.country, "United Kingdom", "Country");
-            assert.equal(m.identification.contact.email, "enquiries@bgs.ac.uk", "Electronic mail");
 
         });
 
+    }
+
+    function testConstraints(m) {
+        test('Test Contraints ', function (assert) {
+
+            assert.ok(m.identification.uselimitationlegal.toString().indexOf("the dataset is made freely available") != -1, "Use limitation");
+            assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
+            assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
+            assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
+            assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") != -1, "Use limitation");
+
+        });
     }
 
     return {

@@ -422,6 +422,13 @@
                         </gmd:equivalentScale>
                     </gmd:MD_Resolution>
                 </gmd:spatialResolution>
+                <gmd:spatialResolution>
+		            <gmd:MD_Resolution>
+		              <gmd:distance>
+		                <gco:Distance uom="urn:ogc:def:uom:EPSG::9001">0.0</gco:Distance>
+		              </gmd:distance>
+		            </gmd:MD_Resolution>
+	          	</gmd:spatialResolution>
                 <gmd:language>
                     <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng">English</gmd:LanguageCode>
                 </gmd:language>

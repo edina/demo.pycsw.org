@@ -4,6 +4,34 @@
 define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore'], function (model, rdView) {
     'use strict';
 
+    function isEmpty(el) {
+        return !$.trim(el.html());
+
+    }
+
+
+
+    function hideRowsWithNoValues() {
+
+        $("#record-details > div > table").each(function () {
+            var allRowsHidden = true;
+            $("tbody > tr > td:nth-child(2)", this).each(function () {
+
+                var $this = $(this)
+                if (isEmpty($this)) {
+
+                    $this.parent().hide();
+                } else {
+                    allRowsHidden = false;
+                }
+            });
+            if (allRowsHidden) {
+                $(this).hide();
+                $(this).prev().hide();
+            }
+        });
+    }
+
     var showFullRecord = function (url) {
             console.log(url);
             $.ajax({
@@ -38,6 +66,8 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                     $("#record-details").html(
                         compiled_template(templateData)
                     );
+                    hideRowsWithNoValues();
+
                 },
                 error: function () {
                     alert("An error occurred while processing XML file.");
@@ -52,7 +82,7 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                 table = $(button).parent().next();
 
             table.toggle();
-            $()
+
 
             if ($(button).hasClass(downArrowClass)) {
                 $(button).removeClass(downArrowClass);

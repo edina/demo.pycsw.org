@@ -103,6 +103,21 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
             assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
             assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") != -1, "Use limitation");
+            assert.equal(m.identification.denominators.toString(), 10000, "Denominators");
+            assert.equal(m.identification.distance, "0.0", "Distance");
+            assert.equal(m.identification.uom, "urn:ogc:def:uom:EPSG::9001", "uom");
+
+        });
+    }
+
+    function testExtent(m) {
+        test('Test Extent ', function (assert) {
+
+            assert.ok(m.identification.uselimitationlegal.toString().indexOf("the dataset is made freely available") != -1, "Use limitation");
+            assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
+            assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
+            assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
+            assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") != -1, "Use limitation");
 
         });
     }

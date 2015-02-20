@@ -1,4 +1,5 @@
 /*jslint browser: true*/
+
 /*global $, define, console, test*/
 
 define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery'], function (model, mappings, parseiso) {
@@ -11,38 +12,7 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
     
     graffiti edinburgh
     */
-    var run = function () {
 
-        var url = 'http://localhost/www/viewer/tests/testdoc.xml';
-        test('Test parse xml record to iso data model', function (assert) {
-
-            assert.expect(1);
-            var done1 = assert.async();
-            $.ajax({
-                type: "GET",
-                url: url,
-                dataType: "xml",
-                success: function (xml) {
-                    var m = model.createRecordDetailsModel(xml);
-                    assert.ok(xml, 'got test xml result');
-
-
-                    testMainIdentification(m);
-
-                    testIdentificationPointOfContact(m);
-
-                    testKeywordsAndMaintenance(m);
-
-                    testConstraints(m);
-                    done1();
-                },
-                error: function (jqXHR, textStatus, errorThrow) {
-                    alert("An error occurred while processing XML file." + errorThrow);
-                }
-            });
-
-        });
-    };
 
 
     function testMainIdentification(m) {
@@ -60,7 +30,7 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.abstract, "abstract here", "abstract");
 
         });
-    };
+    }
 
 
 
@@ -98,11 +68,11 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
     function testConstraints(m) {
         test('Test Contraints ', function (assert) {
 
-            assert.ok(m.identification.uselimitationlegal.toString().indexOf("the dataset is made freely available") != -1, "Use limitation");
+            assert.ok(m.identification.uselimitationlegal.toString().indexOf("the dataset is made freely available") !== -1, "Use limitation");
             assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
             assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
             assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
-            assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") != -1, "Use limitation");
+            assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") !== -1, "Use limitation");
             assert.equal(m.identification.denominators.toString(), 10000, "Denominators");
             assert.equal(m.identification.distance, "0.0", "Distance");
             assert.equal(m.identification.uom, "urn:ogc:def:uom:EPSG::9001", "uom");
@@ -111,16 +81,53 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
     }
 
     function testExtent(m) {
-        test('Test Extent ', function (assert) {
-
-            assert.ok(m.identification.uselimitationlegal.toString().indexOf("the dataset is made freely available") != -1, "Use limitation");
-            assert.equal(m.identification.keywords.keywords[0], "Geology", "Keywords");
-            assert.deepEqual(m.identification.keywords.keywords[1], ["Palaeontology", "Graphic logs", "Biostratigraphy", "Specimen collecting", "Fossils", "Type specimen"], "Keywords");
-            assert.equal(m.identification.keywords.thesaurus[2], "GEMET - INSPIRE themes", "Thesaurus");
-            assert.ok(m.identification.uselimitation.toString().indexOf(" Isle of Mull") != -1, "Use limitation");
+        test('Test map Extent ', function (assert) {
+            assert.equal(m.identification.extent.boundingBox.minx, "-8.6500", "bb west");
+            assert.equal(m.identification.extent.boundingBox.maxx, "1.7800", "bb east");
+            assert.equal(m.identification.extent.boundingBox.miny, "49.7700", "bb south");
+            assert.equal(m.identification.extent.boundingBox.maxy, "60.8600", "bb west");
 
         });
     }
+
+    var run = function () {
+
+        var url = 'http://localhost/www/viewer/tests/testdoc.xml';
+        test('Test parse xml record to iso data model', function (assert) {
+
+            assert.expect(1);
+            var done1 = assert.async();
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "xml",
+                success: function (xml) {
+                    var m = model.createRecordDetailsModel(xml);
+                    assert.ok(xml, 'got test xml result');
+
+
+                    testMainIdentification(m);
+
+                    testIdentificationPointOfContact(m);
+
+                    testKeywordsAndMaintenance(m);
+
+                    testConstraints(m);
+
+                    testExtent(m);
+                    done1();
+                },
+                error: function (jqXHR, textStatus, errorThrow) {
+                    console.log("An error occurred while processing XML file." + errorThrow);
+                }
+            });
+
+        });
+    };
+
+
+
+
 
     return {
         run: run

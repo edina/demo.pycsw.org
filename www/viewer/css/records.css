@@ -57,3 +57,7 @@ div.toggleTableButton {
     border-bottom: 1px solid #B3D4E6;
     font-size: 80%;
 }
+
+#extentMap {
+    height: 180px;
+}

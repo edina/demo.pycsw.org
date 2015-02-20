@@ -1,159 +1,247 @@
 <div class="recordDetails">
-	<div class='rdTitle bar'><%- rc.title %></div>
-	<div class='item bar'><%- rc.abstract %></div>
-	<div class='item bar'>
-		<div class="toggleTableButton tgDown">&nbsp;</div>
-		Identification info
-	</div>
-	<table>
-		<tr>
-			<td>Title</td>
-			<td><%- rc.identification.title %></td>
-		</tr>
-		<tr>
-			<td>Alternate title</td>
-			<td><%- rc.identification.alternatetitle %></td>
-		</tr>
-		<tr>
-			<td>Date</td>
-			<td><%- rc.identification.date.date %></td>
-		</tr>
-		<tr>
-			<td>Date type</td>
-			<td><%- rc.identification.date.type %></td>
-		</tr>
-		<tr>
-			<td>Date stamp</td>
-			<td><%- rc.datestamp %></td>
-		</tr>
-		<tr>
-			<td>Resource language</td>
-			<td><%- rc.identification.resourcelanguage %></td>
-		</tr>
-		<tr>
-			<td>Topic category</td>
-			<td><%- rc.identification.topiccategory %></td>
-		</tr>
-		<tr>
-			<td>Maintenance and update frequency</td>
+    <div class='rdTitle bar'>
+        <%- rc.title %>
+    </div>
+    <div class='item bar'>
+        <%- rc.abstract %>
+    </div>
+    <div class='item bar'>
+        <div class="toggleTableButton tgDown">&nbsp;</div>
+        Identification info
+    </div>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>
+                <%- rc.identification.title %>
+            </td>
+        </tr>
+        <tr>
+            <td>Alternate title</td>
+            <td>
+                <%- rc.identification.alternatetitle %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>
+                <%- rc.identification.date.date %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date type</td>
+            <td>
+                <%- rc.identification.date.type %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date stamp</td>
+            <td>
+                <%- rc.datestamp %>
+            </td>
+        </tr>
+        <tr>
+            <td>Resource language</td>
+            <td>
+                <%- rc.identification.resourcelanguage %>
+            </td>
+        </tr>
+        <tr>
+            <td>Topic category</td>
+            <td>
+                <%- rc.identification.topiccategory %>
+            </td>
+        </tr>
+        <tr>
+            <td>Maintenance and update frequency</td>
 
-			<td><%- rc.identification.maintenance %></td>
+            <td>
+                <%- rc.identification.maintenance %>
+            </td>
 
-		</tr>
-		<tr>
-			<td>Unique resource identifier</td>
-			<td><%- rc.identification.uniqueresourceidentifier %></td>
-		</tr>
-		<% if ( rc.identification.codeSpace ){ %>
-		<tr>
-			<td>Codespace</td>
-			<td><%- rc.identification.codeSpace %></td>
-		</tr>
-		<% } %>
-		<tr>
-			<td>Abstract</td>
-			<td><%- rc.identification.abstract %></td>
-		</tr>
-	</table>
-
-
-	<div class='item bar'>
-		<div class="toggleTableButton  tgDown">&nbsp;</div>
-		Point of Contacts
-	</div>
-	<table>
-		<tr>
-			<td>Individual Name</td>
-			<td><%- rc.identification.contact.name %></td>
-		</tr>
-		<tr>
-			<td>Organisation name</td>
-			<td><%- rc.identification.contact.organization %></td>
-		</tr>
-		<tr>
-			<td>Role</td>
-			<td><%- rc.identification.contact.role %></td>
-		</tr>
-		<tr>
-			<td>Voice</td>
-			<td><%- rc.identification.contact.phone %></td>
-		</tr>
-		<tr>
-			<td>Delivery point</td>
-			<td><%- rc.identification.contact.address %></td>
-		</tr>
-		<tr>
-			<td>City</td>
-			<td><%- rc.identification.contact.city %></td>
-		</tr>
-		<tr>
-			<td>Administrative area</td>
-			<td><%- rc.identification.contact.region %></td>
-		</tr>
-		<% if ( rc.identification.contact.postcode){ %>
-		<tr>
-			<td>Postal code</td>
-			<td><%- rc.identification.contact.postcode %></td>
-		</tr>
-		<% } %>
-		<tr>
-			<td>Country</td>
-			<td><%- rc.identification.contact.country %></td>
-		</tr>
-		<tr>
-			<td>Electronic mail</td>
-			<td><%- rc.identification.contact.email %></td>
-		</tr>
+        </tr>
+        <tr>
+            <td>Unique resource identifier</td>
+            <td>
+                <%- rc.identification.uniqueresourceidentifier %>
+            </td>
+        </tr>
+        <% if ( rc.identification.codeSpace ){ %>
+            <tr>
+                <td>Codespace</td>
+                <td>
+                    <%- rc.identification.codeSpace %>
+                </td>
+            </tr>
+            <% } %>
+                <tr>
+                    <td>Abstract</td>
+                    <td>
+                        <%- rc.identification.abstract %>
+                    </td>
+                </tr>
+    </table>
 
 
-	</table>
-	<div class='item bar'>
-		<div class="toggleTableButton  tgDown">&nbsp;</div>
-		Keywords
-	</div>
-	<table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Point of Contacts
+    </div>
+    <table>
+        <tr>
+            <td>Individual Name</td>
+            <td>
+                <%- rc.identification.contact.name %>
+            </td>
+        </tr>
+        <tr>
+            <td>Organisation name</td>
+            <td>
+                <%- rc.identification.contact.organization %>
+            </td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>
+                <%- rc.identification.contact.role %>
+            </td>
+        </tr>
+        <tr>
+            <td>Voice</td>
+            <td>
+                <%- rc.identification.contact.phone %>
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery point</td>
+            <td>
+                <%- rc.identification.contact.address %>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <%- rc.identification.contact.city %>
+            </td>
+        </tr>
+        <tr>
+            <td>Administrative area</td>
+            <td>
+                <%- rc.identification.contact.region %>
+            </td>
+        </tr>
+        <% if ( rc.identification.contact.postcode){ %>
+            <tr>
+                <td>Postal code</td>
+                <td>
+                    <%- rc.identification.contact.postcode %>
+                </td>
+            </tr>
+            <% } %>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <%- rc.identification.contact.country %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Electronic mail</td>
+                    <td>
+                        <%- rc.identification.contact.email %>
+                    </td>
+                </tr>
 
-		<% _.each( rc.identification.keywords.keywords, function( keyword,
-		index ){ %>
 
-		<tr>
-			<td>Keyword</td>
-			<td><%- keyword %> <% if (
-				rc.identification.keywords.thesaurus[index]){ %> (Thesaurus - <%-
-				rc.identification.keywords.thesaurus[index] %>) <% } %></td>
-		</tr>
-		<% }); %>
-	</table>
-	<div class='item bar'>
-		<div class="toggleTableButton  tgDown">&nbsp;</div>
-		Contraints
-	</div>
-	<table>
-		<tr>
-			<td>Use Limitation</td>
-			<td><%- rc.identification.uselimitation %></td>
-		</tr>
-		<tr>
-			<td>Legal Use Limitation</td>
-			<td><%- rc.identification.uselimitationlegal %></td>
-		</tr>
-	</table>
-	<div class='item bar'>
-		<div class="toggleTableButton  tgDown">&nbsp;</div>
-		Spatial resolution
-	</div>
-	<table>
-		<tr>
-			<td>Denominator</td>
-			<td><%- rc.identification.denominators %></td>
-		</tr>
-		<tr>
-			<td>Distance</td>
-			<td><%- rc.identification.distance %></td>
-		</tr>
-		<tr>
-			<td>Umo</td>
-			<td><%- rc.identification.umo %></td>
-		</tr>
-	</table>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Keywords
+    </div>
+    <table>
+
+        <% _.each( rc.identification.keywords.keywords, function( keyword, index ){ %>
+
+            <tr>
+                <td>Keyword</td>
+                <td>
+                    <%- keyword %>
+                        <% if ( rc.identification.keywords.thesaurus[index]){ %> (Thesaurus -
+                            <%- rc.identification.keywords.thesaurus[index] %>)
+                                <% } %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Contraints
+    </div>
+    <table>
+        <tr>
+            <td>Use Limitation</td>
+            <td>
+                <%- rc.identification.uselimitation %>
+            </td>
+        </tr>
+        <tr>
+            <td>Legal Use Limitation</td>
+            <td>
+                <%- rc.identification.uselimitationlegal %>
+            </td>
+        </tr>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Spatial resolution
+    </div>
+    <table>
+        <tr>
+            <td>Denominator</td>
+            <td>
+                <%- rc.identification.denominators %>
+            </td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>
+                <%- rc.identification.distance %>
+            </td>
+        </tr>
+        <tr>
+            <td>Umo</td>
+            <td>
+                <%- rc.identification.umo %>
+            </td>
+        </tr>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Extent
+    </div>
+    <table>
+        <tr>
+            <td>Bounding Box</td>
+            <td>
+                North bound
+
+                <%- rc.identification.extent.boundingBox.maxy %> , South bound
+                    <%- rc.identification.extent.boundingBox.miny %> , West bound
+                        <%- rc.identification.extent.boundingBox.minx %> , East bound
+                            <%- rc.identification.extent.boundingBox.maxx %>
+            </td>
+        </tr>
+        <tr>
+            <td>Geographic extent</td>
+            <td>
+                <div id="extentMap"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Umo</td>
+            <td>
+                <%- rc.identification.umo %>
+            </td>
+        </tr>
+    </table>
+
 </div>

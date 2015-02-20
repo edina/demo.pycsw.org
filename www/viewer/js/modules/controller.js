@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global $, define, console */
+/*global $, define, L, console */
 
 define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore'], function (model, rdView) {
     'use strict';
@@ -9,15 +9,39 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
 
     }
 
+    function addExtentMap(m) {
+        if (m.identification.extent.boundingBox.minx && m.identification.extent.boundingBox.miny && m.identification.extent.boundingBox.maxx && m.identification.extent.boundingBox.maxy) {
+
+            var southWest = L.latLng(parseFloat(m.identification.extent.boundingBox.miny), parseFloat(m.identification.extent.boundingBox.minx)),
+                northEast = L.latLng(parseFloat(m.identification.extent.boundingBox.maxy), parseFloat(m.identification.extent.boundingBox.maxx)),
+                bounds = L.latLngBounds(southWest, northEast);
+            var map = new L.Map('extentMap'),
+
+                // create the tile layer with correct attribution
+                osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+                osm = new L.TileLayer(osmUrl, {
+                    minZoom: 10,
+                    maxZoom: 19,
+                    maxBounds: bounds,
+                    attribution: osmAttrib
+                });
+
+            // start the map in South-East England
+            map.addLayer(osm);
+            map.fitBounds(bounds);
+        }
+    }
 
 
     function hideRowsWithNoValues() {
 
         $("#record-details > div > table").each(function () {
-            var allRowsHidden = true;
+            var allRowsHidden = true,
+                $table = $(this);
             $("tbody > tr > td:nth-child(2)", this).each(function () {
 
-                var $this = $(this)
+                var $this = $(this);
                 if (isEmpty($this)) {
 
                     $this.parent().hide();
@@ -26,8 +50,9 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                 }
             });
             if (allRowsHidden) {
-                $(this).hide();
-                $(this).prev().hide();
+
+                $table.hide();
+                $table.prev().hide();
             }
         });
     }
@@ -44,8 +69,7 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                     $("#dialog-message").dialog({
                         modal: true,
                         draggable: false,
-                        resizable: false,
-                        position: ['center', 'center'],
+                        resizable: true,
                         show: 'blind',
                         hide: 'blind',
                         width: 800,
@@ -67,6 +91,7 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                         compiled_template(templateData)
                     );
                     hideRowsWithNoValues();
+                    addExtentMap(templateData);
 
                 },
                 error: function () {
@@ -82,7 +107,6 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                 table = $(button).parent().next();
 
             table.toggle();
-
 
             if ($(button).hasClass(downArrowClass)) {
                 $(button).removeClass(downArrowClass);

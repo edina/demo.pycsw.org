@@ -7,7 +7,7 @@
 }
 
 .rdTitle {
-    font-size: 120%;
+    font-size: 110%;
     font-weight: bold;
     padding-bottom: 5px;
     padding-top: 15px;
@@ -16,6 +16,15 @@
 
 .bar {
     border-bottom: 1px solid #b3d4e6;
+}
+
+.abstract {
+    font-size: 80%;
+}
+
+.ui-widget {
+    font-family: Arial, sans-serif;
+    font-size: 1em !important;
 }
 
 .item {

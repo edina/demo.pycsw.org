@@ -2,7 +2,7 @@
 
 /*global $, define, console, test*/
 
-define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery'], function (model, mappings, parseiso) {
+define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model, mappings) {
     'use strict';
 
     /* titles to test for  UK Earthquake Seismogram Data 
@@ -86,6 +86,9 @@ define(['modules/model', 'modules/metadata_mapping', 'modules/parseiso', 'jquery
             assert.equal(m.identification.extent.boundingBox.maxx, "1.7800", "bb east");
             assert.equal(m.identification.extent.boundingBox.miny, "49.7700", "bb south");
             assert.equal(m.identification.extent.boundingBox.maxy, "60.8600", "bb west");
+            assert.equal(m.identification.extent.temporalextent_start, "1900", "temporalextent_start");
+            assert.equal(m.identification.extent.temporalextent_end, "60.8600", "temporalextent_end");
+
 
         });
     }

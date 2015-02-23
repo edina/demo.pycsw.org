@@ -95,7 +95,7 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
 
                 },
                 error: function () {
-                    alert("An error occurred while processing XML file.");
+                    console.log("An error occurred while processing XML file.");
                 }
             });
 
@@ -114,8 +114,8 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
             } else {
                 $(button).removeClass(rightArrowClass);
                 $(button).addClass(downArrowClass);
-            };
-        }
+            }
+        };
 
 
 

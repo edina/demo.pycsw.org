@@ -80,6 +80,12 @@
                         <%- rc.identification.abstract %>
                     </td>
                 </tr>
+                <tr>
+                    <td>Supplemental Information </td>
+                    <td>
+                        <%- rc.identification.supplementalinformation %>
+                    </td>
+                </tr>
     </table>
 
 
@@ -243,5 +249,122 @@
             </td>
         </tr>
     </table>
+
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Temporal Extent
+    </div>
+    <table>
+        <tr>
+            <td>Begin date</td>
+            <td>
+
+
+                <%- rc.identification.temporalextent_start %>
+            </td>
+        </tr>
+        <tr>
+            <td>End date</td>
+            <td>
+                <%- rc.identification.temporalextent_end %>
+            </td>
+        </tr>
+
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Distribution Information
+    </div>
+    <table>
+        <tr>
+            <td>Organisation name</td>
+            <td>
+
+
+                <%- rc.distribution.contact.organization %>
+            </td>
+        </tr>
+        <tr>
+            <td>Voice</td>
+            <td>
+                <%- rc.distribution.contact.phone %>
+            </td>
+        </tr>
+        <tr>
+            <td>Facsimile</td>
+            <td>
+
+
+                <%- rc.distribution.contact.fax %>
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery point</td>
+            <td>
+                <%- rc.distribution.contact.address %>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+
+
+                <%- rc.distribution.contact.city %>
+            </td>
+        </tr>
+        <tr>
+            <td>Postal code</td>
+            <td>
+                <%- rc.distribution.contact.postcode %>
+            </td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>
+
+
+                <%- rc.distribution.contact.country %>
+            </td>
+        </tr>
+        <tr>
+            <td>Electronic mail address</td>
+                <td>
+                    <%- rc.distribution.contact.email %>
+                </td>
+        </tr>
+        <tr>
+            <td>OnLine resource</td>
+            <td>
+
+
+                <%- rc.distribution.onlineresource.url %>
+            </td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>
+                <%- rc.distribution.role %>
+            </td>
+        </tr>
+        <tr>
+            <td>Format</td>
+            <td>
+
+
+                <%- rc.distribution.format %>
+            </td>
+        </tr>
+        <tr>
+            <td>Format Version</td>
+            <td>
+                <%- rc.distribution.version %>
+            </td>
+        </tr>
+        <tr>
+            <td>OnLine resource</td>
+            <td><%- rc.distribution.temporalextent_end %></td>
+        </tr>
+    </table>
+
 
 </div>

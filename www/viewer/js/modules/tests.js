@@ -2,7 +2,7 @@
 
 /*global $, define, console, test*/
 
-define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model, mappings) {
+define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymodel, mappings) {
     'use strict';
 
     /* titles to test for  UK Earthquake Seismogram Data 
@@ -28,6 +28,7 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
             assert.equal(m.identification.uniqueresourceidentifier, "http://data.bgs.ac.uk/id/dataHolding/13480091", "uniqueResourceIdentifier");
             assert.equal(m.identification.codeSpace, undefined, "codeSpace doesn't come back from pycsw");
             assert.equal(m.identification.abstract, "abstract here", "abstract");
+            assert.equal(m.identification.supplementalinformation, "Start date of data capture strictly not known, possibly 1993. Not added to since 1993. Data is being incorporated into Palaeosaurus.", "supplementalinformation");
 
         });
     }
@@ -86,8 +87,32 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
             assert.equal(m.identification.extent.boundingBox.maxx, "1.7800", "bb east");
             assert.equal(m.identification.extent.boundingBox.miny, "49.7700", "bb south");
             assert.equal(m.identification.extent.boundingBox.maxy, "60.8600", "bb west");
-            assert.equal(m.identification.extent.temporalextent_start, "1900", "temporalextent_start");
-            assert.equal(m.identification.extent.temporalextent_end, "60.8600", "temporalextent_end");
+
+            assert.equal(m.identification.temporalextent_start.toString(), "2015-02-11", "temporalextent_start");
+            assert.equal(m.identification.temporalextent_end.toString(), "2015-02-12", "temporalextent_end");
+
+
+        });
+    }
+
+    function testDistribution(m) {
+        test('Test distribution ', function (assert) {
+            assert.equal(m.distribution.contact.organization, "British Geological Survey", "organization");
+            assert.equal(m.distribution.contact.phone, "+44 115 936 3143", "voice");
+            assert.equal(m.distribution.contact.fax, "+44 115 936 3276", "fax");
+            assert.equal(m.distribution.contact.address, "Environmental Science Centre,Keyworth", "Delivery point");
+
+            assert.equal(m.distribution.contact.city, "NOTTINGHAM", "city");
+            assert.equal(m.distribution.contact.region, "NOTTINGHAMSHIRE", "region");
+            assert.equal(m.distribution.contact.postcode, "NG12 5GG", "postcode");
+            assert.equal(m.distribution.contact.country, "United Kingdom", "country");
+
+            assert.equal(m.distribution.contact.email, "enquiries@bgs.ac.uk", "email");
+            assert.equal(m.distribution.contact.role, "distributor", "role");
+            assert.equal(m.distribution.format, "PAPER - Paper format", "format");
+            assert.equal(m.distribution.version, "Not applicable", "version");
+            assert.equal(m.distribution.onlineresource.url, "http://www.bgs.ac.uk/collections/home.html", "Online resource");
+            
 
 
         });
@@ -105,7 +130,7 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
                 url: url,
                 dataType: "xml",
                 success: function (xml) {
-                    var m = model.createRecordDetailsModel(xml);
+                    var m = mymodel.createRecordDetailsModel(xml);
                     assert.ok(xml, 'got test xml result');
 
 
@@ -118,6 +143,8 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (model,
                     testConstraints(m);
 
                     testExtent(m);
+
+                    testDistribution(m);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {

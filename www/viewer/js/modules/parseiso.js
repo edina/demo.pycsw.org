@@ -73,7 +73,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
         },
 
         getValueFromXPath = function (cxt, $xml, xpathFromCtx) {
-            //debug
+
             cxt = cxt.slice(0, -1);
 
             var elems = $xml.xpath(cxt, isoNamespaces);
@@ -123,7 +123,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                         if (map.hasOwnProperty(key)) {
                             var prop = map[key];
                             //debug
-                            if (key == 'thesaurus') {
+                            if (key == 'organization') {
                                 console.log(key);
                             }
 

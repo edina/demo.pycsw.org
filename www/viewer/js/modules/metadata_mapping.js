@@ -127,7 +127,7 @@ define(function () {
 
                 },
                 "topiccategory": "gmd:topicCategory/gmd:MD_TopicCategoryCode",
-                "suplementalinformation": "gmd:supplementalInformation/gco:CharacterString",
+                "supplementalinformation": "gmd:supplementalInformation/gco:CharacterString",
                 "extent": {
                     "context": "gmd:extent/gmd:EX_Extent/gmd:geographicElement",
                     "value": {
@@ -168,8 +168,8 @@ define(function () {
                         "maxy": "gmd:northBoundLatitude/gco:Decimal"
                     }
                 },
-                "temporalextent_start": "gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition",
-                "temporalextent_end": "gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition"
+                "temporalextent_start": "gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/*[local-name() = 'TimePeriod']/*[local-name() = 'beginPosition']",
+                "temporalextent_end": "gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/*[local-name() = 'TimePeriod']/*[local-name() = 'endPosition']"
             }
         },
         "serviceidentification": {
@@ -253,8 +253,37 @@ define(function () {
                         "description": "gmd:description/gco:CharacterString",
                         "application_profile": "gmd:applicationProfile/gco:CharacterString"
                     }
+                },
+
+                "contact": {
+                    //TODO deal with multiple points of contact
+
+                    "context": "gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty",
+                    "value": {
+                        "name": "gmd:individualName/gco:CharacterString",
+                        "organization": "gmd:organisationName/gco:CharacterString",
+                        "position": "gmd:positionName/gco:CharacterString",
+                        "phone": "gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString",
+                        "fax": "gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:facsimile/gco:CharacterString",
+                        "address": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString",
+                        "city": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString",
+                        "region": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString",
+                        "postcode": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString",
+                        "country": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString",
+                        "email": "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString",
+                        "onlineresource": {
+                            "url": "gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL",
+                            "protocol": "gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString",
+                            "name": "gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:name/gco:CharacterString",
+                            "description": "gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:description/gco:CharacterString",
+                            "application_profile": "gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:applicationProfile/gco:CharacterString"
+                        },
+                        "role": "gmd:role/gmd:CI_RoleCode/@codeListValue"
+                    }
+
 
                 }
+
             }
         },
         "dataquality": {

@@ -111,9 +111,25 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
             assert.equal(m.distribution.contact.role, "distributor", "role");
             assert.equal(m.distribution.format, "PAPER - Paper format", "format");
             assert.equal(m.distribution.version, "Not applicable", "version");
-            assert.equal(m.distribution.onlineresource.url, "http://www.bgs.ac.uk/collections/home.html", "Online resource");
-            
+            assert.equal(m.distribution.online.url, "http://www.bgs.ac.uk/collections/home.html", "Online resource");
 
+
+        });
+    }
+
+
+
+    function testDataQuality(m) {
+        test('Test Data Quality ', function (assert) {
+            assert.equal(m.dataquality.level, "dataset", "Hierarchy level");
+            assert.ok(m.dataquality.conformancetitle.toString().indexOf("INSPIRE") !== -1, "Conformance Title");
+            assert.equal(m.dataquality.conformancedate, "2011", "Conformance Date");
+            assert.equal(m.dataquality.conformancedatetype, "publication", "Conformance Date Type");
+            assert.equal(m.dataquality.conformancedegree, "false", "Conformance Degree");
+
+            assert.ok(m.dataquality.lineage.toString().indexOf("The original data are specimens and slides") !== -1, "Linage Statement");
+
+            assert.equal(m.dataquality.explanation, "See the referenced specification", "Explanation");
 
         });
     }
@@ -145,6 +161,8 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
                     testExtent(m);
 
                     testDistribution(m);
+
+                    testDataQuality(m);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {

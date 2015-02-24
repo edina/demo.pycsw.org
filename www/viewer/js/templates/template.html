@@ -328,16 +328,16 @@
         </tr>
         <tr>
             <td>Electronic mail address</td>
-                <td>
-                    <%- rc.distribution.contact.email %>
-                </td>
+            <td>
+                <%- rc.distribution.contact.email %>
+            </td>
         </tr>
         <tr>
             <td>OnLine resource</td>
             <td>
 
 
-                <%- rc.distribution.onlineresource.url %>
+                <%- rc.distribution.online.url %>
             </td>
         </tr>
         <tr>
@@ -362,9 +362,65 @@
         </tr>
         <tr>
             <td>OnLine resource</td>
-            <td><%- rc.distribution.temporalextent_end %></td>
+            <td>
+                <%- rc.distribution.temporalextent_end %>
+            </td>
         </tr>
     </table>
 
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Data quality info
+    </div>
+    <table>
+        <tr>
+            <td>Hierarchy level </td>
+            <td>
 
+                <%- rc.dataquality.level %>
+            </td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>
+                <%- rc.dataquality.conformancetitle %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>
+
+
+                <%- rc.dataquality.conformancedate %>
+            </td>
+        </tr>
+        <tr>
+            <td>Date type</td>
+            <td>
+                <%- rc.distribution.contact.address %>
+            </td>
+        </tr>
+        <tr>
+            <td>Explanation </td>
+            <td>
+
+
+                <%- rc.dataquality.explanation%>
+            </td>
+        </tr>
+        <tr>
+            <td>Pass</td>
+            <td>
+                <%- rc.dataquality.conformancedegree %>
+            </td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>
+
+
+                <%- rc.dataquality.lineage %>
+            </td>
+        </tr>
+    </table>
 </div>

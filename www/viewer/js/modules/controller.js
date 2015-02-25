@@ -9,13 +9,29 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
 
     }
 
-    function addExtentMap(m) {
-        if (m.identification.extent.boundingBox.minx && m.identification.extent.boundingBox.miny && m.identification.extent.boundingBox.maxx && m.identification.extent.boundingBox.maxy) {
+    function convertToFloats(arr) {
+        return $.map(arr, function (n) {
+            var point = parseFloat(n);
 
-            var southWest = L.latLng(parseFloat(m.identification.extent.boundingBox.miny), parseFloat(m.identification.extent.boundingBox.minx)),
-                northEast = L.latLng(parseFloat(m.identification.extent.boundingBox.maxy), parseFloat(m.identification.extent.boundingBox.maxx)),
+            if (isNaN(point)) {
+                return null;
+            } else {
+                return point;
+            }
+        });
+    }
+
+    function addExtentMap(bb, divId) {
+
+        var bbArr = [bb.miny, bb.minx, bb.maxy, bb.maxx];
+        bbArr = convertToFloats(bbArr);
+
+        if (bbArr.length !== 0) {
+
+            var southWest = L.latLng(bbArr[0], bbArr[1]),
+                northEast = L.latLng(bbArr[2], bbArr[3]),
                 bounds = L.latLngBounds(southWest, northEast);
-            var map = new L.Map('extentMap'),
+            var map = new L.Map(divId),
 
                 // create the tile layer with correct attribution
                 osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -27,7 +43,6 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                     attribution: osmAttrib
                 });
 
-            // start the map in South-East England
             map.addLayer(osm);
             map.fitBounds(bounds);
         }
@@ -91,7 +106,8 @@ define(['modules/model', 'text!templates/template.html', 'jquery', 'underscore']
                         compiled_template(templateData)
                     );
                     hideRowsWithNoValues();
-                    addExtentMap(templateData);
+                    addExtentMap(templateData.identification.extent.boundingBox, 'extentMap');
+                    addExtentMap(templateData.serviceidentification.bbox.boundingBox, 'serviceExtentMap');
 
                 },
                 error: function () {

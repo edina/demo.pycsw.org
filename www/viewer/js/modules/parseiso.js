@@ -26,27 +26,6 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
             'csw': "http://www.opengis.net/cat/csw/2.0.2"
         },
 
-        /*
-                mappings = {
-                    "identifier": "gmd:fileIdentifier/gco:CharacterString",
-                    "title": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString",
-                    "alternateTitle": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:alternateTitle",
-                    "abstract": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString",
-                    "date": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date",
-                    "dateType": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:dateType",
-                    "uniqueResourceIdentifier": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
-                    "codeSpace": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:codeSpace/gco:CharacterString",
-                    "language": "gmd:language/gmd:LanguageCode/@codeListValue",
-                    "keywords": "gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword",
-                    "parentidentifier": "gmd:parentIdentifier/gco:CharacterString",
-                    "dataseturi": "gmd:dataSetURI/gco:CharacterString",
-                    "languagecode": "gmd:language/gmd:LanguageCode",
-                    "datestamp": "gmd:dateStamp/gco:Date or gmd:dateStamp/gco:DateTime",
-                    "charset": "gmd:characterSet/gmd:MD_CharacterSetCode/@codeListValue",
-                    "hierarchy": "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue",
-                    "datetimestamp": "gmd:dateStamp/gco:DateTime"
-
-                },*/
 
 
 

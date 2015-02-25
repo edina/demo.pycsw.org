@@ -423,4 +423,136 @@
             </td>
         </tr>
     </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Metadata
+    </div>
+    <table>
+        <tr>
+            <td>File identifier</td>
+            <td>
+
+                <%- rc.identifier %>
+            </td>
+        </tr>
+        <tr>
+            <td>Metadata language</td>
+            <td>
+                <%- rc.languagecode %>
+            </td>
+        </tr>
+        <tr>
+            <td>Hierarchy</td>
+            <td>
+
+
+                <%- rc.hierarchy %>
+            </td>
+        </tr>
+        <tr>
+            <td>Dataset URI
+                <td>
+
+                    <%- rc.dataseturi %>
+                </td>
+        </tr>
+        <tr>
+            <td>Date stamp </td>
+            <td>
+
+
+                <%- rc.datetimestamp %>
+            </td>
+        </tr>
+        <tr>
+            <td>Metadata standard name </td>
+            <td>
+                <%- rc.stdname %>
+            </td>
+        </tr>
+        <tr>
+            <td>Metadata standard version</td>
+            <td>
+
+
+                <%- rc.stdver %>
+            </td>
+        </tr>
+    </table>
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Metadata of contact
+    </div>
+    <table>
+        <tr>
+            <td>Individual Name</td>
+            <td>
+                <%- rc.contact.name %>
+            </td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td>
+                <%- rc.contact.position %>
+            </td>
+        </tr>
+        <tr>
+            <td>Organisation name</td>
+            <td>
+                <%- rc.contact.organization %>
+            </td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>
+                <%- rc.contact.role %>
+            </td>
+        </tr>
+        <tr>
+            <td>Voice</td>
+            <td>
+                <%- rc.contact.phone %>
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery point</td>
+            <td>
+                <%- rc.contact.address %>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <%- rc.contact.city %>
+            </td>
+        </tr>
+        <tr>
+            <td>Administrative area</td>
+            <td>
+                <%- rc.contact.region %>
+            </td>
+        </tr>
+        <% if ( rc.contact.postcode){ %>
+            <tr>
+                <td>Postal code</td>
+                <td>
+                    <%- rc.contact.postcode %>
+                </td>
+            </tr>
+            <% } %>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <%- rc.contact.country %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Electronic mail</td>
+                    <td>
+                        <%- rc.contact.email %>
+                    </td>
+                </tr>
+
+
+    </table>
 </div>

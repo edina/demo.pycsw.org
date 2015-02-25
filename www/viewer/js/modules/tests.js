@@ -6,12 +6,17 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
     'use strict';
 
     /* titles to test for  UK Earthquake Seismogram Data 
-    Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection
-    or search for gui
-    9df8df51-631c-37a8-e044-0003ba9b0d98
-    
-    graffiti edinburgh
-    */
+     *  sample test records
+     *  	dataset
+            Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection
+            
+            9df8df51-631c-37a8-e044-0003ba9b0d98
+            
+            service test record
+            fda1332a-0436-4949-863a-eb1a2bf8d6ff
+    		Scottish Government Protected Sites View Service (WMS)
+            graffiti edinburgh
+            */
 
 
 
@@ -134,6 +139,35 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
         });
     }
 
+    function testMetaDataSection(m) {
+        test('Test Metadata Section ', function (assert) {
+            assert.equal(m.identifier, "9df8df51-631c-37a8-e044-0003ba9b0d98", "File identifier");
+            assert.equal(m.languagecode, "English", "Metadata language  ");
+            assert.equal(m.hierarchy, "dataset", "Hierarchy Level");
+            assert.equal(m.dataseturi, "http://data.bgs.ac.uk/id/dataHolding/13480091", "Dataset url");
+            assert.equal(m.datetimestamp, "2000-01-01T12:00:00", "Datetime stamp");
+            assert.equal(m.stdname, "NERC profile of ISO19115:2003", "Metadata standard name ");
+            assert.equal(m.stdver, "1.0", "Metadata standard version ");
+
+            //metadata contact
+            assert.equal(m.contact.name, "Dean,Mark Thornton", "Individual name");
+            assert.equal(m.contact.position, "NERC-BGS Field Palaeontologist", "Position");
+            assert.equal(m.contact.organization, "British Geological Survey", "organization");
+            assert.equal(m.contact.phone, "+44 131 667 1000 Ex:354", "voice");
+
+            assert.equal(m.contact.address, "Murchison House,West Mains Road", "Delivery point");
+
+            assert.equal(m.contact.city, "EDINBURGH", "city");
+            assert.equal(m.contact.region, "LOTHIAN", "region");
+            assert.equal(m.contact.postcode, "EH9 3LA", "postcode");
+            assert.equal(m.contact.country, "United Kingdom", "country");
+
+            assert.equal(m.contact.email, "mtd@bgs.ac.uk", "email");
+            assert.equal(m.contact.role, "pointOfContact", "role");
+
+        });
+    }
+
     var run = function () {
 
         var url = 'http://localhost/www/viewer/tests/testdoc.xml';
@@ -163,6 +197,9 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
                     testDistribution(m);
 
                     testDataQuality(m);
+
+
+                    testMetaDataSection(m);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {

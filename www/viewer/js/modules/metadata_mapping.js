@@ -48,7 +48,9 @@ define(function () {
         "stdname": "gmd:metadataStandardName/gco:CharacterString",
         "stdver": "gmd:metadataStandardVersion/gco:CharacterString",
         "referencesystem": {
-            "code": "gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString"
+            "code": "gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString",
+            "codeSpace": "gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:codeSpace/gco:CharacterString",
+            "version": "gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:version/gco:CharacterString"
         },
         "identification": {
             "context": "gmd:identificationInfo/srv:SV_ServiceIdentification or gmd:identificationInfo/gmd:MD_DataIdentification",
@@ -208,7 +210,7 @@ define(function () {
                         "description_code": "gmd:EX_GeographicDescription/gmd:geographicIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString"
                     }
                 },
-                "couplingtype": "gmd:couplingType/gmd:SV_CouplingType/@codeListValue",
+                "couplingtype": "*[local-name() = 'couplingType']/*[local-name() = 'SV_CouplingType']/@codeListValue",
                 "operations": {
                     "context": "srv:containsOperations",
                     "value": {
@@ -231,9 +233,9 @@ define(function () {
                 "operateson": {
                     "context": "srv:operatesOn",
                     "value": {
-                        "uuidref": "/@uuidref",
-                        "href": "/@xlink:href",
-                        "title": "/@xlink:title"
+                        "uuidref": "@uuidref",
+                        "href": "@xlink:href",
+                        "title": "@xlink:title"
                     }
 
                 }

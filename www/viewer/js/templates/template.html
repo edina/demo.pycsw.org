@@ -303,6 +303,35 @@
                         </tr>
 
                     </table>
+
+                    <div class='item bar'>
+                        <div class="toggleTableButton  tgDown">&nbsp;</div>
+                        Reference System Information
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Unique resource identifier </td>
+                            <td>
+
+
+                                <%- rc.referencesystem.code %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Codespace</td>
+                            <td>
+                                <%- rc.referencesystem.codeSpace %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Version</td>
+                            <td>
+                                <%- rc.referencesystem.version %>
+                            </td>
+                        </tr>
+
+                    </table>
+
                     <div class='item bar'>
                         <div class="toggleTableButton  tgDown">&nbsp;</div>
                         Distribution Information
@@ -468,11 +497,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Metadata language</td>
+                            <td>Metadata language </td>
+                            <td>
+                                <%- rc.language %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Metadata language code</td>
                             <td>
                                 <%- rc.languagecode %>
                             </td>
                         </tr>
+
                         <tr>
                             <td>Hierarchy</td>
                             <td>

@@ -102,7 +102,7 @@ define(['modules/metadata_mapping', 'jquery', 'jqueryxpath', 'underscore'], func
                         if (map.hasOwnProperty(key)) {
                             var prop = map[key];
                             //debug
-                            if (key == 'organization') {
+                            if (key == 'uuidref') {
                                 console.log(key);
                             }
 

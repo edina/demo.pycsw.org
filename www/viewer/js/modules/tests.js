@@ -5,18 +5,19 @@
 define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymodel, mappings) {
     'use strict';
 
-    /* titles to test for  UK Earthquake Seismogram Data 
-     *  sample test records
-     *  	dataset
-            Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection
-            
-            9df8df51-631c-37a8-e044-0003ba9b0d98
-            
-            service test record
-            fda1332a-0436-4949-863a-eb1a2bf8d6ff
-    		Scottish Government Protected Sites View Service (WMS)
-            graffiti edinburgh
-            */
+    /*
+     * test record dataset
+     * Index To Specimens Transferred
+     * From The John Smith Collection To The UK (North) Type and
+     * Stratigraphical Collection
+     *
+     * 9df8df51-631c-37a8-e044-0003ba9b0d98
+     *
+     * test record service
+     * fda1332a-0436-4949-863a-eb1a2bf8d6ff
+     * Scottish Government Protected Sites View Service (WMS)
+     *
+     */
 
 
 
@@ -168,16 +169,76 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
         });
     }
 
+    function testServiceExtent(m) {
+        test('Test service map Extent ', function (assert) {
+            assert.equal(m.serviceidentification.bbox.boundingBox.minx, "-7.75714", "bb west");
+            assert.equal(m.serviceidentification.bbox.boundingBox.maxx, "-0.53202", "bb east");
+            assert.equal(m.serviceidentification.bbox.boundingBox.miny, "54.53297", "bb south");
+            assert.equal(m.serviceidentification.bbox.boundingBox.maxy, "61.46459", "bb north");
+
+
+
+        });
+    }
+
+    function testReferenceSystemInformation(m) {
+        test('Test Reference System Information ', function (assert) {
+            assert.equal(m.referencesystem.code, "OSGB 1936 / British National Grid (EPSG:27700)", "Unique resource identifier ");
+            assert.equal(m.referencesystem.codeSpace, "EPSG", "Codespace");
+            assert.equal(m.referencesystem.version, "7.4", "Version");
+
+
+
+        });
+    }
+
+    function testServiceIdenfication(m) {
+
+        test('Test Service Idenfication', function (assert) {
+            assert.equal(m.identifier, "fda1332a-0436-4949-863a-eb1a2bf8d6ff", "File identifier");
+            assert.equal(m.languagecode, "eng", "Metadata language  ");
+            assert.equal(m.hierarchy, "service", "Hierarchy Level");
+
+
+            assert.equal(m.serviceidentification.type, "view", "Service type");
+            assert.equal(m.serviceidentification.couplingtype, "tight", "Coupling type");
+
+            assert.equal(m.serviceidentification.contains, "2000-01-01T12:00:00", "Contains Operations");
+            assert.equal(m.serviceidentification.operateson.title[0], "Aquifer classification", "Operates On Title");
+            assert.equal(m.serviceidentification.operateson.href[0], "url to record", "Operates On url");
+            assert.equal(m.serviceidentification.operateson.uuidref[0], "9df8df53-2aa9-37a8-e044-0003ba9b0d98", "Operates On uid");
+            assert.equal(m.stdver, "1.0", "Metadata standard version ");
+
+            //metadata contact
+            assert.equal(m.contact.name, "Dean,Mark Thornton", "Individual name");
+            assert.equal(m.contact.position, "NERC-BGS Field Palaeontologist", "Position");
+            assert.equal(m.contact.organization, "British Geological Survey", "organization");
+            assert.equal(m.contact.phone, "+44 131 667 1000 Ex:354", "voice");
+
+            assert.equal(m.contact.address, "Murchison House,West Mains Road", "Delivery point");
+
+            assert.equal(m.contact.city, "EDINBURGH", "city");
+            assert.equal(m.contact.region, "LOTHIAN", "region");
+            assert.equal(m.contact.postcode, "EH9 3LA", "postcode");
+            assert.equal(m.contact.country, "United Kingdom", "country");
+
+            assert.equal(m.contact.email, "mtd@bgs.ac.uk", "email");
+            assert.equal(m.contact.role, "pointOfContact", "role");
+
+        });
+    }
+
     var run = function () {
 
-        var url = 'http://localhost/www/viewer/tests/testdoc.xml';
-        test('Test parse xml record to iso data model', function (assert) {
+        var datasetUrl = 'http://localhost/www/viewer/tests/testdoc.xml',
+            serviceUrl = 'http://localhost/www/viewer/tests/serviceresult.xml';
+        test('Test dataset result ', function (assert) {
 
             assert.expect(1);
             var done1 = assert.async();
             $.ajax({
                 type: "GET",
-                url: url,
+                url: datasetUrl,
                 dataType: "xml",
                 success: function (xml) {
                     var m = mymodel.createRecordDetailsModel(xml);
@@ -200,6 +261,32 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
 
 
                     testMetaDataSection(m);
+                    done1();
+                },
+                error: function (jqXHR, textStatus, errorThrow) {
+                    console.log("An error occurred while processing XML file." + errorThrow);
+                }
+            });
+
+        });
+
+        test('Test service result', function (assert) {
+
+            assert.expect(1);
+            var done1 = assert.async();
+            $.ajax({
+                type: "GET",
+                url: serviceUrl,
+                dataType: "xml",
+                success: function (xml) {
+                    var m = mymodel.createRecordDetailsModel(xml);
+                    assert.ok(xml, 'got test xml result');
+
+                    testServiceExtent(m);
+                    testReferenceSystemInformation(m);
+                    testServiceIdenfication(m);
+
+
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {

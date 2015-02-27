@@ -331,296 +331,323 @@
                         </tr>
 
                     </table>
+                    <% _.each( rc.serviceidentification.operateson.title, function( operateson, index ){ %>
 
-                    <div class='item bar'>
-                        <div class="toggleTableButton  tgDown">&nbsp;</div>
-                        Distribution Information
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Organisation name</td>
-                            <td>
-
-
-                                <%- rc.distribution.contact.organization %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Voice</td>
-                            <td>
-                                <%- rc.distribution.contact.phone %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Facsimile</td>
-                            <td>
-
-
-                                <%- rc.distribution.contact.fax %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Delivery point</td>
-                            <td>
-                                <%- rc.distribution.contact.address %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>
-
-
-                                <%- rc.distribution.contact.city %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Postal code</td>
-                            <td>
-                                <%- rc.distribution.contact.postcode %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>
-
-
-                                <%- rc.distribution.contact.country %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Electronic mail address</td>
-                            <td>
-                                <%- rc.distribution.contact.email %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OnLine resource</td>
-                            <td>
-
-
-                                <%- rc.distribution.online.url %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Role</td>
-                            <td>
-                                <%- rc.distribution.role %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Format</td>
-                            <td>
-
-
-                                <%- rc.distribution.format %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Format Version</td>
-                            <td>
-                                <%- rc.distribution.version %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OnLine resource</td>
-                            <td>
-                                <%- rc.distribution.temporalextent_end %>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div class='item bar'>
-                        <div class="toggleTableButton  tgDown">&nbsp;</div>
-                        Data quality info
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Hierarchy level </td>
-                            <td>
-
-                                <%- rc.dataquality.level %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Title</td>
-                            <td>
-                                <%- rc.dataquality.conformancetitle %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                            <td>
-
-
-                                <%- rc.dataquality.conformancedate %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date type</td>
-                            <td>
-                                <%- rc.distribution.contact.address %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Explanation </td>
-                            <td>
-
-
-                                <%- rc.dataquality.explanation%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Pass</td>
-                            <td>
-                                <%- rc.dataquality.conformancedegree %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Statement</td>
-                            <td>
-
-
-                                <%- rc.dataquality.lineage %>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class='item bar'>
-                        <div class="toggleTableButton  tgDown">&nbsp;</div>
-                        Metadata
-                    </div>
-                    <table>
-                        <tr>
-                            <td>File identifier</td>
-                            <td>
-
-                                <%- rc.identifier %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Metadata language </td>
-                            <td>
-                                <%- rc.language %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Metadata language code</td>
-                            <td>
-                                <%- rc.languagecode %>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Hierarchy</td>
-                            <td>
-
-
-                                <%- rc.hierarchy %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Dataset URI
-                                <td>
-
-                                    <%- rc.dataseturi %>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>Date stamp </td>
-                            <td>
-
-
-                                <%- rc.datetimestamp %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Metadata standard name </td>
-                            <td>
-                                <%- rc.stdname %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Metadata standard version</td>
-                            <td>
-
-
-                                <%- rc.stdver %>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class='item bar'>
-                        <div class="toggleTableButton  tgDown">&nbsp;</div>
-                        Metadata of contact
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Individual Name</td>
-                            <td>
-                                <%- rc.contact.name %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td>
-                                <%- rc.contact.position %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Organisation name</td>
-                            <td>
-                                <%- rc.contact.organization %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Role</td>
-                            <td>
-                                <%- rc.contact.role %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Voice</td>
-                            <td>
-                                <%- rc.contact.phone %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Delivery point</td>
-                            <td>
-                                <%- rc.contact.address %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>
-                                <%- rc.contact.city %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Administrative area</td>
-                            <td>
-                                <%- rc.contact.region %>
-                            </td>
-                        </tr>
-                        <% if ( rc.contact.postcode){ %>
+                        <div class='item bar'>
+                            <div class="toggleTableButton  tgDown">&nbsp;</div>
+                            Operates On
+                        </div>
+                        <table>
                             <tr>
-                                <td>Postal code</td>
+                                <td>Title</td>
                                 <td>
-                                    <%- rc.contact.postcode %>
+
+                                    <%- rc.serviceidentification.operateson.title[index] %>
                                 </td>
                             </tr>
-                            <% } %>
+                            <tr>
+                                <td>Href</td>
+                                <%- rc.serviceidentification.operateson.href[index] %>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>Version</td>
+                                <td>
+                                    <%- rc.serviceidentification.operateson.uuidref[index] %>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <% }); %>
+                            <div class='item bar'>
+                                <div class="toggleTableButton  tgDown">&nbsp;</div>
+                                Distribution Information
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>Organisation name</td>
+                                    <td>
+
+
+                                        <%- rc.distribution.contact.organization %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Voice</td>
+                                    <td>
+                                        <%- rc.distribution.contact.phone %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Facsimile</td>
+                                    <td>
+
+
+                                        <%- rc.distribution.contact.fax %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Delivery point</td>
+                                    <td>
+                                        <%- rc.distribution.contact.address %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>City</td>
+                                    <td>
+
+
+                                        <%- rc.distribution.contact.city %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Postal code</td>
+                                    <td>
+                                        <%- rc.distribution.contact.postcode %>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>Country</td>
                                     <td>
-                                        <%- rc.contact.country %>
+
+
+                                        <%- rc.distribution.contact.country %>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Electronic mail</td>
+                                    <td>Electronic mail address</td>
                                     <td>
-                                        <%- rc.contact.email %>
+                                        <%- rc.distribution.contact.email %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OnLine resource</td>
+                                    <td>
+
+
+                                        <%- rc.distribution.online.url %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Role</td>
+                                    <td>
+                                        <%- rc.distribution.role %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Format</td>
+                                    <td>
+
+
+                                        <%- rc.distribution.format %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Format Version</td>
+                                    <td>
+                                        <%- rc.distribution.version %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OnLine resource</td>
+                                    <td>
+                                        <%- rc.distribution.temporalextent_end %>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class='item bar'>
+                                <div class="toggleTableButton  tgDown">&nbsp;</div>
+                                Data quality info
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>Hierarchy level </td>
+                                    <td>
+
+                                        <%- rc.dataquality.level %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>
+                                        <%- rc.dataquality.conformancetitle %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>
+
+
+                                        <%- rc.dataquality.conformancedate %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date type</td>
+                                    <td>
+                                        <%- rc.distribution.contact.address %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Explanation </td>
+                                    <td>
+
+
+                                        <%- rc.dataquality.explanation%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Pass</td>
+                                    <td>
+                                        <%- rc.dataquality.conformancedegree %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Statement</td>
+                                    <td>
+
+
+                                        <%- rc.dataquality.lineage %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class='item bar'>
+                                <div class="toggleTableButton  tgDown">&nbsp;</div>
+                                Metadata
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>File identifier</td>
+                                    <td>
+
+                                        <%- rc.identifier %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Metadata language </td>
+                                    <td>
+                                        <%- rc.language %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Metadata language code</td>
+                                    <td>
+                                        <%- rc.languagecode %>
                                     </td>
                                 </tr>
 
+                                <tr>
+                                    <td>Hierarchy</td>
+                                    <td>
 
-                    </table>
+
+                                        <%- rc.hierarchy %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dataset URI
+                                        <td>
+
+                                            <%- rc.dataseturi %>
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>Date stamp </td>
+                                    <td>
+
+
+                                        <%- rc.datetimestamp %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Metadata standard name </td>
+                                    <td>
+                                        <%- rc.stdname %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Metadata standard version</td>
+                                    <td>
+
+
+                                        <%- rc.stdver %>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class='item bar'>
+                                <div class="toggleTableButton  tgDown">&nbsp;</div>
+                                Metadata of contact
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>Individual Name</td>
+                                    <td>
+                                        <%- rc.contact.name %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Position</td>
+                                    <td>
+                                        <%- rc.contact.position %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Organisation name</td>
+                                    <td>
+                                        <%- rc.contact.organization %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Role</td>
+                                    <td>
+                                        <%- rc.contact.role %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Voice</td>
+                                    <td>
+                                        <%- rc.contact.phone %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Delivery point</td>
+                                    <td>
+                                        <%- rc.contact.address %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>City</td>
+                                    <td>
+                                        <%- rc.contact.city %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Administrative area</td>
+                                    <td>
+                                        <%- rc.contact.region %>
+                                    </td>
+                                </tr>
+                                <% if ( rc.contact.postcode){ %>
+                                    <tr>
+                                        <td>Postal code</td>
+                                        <td>
+                                            <%- rc.contact.postcode %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <tr>
+                                            <td>Country</td>
+                                            <td>
+                                                <%- rc.contact.country %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Electronic mail</td>
+                                            <td>
+                                                <%- rc.contact.email %>
+                                            </td>
+                                        </tr>
+
+
+                            </table>
 </div>

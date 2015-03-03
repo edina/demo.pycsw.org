@@ -53,12 +53,12 @@ div.toggleTableButton {
     z-index: 1000 !important;
 }
 
-#record-details > div > table > tbody > tr > td:nth-child(1) {
+#record-details-content > div > table > tbody > tr > td:nth-child(1) {
     background-color: #EBF5FA;
     width: 25%;
 }
 
-#record-details div table tbody tr td {
+#record-details-content div table tbody tr td {
     padding: 7px 0px 7px 7px;
     vertical-align: top;
     text-align: left;

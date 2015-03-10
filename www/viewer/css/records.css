@@ -67,6 +67,10 @@ div.toggleTableButton {
     font-size: 80%;
 }
 
+.test {
+    font-size: 80%;
+}
+
 #extentMap,
 #serviceExtentMap {
     height: 180px;

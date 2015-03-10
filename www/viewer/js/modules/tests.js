@@ -16,6 +16,8 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
      * test record service
      * fda1332a-0436-4949-863a-eb1a2bf8d6ff
      * Scottish Government Protected Sites View Service (WMS)
+     first wms in geonetwork
+     7c7860f2-99fe-4dc2-a135-14aa7b8d01f7
      *
      */
 

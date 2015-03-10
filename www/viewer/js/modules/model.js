@@ -164,6 +164,21 @@ define(['modules/parseiso', 'jquery'], function (iso) {
             var dataModel = iso.buildIsoDoc(xml);
 
             return dataModel;
+        },
+        getWmsLayers = function (wmsUrl) {
+            $.ajax({
+                type: "GET",
+                url: wmsUrl,
+                dataType: "xml",
+                success: function (xml) {
+                    $(xml).find('Layer').each(function () {
+                        if ($(this).children("Name").text() != null) {
+                            console.log($(this).children("Name").text() + "   title " + $(this).children("Title").text());
+                        }
+                    });
+                }
+            });
+
         };
 
 
@@ -174,7 +189,8 @@ define(['modules/parseiso', 'jquery'], function (iso) {
         createRecordsModel: createRecordsModel,
         resultsSummary: resultsSummary,
         protocolShortCode: protocolShortCode,
-        createRecordDetailsModel: createRecordDetailsModel
+        createRecordDetailsModel: createRecordDetailsModel,
+        getWmsLayers: getWmsLayers
     };
 
 });

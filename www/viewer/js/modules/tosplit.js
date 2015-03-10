@@ -3,6 +3,7 @@
  */
 
 define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
+    'use strict';
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
@@ -21,7 +22,7 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
 
 
     function bbox2polygon(bbox) {
-        if (bbox == null) {
+        if (bbox === null) {
             return new L.Polygon();
         }
         var coords = bbox.split(',');
@@ -38,12 +39,14 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
         var url = csw_ip_url + "?service=CSW&version=2.0.2&request=GetRecordById&elementsetname=full&outputschema=http://www.isotc211.org/2005/gmd&id=" + rec.identifier;
         snippet += "<span class='showFullRecord btn btn-primary btn-sm' id='" + url + "' >Full Record</span></tr></td><tr><td>";
         var links = "";
+        var getCapabilitiesUrl;
         // get all links
         for (var i = 0; i < rec.references.length; i++) {
             if (rec.references[i].value != "None" && rec.references[i].value.lastIndexOf("http", 0) === 0) {
-                if (rec.references[i].scheme == 'OGC:WMS-1.1.1-http-get-map') {
-                    urlbase = rec.references[i].value.split('?')[0];
-                    links += '<span id="' + rec.references[i].value + '##' + rec.title + '" class="test btn btn-primary btn-sm">Add to map</span>';
+
+                if (rec.references[i].scheme === "OGC:WMS") {
+                    getCapabilitiesUrl = rec.references[i].value;
+                    links += '<span id="' + getCapabilitiesUrl + '" class="addWmsToMap btn btn-primary btn-sm">Add to map</span>';
                 } else {
                     var shortCode = recordsModel.protocolShortCode(rec.references[i].scheme);
                     links += ' <a class="test btn btn-primary btn-sm" title="' + rec.references[i].scheme + '" href="' + rec.references[i].value + '">' + shortCode + '</a> ';
@@ -77,7 +80,7 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
             qbbox = '<ogc:BBOX><ogc:PropertyName>ows:BoundingBox</ogc:PropertyName><gml:Envelope xmlns:gml="http://www.opengis.net/gml"><gml:lowerCorner>' + bounds.getSouth() + ' ' + bounds.getWest() + '</gml:lowerCorner><gml:upperCorner>' + bounds.getNorth() + ' ' + bounds.getEast() + '</gml:upperCorner></gml:Envelope></ogc:BBOX>';
         }
 
-        data = '<csw:GetRecords maxRecords="' + pagesize + '" startPosition="' + startposition + '" outputFormat="application/xml" outputSchema="http://www.opengis.net/cat/csw/2.0.2" resultType="results" service="CSW" version="2.0.2" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><csw:Query typeNames="csw:Record"><csw:ElementSetName>full</csw:ElementSetName>';
+        var data = '<csw:GetRecords maxRecords="' + pagesize + '" startPosition="' + startposition + '" outputFormat="application/xml" outputSchema="http://www.opengis.net/cat/csw/2.0.2" resultType="results" service="CSW" version="2.0.2" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><csw:Query typeNames="csw:Record"><csw:ElementSetName>full</csw:ElementSetName>';
         if (freetext != '') {
             if (bbox_enabled && map != null) {
                 data += '<csw:Constraint version="1.1.0"><ogc:Filter><ogc:And><ogc:PropertyIsLike escapeChar="\\" singleChar="_" wildCard="%"><ogc:PropertyName>csw:AnyText</ogc:PropertyName><ogc:Literal>%' + $("#input-anytext").val().trim() + '%</ogc:Literal></ogc:PropertyIsLike>' + qbbox + '</ogc:And></ogc:Filter></csw:Constraint>';
@@ -101,7 +104,7 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
                 $('#div-csw-results-glass').toggle();
                 //alert(xml);
                 // derive results for paging
-                summary = recordsModel.resultsSummary(xml);
+                var summary = recordsModel.resultsSummary(xml);
 
 
                 $('#input-startposition').val(startposition);
@@ -148,9 +151,9 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
             controller.toggleTable(this);
         });
 
-        polygon_layer = null;
-        map = L.map('div-map').setView([10, 0], 1);
-        basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        var polygon_layer = null;
+        var map = L.map('div-map').setView([10, 0], 1);
+        var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
         map.addLayer(basemap);
@@ -185,35 +188,19 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
             }
             search(nextrecord2);
         });
-        $("table").on("click", "span .test", function (event) {
-            var tokens = $(this).attr('id').split('##');
-            var getmap = tokens[0].split('?');
-            var url = getmap[0];
-            var getmap_kvp = getmap[1].split('&');;
-            for (var i = 0; i < getmap_kvp.length; i++) {
-                var temp = getmap_kvp[i].toLowerCase();
-                if (temp.search('layers') != -1) {
-                    var kvp = getmap_kvp[i].split('=');
-                    var layer_name = kvp[1];
-                }
-            }
+        $(document).on("click", ".addWmsToMap", function (event) {
+            var button = this;
 
-            for (var prop in map_layers_control._layers) {
-                if (url == map_layers_control._layers[prop].layer._url && tokens[1] == map_layers_control._layers[prop].name) {
-                    return;
-                }
+            var params = {
+                'button': button,
+                'map': map,
+                'map_layers_control': map_layers_control
             }
+            controller.addWmsToMap(params);
 
-            var layer = L.tileLayer.wms(url, {
-                layers: layer_name,
-                format: 'image/png',
-                transparent: true,
-            });
-            map_layers_control.addOverlay(layer, tokens[1]);
-            map.addLayer(layer);
         });
         $("table").on("mouseenter", "td", function (event) {
-            bbox = $(this).find('[id]').attr('id');
+            var bbox = $(this).find('[id]').attr('id');
             if (polygon_layer != null && map.hasLayer(polygon_layer)) {
                 map.removeLayer(polygon_layer);
             }

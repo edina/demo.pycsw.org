@@ -166,14 +166,22 @@ define(['modules/parseiso', 'jquery'], function (iso) {
             return dataModel;
         },
         getWmsLayers = function (wmsUrl) {
+            var thruProxy = "/proxy?getcaps=" + wmsUrl;
+            var layers = [];
             $.ajax({
                 type: "GET",
-                url: wmsUrl,
+                url: thruProxy,
                 dataType: "xml",
                 success: function (xml) {
                     $(xml).find('Layer').each(function () {
-                        if ($(this).children("Name").text() != null) {
-                            console.log($(this).children("Name").text() + "   title " + $(this).children("Title").text());
+                        var name = $(this).children("Name").text();
+                        var title = $(this).children("Title").text();
+                        if (name) {
+                            layers.push({
+                                'name': name,
+                                'title': title
+                            });
+                            console.log(name + " t: " + title);
                         }
                     });
                 }

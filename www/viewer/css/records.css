@@ -22,6 +22,11 @@
     font-size: 80%;
 }
 
+.addLayer{
+    font-size: 70%;
+    margin: 5px;
+  
+}
 .ui-widget {
     font-family: Arial, sans-serif;
     font-size: 1em !important;

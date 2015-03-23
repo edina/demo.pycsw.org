@@ -199,6 +199,19 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
             controller.addWmsToMap(params);
 
         });
+        $(document).on("click", ".addLayer", function (event) {
+            var $button = $(this);
+
+            var params = {
+              'layerName': $button.attr("data-layerName"),
+                'wmsUrl': $button.attr("data-wmsUrl"),
+                'map': map,
+                'map_layers_control': map_layers_control
+            }
+          
+            controller.addLayerToMap(params);
+
+        });
         $("table").on("mouseenter", "td", function (event) {
             var bbox = $(this).find('[id]').attr('id');
             if (polygon_layer != null && map.hasLayer(polygon_layer)) {

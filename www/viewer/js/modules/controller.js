@@ -28,8 +28,6 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
         },
         addWmsToMap = function (p) {
 
-
-            var tokens = $(p.button).attr('id').split('##');
             var getWmsCapabilities = $(p.button).attr('id');
             var getmap = getWmsCapabilities.split('?');
             var url = getmap[0];
@@ -37,17 +35,10 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
 
             model.getWmsLayers(getWmsCapabilities, function (layers) {
 
-                view.displayLayersPopup();
+                view.displayLayersPopup(layers, url);
                 //show pop up
-                /*
-                var layer_name = "0";
-                var layer = L.tileLayer.wms(url, {
-                    layers: layer_name,
-                    format: 'image/png',
-                    transparent: true
-                });
-                p.map_layers_control.addOverlay(layer);
-                p.map.addLayer(layer);*/
+                
+
 
             });
             /*
@@ -69,6 +60,16 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
 
 
 
+        },
+        addLayerToMap = function(p){
+                var layer = L.tileLayer.wms(p.wmsUrl, {
+                    layers: p.layerName,
+                    format: 'image/png',
+                    transparent: true
+                });
+                p.map_layers_control.addOverlay(layer);
+                p.map.addLayer(layer);
+      
         };
 
 
@@ -77,7 +78,8 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
     return {
         showFullRecord: showFullRecord,
         toggleTable: toggleTable,
-        addWmsToMap: addWmsToMap
+        addWmsToMap: addWmsToMap,
+        addLayerToMap:addLayerToMap
     };
 
 });

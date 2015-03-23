@@ -1,17 +1,15 @@
 <div class="layersDetails">
     <div class='item bar'>
         <div class="toggleTableButton  tgDown">&nbsp;</div>
-        Keywords
+        Add layer to map
     </div>
     <table>
-
+        
         <% _.each( rc.layers, function( layer, index ){ %>
 
             <tr>
                 <td>
-                    <% rc.layer %>
-                        <% rc.layers[index].name %>
-                            <%- rc.layers[index].title %>
+                    <button  class="addLayer" type="button" data-wmsUrl="<%-rc.wmsUrl%>" data-layerName="<%-rc.layers[index].name%>" ><%- rc.layers[index].title %></button>
 
                 </td>
             </tr>

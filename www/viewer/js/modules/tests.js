@@ -18,6 +18,8 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
      * Scottish Government Protected Sites View Service (WMS)
      first wms in geonetwork
      7c7860f2-99fe-4dc2-a135-14aa7b8d01f7
+     wmsserver test url
+     http://mapgateway.snh.gov.uk/ServicesWMS/FCS_National_Forest_Estate/MapServer/WMSServer?REQUEST=GetCapabilities&service=wms
      *
      */
 
@@ -205,27 +207,20 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
             assert.equal(m.serviceidentification.type, "view", "Service type");
             assert.equal(m.serviceidentification.couplingtype, "tight", "Coupling type");
 
-            assert.equal(m.serviceidentification.contains, "2000-01-01T12:00:00", "Contains Operations");
             assert.equal(m.serviceidentification.operateson.title[0], "Aquifer classification", "Operates On Title");
             assert.equal(m.serviceidentification.operateson.href[0], "url to record", "Operates On url");
             assert.equal(m.serviceidentification.operateson.uuidref[0], "9df8df53-2aa9-37a8-e044-0003ba9b0d98", "Operates On uid");
-            assert.equal(m.stdver, "1.0", "Metadata standard version ");
 
-            //metadata contact
-            assert.equal(m.contact.name, "Dean,Mark Thornton", "Individual name");
-            assert.equal(m.contact.position, "NERC-BGS Field Palaeontologist", "Position");
-            assert.equal(m.contact.organization, "British Geological Survey", "organization");
-            assert.equal(m.contact.phone, "+44 131 667 1000 Ex:354", "voice");
 
-            assert.equal(m.contact.address, "Murchison House,West Mains Road", "Delivery point");
 
-            assert.equal(m.contact.city, "EDINBURGH", "city");
-            assert.equal(m.contact.region, "LOTHIAN", "region");
-            assert.equal(m.contact.postcode, "EH9 3LA", "postcode");
-            assert.equal(m.contact.country, "United Kingdom", "country");
 
-            assert.equal(m.contact.email, "mtd@bgs.ac.uk", "email");
-            assert.equal(m.contact.role, "pointOfContact", "role");
+        });
+    }
+
+    function testLayers(m) {
+        test('Layer data', function (assert) {
+            assert.equal(m[1].name, "TheSecondlayer", "Layer Name");
+            assert.equal(m[1].title, "National Forest Estate - Ownership", "Layer Tile");
 
         });
     }
@@ -233,7 +228,8 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
     var run = function () {
 
         var datasetUrl = 'http://localhost/www/viewer/tests/testdoc.xml',
-            serviceUrl = 'http://localhost/www/viewer/tests/serviceresult.xml';
+            serviceUrl = 'http://localhost/www/viewer/tests/serviceresult.xml',
+            getCapabilitiesTestUrl = 'http://localhost/www/viewer/tests/wmsserver.xml';
         test('Test dataset result ', function (assert) {
 
             assert.expect(1);
@@ -289,6 +285,28 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
                     testServiceIdenfication(m);
 
 
+                    done1();
+                },
+                error: function (jqXHR, textStatus, errorThrow) {
+                    console.log("An error occurred while processing XML file." + errorThrow);
+                }
+            });
+
+        });
+
+        test('Test get capabilities result', function (assert) {
+
+            assert.expect(1);
+            var done1 = assert.async();
+            $.ajax({
+                type: "GET",
+                url: getCapabilitiesTestUrl,
+                dataType: "xml",
+                success: function (xml) {
+                    var layersArr = mymodel.getLayersFromXml(xml);
+                    assert.ok(xml, 'got test xml result');
+
+                    testLayers(layersArr);
                     done1();
                 },
                 error: function (jqXHR, textStatus, errorThrow) {

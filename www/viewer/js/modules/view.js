@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, define, console , L*/
 
-define(['jquery', 'text!templates/template.html', 'underscore'], function ($, recordDetailsTemplate) {
+define(['jquery', 'text!templates/recordtemplate.html', 'text!templates/layerstemplate.html', 'underscore'], function ($, recordDetailsTemplate) {
     'use strict';
 
 
@@ -120,10 +120,40 @@ define(['jquery', 'text!templates/template.html', 'underscore'], function ($, re
                 $(button).removeClass(rightArrowClass);
                 $(button).addClass(downArrowClass);
             }
+        },
+        displayLayersPopup = function () {
+
+            $("#layers-popup").dialog({
+                modal: true,
+                draggable: false,
+                resizable: true,
+                show: 'blind',
+                hide: 'blind',
+                width: 800,
+                dialogClass: 'ui-dialog-osx',
+                buttons: {
+                    "Close": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#layers-popup").removeClass('hidden');
+            _.templateSettings.variable = "rc";
+
+
+
+            var compiled_template = _.template(recordDetailsTemplate);
+
+            $("#record-details-content").html(
+                compiled_template(templateData)
+            );
+
         };
 
     return {
         displayRecordDetailsPopup: displayRecordDetailsPopup,
-        expandCollapseTable: expandCollapseTable
+        expandCollapseTable: expandCollapseTable,
+        displayLayersPopup: displayLayersPopup
     };
 });

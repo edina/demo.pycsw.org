@@ -1,0 +1,20 @@
+<div class="layersDetails">
+    <div class='item bar'>
+        <div class="toggleTableButton  tgDown">&nbsp;</div>
+        Keywords
+    </div>
+    <table>
+
+        <% _.each( rc.layers, function( layer, index ){ %>
+
+            <tr>
+                <td>
+                    <% rc.layer %>
+                        <% rc.layers[index].name %>
+                            <%- rc.layers[index].title %>
+
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+</div>

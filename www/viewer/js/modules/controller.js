@@ -35,7 +35,21 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
             var url = getmap[0];
 
 
-            model.getWmsLayers(getWmsCapabilities);
+            model.getWmsLayers(getWmsCapabilities, function (layers) {
+
+                view.displayLayersPopup();
+                //show pop up
+                /*
+                var layer_name = "0";
+                var layer = L.tileLayer.wms(url, {
+                    layers: layer_name,
+                    format: 'image/png',
+                    transparent: true
+                });
+                p.map_layers_control.addOverlay(layer);
+                p.map.addLayer(layer);*/
+
+            });
             /*
             var getmap_kvp = getmap[1].split('&');;
             for (var i = 0; i < getmap_kvp.length; i++) {
@@ -54,14 +68,7 @@ define(['modules/model', 'jquery', 'modules/view'], function (model, $, view) {
             */
 
 
-            var layer_name = "0";
-            var layer = L.tileLayer.wms(url, {
-                layers: layer_name,
-                format: 'image/png',
-                transparent: true
-            });
-            p.map_layers_control.addOverlay(layer);
-            p.map.addLayer(layer);
+
         };
 
 

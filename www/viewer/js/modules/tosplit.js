@@ -173,7 +173,7 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
         });
         $('#a-previous').click(function (event) {
             event.preventDefault();
-            startposition2 = $('#input-startposition').val() - pagesize;
+            var startposition2 = $('#input-startposition').val() - pagesize;
             if (startposition2 < 1) {
                 return;
             }
@@ -181,8 +181,8 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
         });
         $('#a-next').click(function (event) {
             event.preventDefault();
-            nextrecord2 = parseInt($('#input-nextrecord').val());
-            matched2 = parseInt($('#input-matched').val());
+            var nextrecord2 = parseInt($('#input-nextrecord').val());
+            var matched2 = parseInt($('#input-matched').val());
             if (nextrecord2 == 0 || nextrecord2 >= matched2) {
                 return;
             }

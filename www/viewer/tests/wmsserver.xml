@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<WMS_Capabilities version="1.3.0" xmlns="http://www.opengis.net/wms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0" xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd">
+	<Service>
+		<Name>WMS</Name>
+		<Title>FCS_National_Forest_Estate</Title>
+		<Abstract>
+This interactive map service contains the following Forestry Commission National Forest Estate data layers:-
+National Forest Estate - Roads
+National Forest Estate - Sub-compartments
+National Forest Estate - Legal Boundary
+National Forest Estate - Ownership
+National Forest Estate - Recreation Points
+National Forest Etstae - Recreation Routes
+National Forest Estate - Recreation Areas
+The layers can be switched on and off independently of each other.
+Forestry Commission Scotland would like to thank Scottish Natural Heritage for their co-operation in hosting this web service on behalf of FCS.
+</Abstract>
+		<KeywordList>
+			<Keyword>NFE</Keyword>
+			<Keyword>Forest Enterprise</Keyword>
+			<Keyword>National Forest Estate</Keyword>
+			<Keyword>Forest Roads</Keyword>
+		</KeywordList>
+		<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://www.forestry.gov.uk/scotland"/>
+		<ContactInformation>
+			<ContactPersonPrimary>
+				<ContactPerson>Geo-Information Services Delivery Manager</ContactPerson>
+				<ContactOrganization>Forestry Commission Scotland</ContactOrganization>
+			</ContactPersonPrimary>
+			<ContactPosition>Geo-Information Services Delivery Manager</ContactPosition>
+			<ContactAddress>
+				<AddressType>postal</AddressType>
+				<Address>Silvan House, 231 Corstorphine Road</Address>
+				<City>Edinburgh</City>
+				<StateOrProvince/>
+				<PostCode>EH12 7AT</PostCode>
+				<Country>UK</Country>
+			</ContactAddress>
+			<ContactVoiceTelephone>0131 334 0303</ContactVoiceTelephone>
+			<ContactFacsimileTelephone/>
+			<ContactElectronicMailAddress>geoinformationservices@forestry.gsi.gov.uk</ContactElectronicMailAddress>
+		</ContactInformation>
+		<Fees>none</Fees>
+		<AccessConstraints>Copyright (Copyright Forestry Commission Scotland)</AccessConstraints>
+		<MaxWidth>2048</MaxWidth>
+		<MaxHeight>2048</MaxHeight>
+	</Service>
+	<Capability>
+		<Request>
+			<GetCapabilities>
+				<Format>application/vnd.ogc.wms_xml</Format>
+				<Format>text/xml</Format>
+				<DCPType>
+					<HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://mapgateway.snh.gov.uk/ServicesWMS/FCS_National_Forest_Estate/MapServer/WMSServer"/></Get></HTTP>
+				</DCPType>
+			</GetCapabilities>
+			<GetMap>
+				<Format>image/bmp</Format>
+				<Format>image/jpeg</Format>
+				<Format>image/tiff</Format>
+				<Format>image/png</Format>
+				<Format>image/gif</Format>
+				<Format>image/svg+xml</Format>
+				<DCPType>
+					<HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://mapgateway.snh.gov.uk/ServicesWMS/FCS_National_Forest_Estate/MapServer/WMSServer"/></Get></HTTP>
+				</DCPType>
+			</GetMap>
+			<GetFeatureInfo>
+				<Format>application/vnd.ogc.wms_xml</Format>
+				<Format>text/xml</Format>
+				<Format>text/html</Format>
+				<Format>text/plain</Format>
+				<DCPType>
+					<HTTP><Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://mapgateway.snh.gov.uk/ServicesWMS/FCS_National_Forest_Estate/MapServer/WMSServer"/></Get></HTTP>
+				</DCPType>
+			</GetFeatureInfo>
+		</Request>
+		<Exception>
+			<Format>application/vnd.ogc.se_xml</Format>
+			<Format>application/vnd.ogc.se_inimage</Format>
+			<Format>application/vnd.ogc.se_blank</Format>
+			<Format>text/xml</Format>
+			<Format>XML</Format>
+		</Exception>
+		<inspire_vs:ExtendedCapabilities>
+			<inspire_common:MetadataUrl xsi:type="inspire_common:resourceLocatorType">
+				<inspire_common:URL>http://scotgovsdi.edina.ac.uk/srv/en/iso19139.xml?id=317</inspire_common:URL>
+				<inspire_common:MediaType>application/vnd.iso.19139+xml</inspire_common:MediaType>
+			</inspire_common:MetadataUrl>
+			<inspire_common:SupportedLanguages>
+				<inspire_common:DefaultLanguage>
+					<inspire_common:Language>eng</inspire_common:Language>
+				</inspire_common:DefaultLanguage>
+			</inspire_common:SupportedLanguages>
+			<inspire_common:ResponseLanguage>
+				<inspire_common:Language>eng</inspire_common:Language>
+			</inspire_common:ResponseLanguage>
+		</inspire_vs:ExtendedCapabilities>
+		<Layer>
+			<Title>FCS National Forest Estate</Title>
+			<CRS>CRS:84</CRS>
+			<CRS>EPSG:4326</CRS>
+			<CRS>EPSG:4258</CRS>
+			<CRS>EPSG:27700</CRS>
+			<CRS>EPSG:3857</CRS>
+			<EX_GeographicBoundingBox>
+				<westBoundLongitude>-9.496386754</westBoundLongitude>
+				<eastBoundLongitude>3.634744235</eastBoundLongitude>
+				<southBoundLatitude>49.76185811</southBoundLatitude>
+				<northBoundLatitude>61.581679301</northBoundLatitude>
+			</EX_GeographicBoundingBox>
+			<BoundingBox CRS="CRS:84" minx="-9.496386754" miny="49.766185811" maxx="3.634744235" maxy="61.581679301"/>
+			<BoundingBox CRS="EPSG:4326" minx="49.766185811" miny="-9.496386754" maxx="61.581679301" maxy="3.634744235"/>
+			<BoundingBox CRS="EPSG:4258" minx="49.766185811" miny="-9.496386754" maxx="61.581679301" maxy="3.634744235"/>
+			<BoundingBox CRS="EPSG:3857" minx="49.766185811" miny="-9.496386754" maxx="61.581679301" maxy="3.634744235"/>
+			<BoundingBox CRS="EPSG:27700" minx="0" miny="0" maxx="700000" maxy="1300000"/>
+			<Layer queryable="1">
+				<Name>0</Name>
+				<Title>National Forest Estate - Legal Boundary</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=48DA155A-2BA9-4017-A023-7A3601978DBB"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Legal Boundary</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Legal Boundary</Title>
+					<LegendURL width="100" height="6">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_NationalForestEstate/FCS_National_Forest_Estate_Legal_Boundary_Legend.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+			<Layer queryable="1">
+				<Name>TheSecondlayer</Name>
+				<Title>National Forest Estate - Ownership</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=de006364-0eba-4d15-815f-19e8a99e1b95"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Ownership</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Ownership</Title>
+					<LegendURL width="100" height="5">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_NationalForestEstate/FCS_National_Forest_Estate_Ownership_Legend.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+			<Layer queryable="1">
+				<Name>2</Name>
+				<Title>National Forest Estate - Sub Compartments</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=54693398-E51B-4958-8AA3-89C9FCDFE73A"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Sub Compartments</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Sub Compartments</Title>
+					<LegendURL width="100" height="5">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_NationalForestEstate/FCS_National_Forest_Estate_Sub_Compartments_Legend.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+				<MinScaleDenominator>0.000000</MinScaleDenominator>
+				<MaxScaleDenominator>236235.119048</MaxScaleDenominator>
+			</Layer>
+			<Layer queryable="1">
+				<Name>3</Name>
+				<Title>National Forest Estate - Recreation Areas</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=e7005559-4463-4584-97c5-11a50b503752"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Recreation Areas</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Recreation Areas</Title>
+					<LegendURL width="100" height="96">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_NationalForestEstate/FCS_National_Forest_Estate_Recreation_Areas.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+			<Layer queryable="1">
+				<Name>4</Name>
+				<Title>National Forest Estate - Roads</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=30CBB2C2-E3F1-482F-9F53-06C44E2820E8"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Roads</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Roads</Title>
+					<LegendURL width="100" height="96">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_NationalForestEstate/FCS_National_Forest_Estate_Roads_Legend.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+			<Layer queryable="1">
+				<Name>5</Name>
+				<Title>National Forest Estate - Recreation Routes</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=b130b605-290f-4f71-80ef-0a6407b6a4e3"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Recreation Routes</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Recreation Routes</Title>
+					<LegendURL width="100" height="96">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_National_Forest_Estate_Recreation_Routes.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+			<Layer queryable="1">
+				<Name>6</Name>
+				<Title>National Forest Estate - Recreation Points</Title>
+				<MetadataURL type="TC211">
+					<Format>text/xml</Format>
+					<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/metadata.show?uuid=05ea1a4f-76fc-45e1-82f4-5a0d197c00b0"/>
+				</MetadataURL>
+				<Abstract>National Forest Estate - Recreation Points</Abstract>
+				<Style>
+					<Name>inspire_common:DEFAULT</Name>
+					<Title>National Forest Estate - Recreation Points</Title>
+					<LegendURL width="100" height="96">
+						<Format>image/png</Format>
+						<OnlineResource xlink:href="http://mapgateway.snh.gov.uk/legend/FCS_Legends/FCS_National_Forest_Estate_Recreation_Points.png" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+					</LegendURL>
+				</Style>
+			</Layer>
+		</Layer>
+	</Capability>
+</WMS_Capabilities>

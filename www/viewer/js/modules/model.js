@@ -165,29 +165,36 @@ define(['modules/parseiso', 'jquery'], function (iso) {
 
             return dataModel;
         },
-        getWmsLayers = function (wmsUrl) {
-            var thruProxy = "/proxy?getcaps=" + wmsUrl;
+        getLayersFromXml = function (xml) {
             var layers = [];
+            $(xml).find('Layer').each(function () {
+                var name = $(this).children("Name").text(),
+                    title = $(this).children("Title").text();
+                if (name) {
+                    layers.push({
+                        'name': name,
+                        'title': title
+                    });
+                    console.log(name + " t: " + title);
+                }
+            });
+            return layers;
+
+        },
+        getWmsLayers = function (wmsUrl, results) {
+            var thruProxy = "/proxy?getcaps=" + wmsUrl;
+
             $.ajax({
                 type: "GET",
                 url: thruProxy,
                 dataType: "xml",
                 success: function (xml) {
-                    $(xml).find('Layer').each(function () {
-                        var name = $(this).children("Name").text();
-                        var title = $(this).children("Title").text();
-                        if (name) {
-                            layers.push({
-                                'name': name,
-                                'title': title
-                            });
-                            console.log(name + " t: " + title);
-                        }
-                    });
+                    results(getLayersFromXml(xml));
                 }
             });
 
         };
+
 
 
 
@@ -198,7 +205,8 @@ define(['modules/parseiso', 'jquery'], function (iso) {
         resultsSummary: resultsSummary,
         protocolShortCode: protocolShortCode,
         createRecordDetailsModel: createRecordDetailsModel,
-        getWmsLayers: getWmsLayers
+        getWmsLayers: getWmsLayers,
+        getLayersFromXml: getLayersFromXml
     };
 
 });

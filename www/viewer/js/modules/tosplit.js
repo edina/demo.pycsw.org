@@ -7,7 +7,7 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
     var map = null;
     var map_layers_control = null;
     var csw_url = "http://localhost/pycsw-wsgi";
-    var csw_ip_url = "http://localhost/pycsw-wsgi";
+    var csw_ip_url = "/pycsw-wsgi";
     var pagesize = 10;
 
 

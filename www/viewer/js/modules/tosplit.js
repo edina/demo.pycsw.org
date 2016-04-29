@@ -2,7 +2,7 @@
  *
  */
 
-define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
+define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui', 'bootstrap'], function (recordsModel, controller) {
     'use strict';
     var map = null;
     var map_layers_control = null;

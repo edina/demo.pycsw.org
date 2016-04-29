@@ -3,7 +3,17 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  
+<!-- IE Edge Meta Tag -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
     <title>gogeo test</title>
     <style type="text/css">
         #div-map {
@@ -71,7 +81,7 @@
         <a href="https://github.com/geopython/demo.pycsw.org/blob/master/www/viewer/index.html"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
         </a>
     </header>
-    <section>
+    <div class="container" >
         <div class="panel">
             <form id="form-search">
                 <input type="hidden" id="input-startposition" />
@@ -114,7 +124,7 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
 
     <div id="record-details-popup" title="Record Details" class="hidden">
         <div id="record-details-content"></div>
@@ -124,6 +134,8 @@
 
         <div id="layers-content"></div>
     </div>
+  
+  
 </body>
 
 </html>

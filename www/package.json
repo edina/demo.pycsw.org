@@ -10,6 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.4",
+    "qunit": "^0.9.1",
     "request": "^2.71.0"
+  },
+  "devDependencies": {
+    "node-qunit-phantomjs": "^1.4.0"
   }
 }

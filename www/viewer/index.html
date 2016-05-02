@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="utf-8" />
- 
-  
-<!-- IE Edge Meta Tag -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- IE Edge Meta Tag -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <title>gogeo test</title>
     <style type="text/css">
@@ -23,8 +23,6 @@
         
         #div-csw-results,
         #div-csw-results-glass {
-            width: 500px;
-            height: 300px;
             overflow-y: auto;
         }
         
@@ -32,13 +30,10 @@
             background-color: white;
             filter: alpha(opacity=50);
             /* IE */
-            
             opacity: 0.5;
             /* Safari, Opera */
-            
             -moz-opacity: 0.50;
             /* FireFox */
-            
             z-index: 20;
             background-repeat: no-repeat;
             background-position: center;
@@ -53,6 +48,7 @@
             height: 100px;
             width: 100%;
         }
+
     </style>
 
     <script src="js/libs/require.js" data-main="js/main"></script>
@@ -72,16 +68,19 @@
 
 
     <script type="text/javascript">
+
+
     </script>
 </head>
 
 <body>
-    <header>
-        <h1>Gogeo test</h1>
-        <a href="https://github.com/geopython/demo.pycsw.org/blob/master/www/viewer/index.html"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
-        </a>
-    </header>
-    <div class="container" >
+
+    <div class="container">
+        <div class="row">
+            <header class="col-xs-12">
+                <h1 class="col-lg-12 text-center">Gogeo test</h1>
+            </header>
+        </div>
         <div class="panel">
             <form id="form-search">
                 <input type="hidden" id="input-startposition" />
@@ -98,13 +97,13 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4" id="div-map"></div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-8" style="background-color : red;">
                         <div class="row">
                             <div id="div-csw-results-glass"></div>
                             <div class="col-sm-12" id="div-csw-results">
                                 <table class="table table-bordered table-striped" id="table-csw-results">
                                     <tr>
-                                        <td></td>
+                                        <td>Test>
                                     </tr>
                                 </table>
                             </div>
@@ -134,8 +133,8 @@
 
         <div id="layers-content"></div>
     </div>
-  
-  
+
+
 </body>
 
 </html>

@@ -17,8 +17,11 @@
     <title>gogeo test</title>
     <style type="text/css">
         #div-map {
-            //width: 400px;
-            height: 300px;
+            
+            min-height: 300px;
+            max height: 500px;
+            
+  
         }
         
         #div-csw-results,
@@ -57,7 +60,8 @@
     <!-- leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
     <link rel="stylesheet" href="css/records.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" /><![endif]-->
+    
+    <link rel="stylesheet" href="css/styles.css" />
     <!-- jquery ui styles -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
@@ -66,16 +70,11 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-
-    <script type="text/javascript">
-
-
-    </script>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <header class="col-xs-12">
                 <h1 class="col-lg-12 text-center">Gogeo test</h1>
@@ -96,14 +95,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4" id="div-map"></div>
-                    <div class="col-sm-8" style="background-color : red;">
+                    
+                    <div class="col-sm-4" ><div id="div-map"></div></div>
+                  
+                    <div class="col-sm-8">
                         <div class="row">
                             <div id="div-csw-results-glass"></div>
                             <div class="col-sm-12" id="div-csw-results">
                                 <table class="table table-bordered table-striped" id="table-csw-results">
                                     <tr>
-                                        <td>Test>
+                                        <td>Test
                                     </tr>
                                 </table>
                             </div>

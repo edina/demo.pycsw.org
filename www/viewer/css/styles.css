@@ -1,6 +1,5 @@
 #div-map {
   min-height: 300px;
-  max height: 500px;
 }
 
 #div-csw-results,
@@ -29,4 +28,10 @@ footer {
   bottom: 0;
   height: 100px;
   width: 100%;
+}
+
+@media(min-width:1200px) {
+  #div-map {
+    min-height: 500px;
+  }
 }

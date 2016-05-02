@@ -7,14 +7,20 @@ app.use(express.static(__dirname)); //  "public" off of current is root
 
 app.listen(8070);
 console.log('Listening on port 8070');*/
+
 var express = require('express');
 var request = require('request');
 var path = require('path');
 var app = express();
-var apiUrl = 'http://localhost:8000'
-app.use('/pycsw-wsgi', function(req, res) {
+var apiUrl = 'http://localhost:8000';
+app.use('/pycsw-wsgi', function (req, res) {
   var url = apiUrl + req.url;
-  req.pipe(request(url)).pipe(res);
+  var reqError = function (error, response, body) {
+    if (error) {
+      console.log(error);
+    }
+  };
+  req.pipe(request(url, reqError)).pipe(res);
 });
 
 app.use(express.static(__dirname));

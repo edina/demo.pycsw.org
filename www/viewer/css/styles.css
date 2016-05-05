@@ -21,7 +21,7 @@
   position: absolute;
   display: none;
 }
-
+.top-buffer { margin-top:20px; }
 footer {
   position: fixed;
   left: 0;
@@ -29,6 +29,7 @@ footer {
   height: 100px;
   width: 100%;
 }
+
 
 @media(min-width:1200px) {
   #div-map {

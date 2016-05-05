@@ -2,138 +2,119 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+  <meta charset="utf-8" />
 
 
-    <!-- IE Edge Meta Tag -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- IE Edge Meta Tag -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <title>gogeo test</title>
-    <style type="text/css">
-        #div-map {
-            
-            min-height: 300px;
-            max height: 500px;
-            
-  
-        }
-        
-        #div-csw-results,
-        #div-csw-results-glass {
-            overflow-y: auto;
-        }
-        
-        #div-csw-results-glass {
-            background-color: white;
-            filter: alpha(opacity=50);
-            /* IE */
-            opacity: 0.5;
-            /* Safari, Opera */
-            -moz-opacity: 0.50;
-            /* FireFox */
-            z-index: 20;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: absolute;
-            display: none;
-        }
-        
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            height: 100px;
-            width: 100%;
-        }
-
-    </style>
-
-    <script src="js/libs/require.js" data-main="js/main"></script>
+  <title>CSW </title>
 
 
-    <!-- leaflet -->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-    <link rel="stylesheet" href="css/records.css" />
-    
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- jquery ui styles -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+  <script src="js/libs/require.js" data-main="js/main"></script>
 
-    <!-- jQuery -->
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <!-- leaflet -->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+  <link rel="stylesheet" href="css/records.css" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- jquery ui styles -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
+  <!-- jQuery -->
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 </head>
 
 <body>
 
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row">
+      <header class="col-xs-12">
+        <h1 class="col-lg-12 text-center">Gogeo test</h1>
+      </header>
+    </div>
+    <div class="panel">
+
+      <form class="form-inline">
+        <input type="hidden" id="input-startposition" />
+        <input type="hidden" id="input-matched" />
+        <input type="hidden" id="input-nextrecord" />
         <div class="row">
-            <header class="col-xs-12">
-                <h1 class="col-lg-12 text-center">Gogeo test</h1>
-            </header>
-        </div>
-        <div class="panel">
-            <form id="form-search">
-                <input type="hidden" id="input-startposition" />
-                <input type="hidden" id="input-matched" />
-                <input type="hidden" id="input-nextrecord" />
-                <div class="row">
-                    <div class="col-sm-4" id="div-bbox"><strong>Filter by location</strong>
-                        <input type="checkbox" id="input-bbox" /> <strong>Footprints</strong>
-                        <input type="checkbox" id="input-footprints" />
-                    </div>
-                    <div class="col-sm-4 pull-left" id="div-search">
-                        <input class="form-control input-medium" type="text" id="input-anytext" placeholder="Search Terms" />
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="col-sm-4" ><div id="div-map"></div></div>
-                  
-                    <div class="col-sm-8">
-                        <div class="row">
-                            <div id="div-csw-results-glass"></div>
-                            <div class="col-sm-12" id="div-csw-results">
-                                <table class="table table-bordered table-striped" id="table-csw-results">
-                                    <tr>
-                                        <td>Test
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <div id="div-results"></div>
-                                    <ul class="pager">
-                                        <li id="li-previous"><a id="a-previous" title="Previous" href="#">Previous</a>
-                                        </li>
-                                        <li id="li-next"><a id="a-next" title="Next" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+          <div class="col-sm-12" id="div-bbox">
 
-    <div id="record-details-popup" title="Record Details" class="hidden">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="input-bbox" /> Filter by location</label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="input-footprints" />Footprints</label>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <label for="input-anytext" class="sr-only">Search</label>
+                <input class="form-control input-medium" type="text" id="input-anytext" placeholder="Search Terms" >
+                <span class="input-group-btn">
+                 <button type="button" class="btn btn-default">Search</button>
+              </span>
+              </div>
+            </div>
+
+
+            </div>
+      </form>
+      <div class="row">
+
+        <div class="col-sm-4">
+          <div id="div-map"></div>
+        </div>
+
+        <div class="col-sm-8">
+          <div class="row">
+            <div id="div-csw-results-glass"></div>
+            <div class="col-sm-12" id="div-csw-results">
+              <table class="table table-bordered table-striped" id="table-csw-results">
+                <tr>
+                  <td>Test
+                </tr>
+              </table>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <div id="div-results"></div>
+                <ul class="pager">
+                  <li id="li-previous"><a id="a-previous" title="Previous" href="#">Previous</a>
+                  </li>
+                  <li id="li-next"><a id="a-next" title="Next" href="#">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      </div>
+
+      <div id="record-details-popup" title="Record Details" class="hidden">
         <div id="record-details-content"></div>
-    </div>
+      </div>
 
-    <div id="layers-popup" title="Available wms layers" class="hidden">
+      <div id="layers-popup" title="Available wms layers" class="hidden">
 
         <div id="layers-content"></div>
-    </div>
+      </div>
 
 
 </body>

@@ -219,17 +219,17 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
 
     function testLayers(m) {
         test('Layer data', function (assert) {
-            assert.equal(m[1].name, "TheSecondlayer", "Layer Name");
-            assert.equal(m[1].title, "National Forest Estate - Ownership", "Layer Tile");
+            assert.equal(m.layers[1].name, "TheSecondlayer", "Layer Name");
+            assert.equal(m.layers[1].title, "National Forest Estate - Ownership", "Layer Tile");
 
         });
     }
 
     var run = function () {
 
-        var datasetUrl = 'http://localhost/www/viewer/tests/testdoc.xml',
-            serviceUrl = 'http://localhost/www/viewer/tests/serviceresult.xml',
-            getCapabilitiesTestUrl = 'http://localhost/www/viewer/tests/wmsserver.xml';
+        var datasetUrl = 'htmltest/testdoc.txt',
+            serviceUrl = 'htmltest/serviceresult.txt',
+            getCapabilitiesTestUrl = 'htmltest/wmsserver.txt';
         test('Test dataset result ', function (assert) {
 
             assert.expect(1);

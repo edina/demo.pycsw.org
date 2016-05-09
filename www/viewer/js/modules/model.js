@@ -126,14 +126,23 @@ define(['modules/parseiso', 'jquery'], function (iso) {
 
       return records;
     },
+    protocolShortCode = function (protocol) {
+        var protocolDetails = protocols[protocol],
+          protocolShortCode = 1;
+        if (protocolDetails) {
+          return protocolDetails[protocolShortCode];
+        } else {
+          console.log('err no protocol found ' + protocol);
+          return protocols.None[protocolShortCode];
+        }
+      },
 
-
-    resultsSummary = function (xml) {
+    resultsSummary = function (xml, searchParams) {
       var resultsSummary = {
         matched: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsMatched'), 10),
         returned: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('numberOfRecordsReturned'), 10),
         nextrecord: parseInt($(xml).find(escapeElementName('csw:SearchResults')).attr('nextRecord'), 10),
-        isResults: function () {
+        noResults: function () {
           return this.matched === 0;
         },
         moreRecords: function () {
@@ -144,21 +153,14 @@ define(['modules/parseiso', 'jquery'], function (iso) {
             return false;
           }
 
-        }
-
+        },
+        protocolShortCode: protocolShortCode,
+        startPosition: searchParams.startPosition
       };
+      
       return resultsSummary;
     },
-    protocolShortCode = function (protocol) {
-      var protocolDetails = protocols[protocol],
-        protocolShortCode = 1;
-      if (protocolDetails) {
-        return protocolDetails[protocolShortCode];
-      } else {
-        console.log('err no protocol found ' + protocol);
-        return protocols.None.protocolShortCode;
-      }
-    },
+
     createRecordDetailsModel = function (xml) {
 
       var dataModel = iso.buildIsoDoc(xml);
@@ -185,7 +187,8 @@ define(['modules/parseiso', 'jquery'], function (iso) {
 
     },
     getWmsLayers = function (wmsUrl, results) {
-      var thruProxy = "/proxy?getcaps=" + wmsUrl;
+
+      var thruProxy = "proxy.htm?getcaps=" + wmsUrl;
 
       $.ajax({
         type: "GET",

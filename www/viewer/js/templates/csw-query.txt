@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<csw:GetRecords xmlns:csw='http://www.opengis.net/cat/csw/2.0.2' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' maxRecords='<%-rc.pageSize%>' startPosition='<%-rc.startPosition%>' outputFormat='application/xml' outputSchema='http://www.opengis.net/cat/csw/2.0.2' resultType='results' service='CSW' version='2.0.2' xsi:schemaLocation='http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd'>
+   <csw:Query typeNames='csw:Record'>
+      <csw:ElementSetName>full</csw:ElementSetName>
+      <% if ( rc.hasConstraints ){ %>
+      <csw:Constraint version='1.1.0'>
+         <ogc:Filter>
+         	<% if ( rc.hasMultipleConstraints ){ %>
+            <ogc:And>
+            <% } %>
+            <% if ( rc.freetext ){ %>
+               <ogc:PropertyIsLike escapeChar='\' singleChar='_' wildCard='%'>
+                  <ogc:PropertyName>csw:AnyText</ogc:PropertyName>
+                  <ogc:Literal>%<%- rc.freetext %>%</ogc:Literal>
+               </ogc:PropertyIsLike>
+           <% } %>
+           <% if ( rc.topicCategory ){ %>
+			<ogc:PropertyIsEqualTo>
+				<ogc:PropertyName>apiso:TopicCategory</ogc:PropertyName>
+				<ogc:Literal><%-rc.topicCategory%></ogc:Literal>
+			</ogc:PropertyIsEqualTo>
+		   <% } %>
+		   <% if ( rc.dateFrom){ %>
+			<ogc:PropertyIsGreaterThan>
+				<ogc:PropertyName>apiso:PublicationDate</ogc:PropertyName>
+				<ogc:Literal><%-rc.dateFrom%></ogc:Literal>
+			</ogc:PropertyIsGreaterThan>
+		   <% } %>
+		   <% if ( rc.dateTo){ %>
+			<ogc:PropertyIsLessThan>
+				<ogc:PropertyName>apiso:PublicationDate</ogc:PropertyName>
+				<ogc:Literal><%-rc.dateTo%></ogc:Literal>
+			</ogc:PropertyIsLessThan>
+		   <% } %>
+		    <% if ( rc.resourceType){ %>
+				<ogc:PropertyIsLike wildCard="%" singleChar="_" escapeChar="\">
+                	<ogc:PropertyName>dc:type</ogc:PropertyName>
+                	<ogc:Literal><%-rc.resourceType%></ogc:Literal>
+              </ogc:PropertyIsLike>
+           <% } %>
+           <% if ( rc.catalogue){ %>
+				<ogc:PropertyIsLike wildCard="%" singleChar="_" escapeChar="\">
+                	<ogc:PropertyName>apiso:ParentIdentifier</ogc:PropertyName>
+                	<ogc:Literal><%-rc.catalogue%></ogc:Literal>
+              </ogc:PropertyIsLike>
+           <% } %>
+           <% if ( rc.bb ){ %>
+               <ogc:<%-rc.spatialOperator%>>
+                  <ogc:PropertyName>ows:BoundingBox</ogc:PropertyName>
+                  <gml:Envelope xmlns:gml='http://www.opengis.net/gml'>
+                     <gml:lowerCorner><%-rc.bb.southWest%></gml:lowerCorner>
+                     <gml:upperCorner><%-rc.bb.northEast%></gml:upperCorner>
+                  </gml:Envelope>
+               </ogc:<%-rc.spatialOperator%>>
+            <% } %>
+            <% if ( rc.hasMultipleConstraints ){ %>
+            </ogc:And>
+            <% } %>
+         </ogc:Filter>
+      </csw:Constraint>
+      <% } %>
+      <% if ( rc.sortBy){ %>
+		<ogc:SortBy>
+			<ogc:SortProperty>
+				<ogc:PropertyName><%-rc.sortBy%></ogc:PropertyName>
+				<ogc:SortOrder>DESC</ogc:SortOrder>
+			</ogc:SortProperty>
+		</ogc:SortBy>
+	 <% } %>
+   </csw:Query>
+</csw:GetRecords>
+
+

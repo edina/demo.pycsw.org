@@ -4,7 +4,7 @@
 
 define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'], function (recordsModel, controller) {
   'use strict';
-  var map, map_layers_control, cswUrl = "/csw",
+  var map, map_layers_control, cswUrl = "/pycsw-wsgi",
     polygon_layer, pageSize = 10,
     i;
   //cswUrl = 'http://localhost:8000/';
@@ -197,13 +197,13 @@ define(['modules/model', 'modules/controller', 'jquery', 'leaflet', 'jqueryui'],
     $('#select-sortBy').selectmenu({
       width: 100
     });
-
+/*
     $("#search-button, #b-previous, #b-next, #private-nodes, #clear-button")
       .button()
       .click(function (event) {
         event.preventDefault();
       });
-
+*/
     $("#advanced-search-button").button({
       icons: {
         secondary: "ui-icon-triangle-1-s"

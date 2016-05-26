@@ -227,9 +227,9 @@ define(['modules/model', 'modules/metadata_mapping', 'jquery'], function (mymode
 
     var run = function () {
 
-        var datasetUrl = 'htmltest/testdoc.txt',
-            serviceUrl = 'htmltest/serviceresult.txt',
-            getCapabilitiesTestUrl = 'htmltest/wmsserver.txt';
+        var datasetUrl = 'for-tests-mockdata/testdoc.txt',
+            serviceUrl = 'for-tests-mockdata/serviceresult.txt',
+            getCapabilitiesTestUrl = 'for-tests-mockdata/wmsserver.txt';
         test('Test dataset result ', function (assert) {
 
             assert.expect(1);

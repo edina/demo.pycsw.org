@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!-- pycsw 1.11-dev -->
+<csw:GetRecordByIdResponse xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dct="http://purl.org/dc/terms/" xmlns:ows="http://www.opengis.net/ows" xmlns:apiso="http://www.opengis.net/cat/csw/apiso/1.0" xmlns:gml="http://www.opengis.net/gml" xmlns:dif="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:ogc="http://www.opengis.net/ogc" xmlns:fgdc="http://www.opengis.net/cat/csw/csdgm" xmlns:inspire_ds="http://inspire.ec.europa.eu/schemas/inspire_ds/1.0" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:os="http://a9.com/-/spec/opensearch/1.1/" xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+    <gmd:MD_Metadata xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.isotc211.org/2005/gco http://eden.ign.fr/xsd/isotc211/isofull/20090316/gco/gco.xsd http://www.isotc211.org/2005/gmd http://eden.ign.fr/xsd/isotc211/isofull/20090316/gmd/gmd.xsd http://www.opengis.net/gml/3.2 http://eden.ign.fr/xsd/isotc211/isofull/20090316/gml/gml.xsd http://www.isotc211.org/2005/gmx http://eden.ign.fr/xsd/isotc211/isofull/20090316/gmx/gmx.xsd http://www.isotc211.org/2005/gsr http://eden.ign.fr/xsd/isotc211/isofull/20090316/gsr/gsr.xsd http://www.isotc211.org/2005/gss http://eden.ign.fr/xsd/isotc211/isofull/20090316/gss/gss.xsd http://www.isotc211.org/2005/gts http://eden.ign.fr/xsd/isotc211/isofull/20090316/gts/gts.xsd http://www.isotc211.org/2005/srv http://eden.ign.fr/xsd/isotc211/isofull/20090316/srv/srv.xsd">
+        <gmd:fileIdentifier>
+            <gco:CharacterString>9df8df51-631c-37a8-e044-0003ba9b0d98</gco:CharacterString>
+        </gmd:fileIdentifier>
+        <gmd:language>
+            <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#LanguageCode" codeListValue="eng">English</gmd:LanguageCode>
+        </gmd:language>
+        <gmd:hierarchyLevel>
+            <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+        </gmd:hierarchyLevel>
+        <gmd:contact>
+            <gmd:CI_ResponsibleParty>
+                <gmd:individualName>
+                    <gco:CharacterString>Dean,Mark Thornton</gco:CharacterString>
+                </gmd:individualName>
+                <gmd:organisationName>
+                    <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                </gmd:organisationName>
+                <gmd:positionName>
+                    <gco:CharacterString>NERC-BGS Field Palaeontologist</gco:CharacterString>
+                </gmd:positionName>
+                <gmd:contactInfo>
+                    <gmd:CI_Contact>
+                        <gmd:phone>
+                            <gmd:CI_Telephone>
+                                <gmd:voice>
+                                    <gco:CharacterString>+44 131 667 1000 Ex:354</gco:CharacterString>
+                                </gmd:voice>
+                            </gmd:CI_Telephone>
+                        </gmd:phone>
+                        <gmd:address>
+                            <gmd:CI_Address>
+                                <gmd:deliveryPoint>
+                                    <gco:CharacterString>Murchison House,West Mains Road</gco:CharacterString>
+                                </gmd:deliveryPoint>
+                                <gmd:city>
+                                    <gco:CharacterString>EDINBURGH</gco:CharacterString>
+                                </gmd:city>
+                                <gmd:administrativeArea>
+                                    <gco:CharacterString>LOTHIAN</gco:CharacterString>
+                                </gmd:administrativeArea>
+                                <gmd:postalCode>
+                                    <gco:CharacterString>EH9 3LA</gco:CharacterString>
+                                </gmd:postalCode>
+                                <gmd:country>
+                                    <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                </gmd:country>
+                                <gmd:electronicMailAddress>
+                                    <gco:CharacterString>mtd@bgs.ac.uk</gco:CharacterString>
+                                </gmd:electronicMailAddress>
+                            </gmd:CI_Address>
+                        </gmd:address>
+                    </gmd:CI_Contact>
+                </gmd:contactInfo>
+                <gmd:role>
+                    <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+                </gmd:role>
+            </gmd:CI_ResponsibleParty>
+        </gmd:contact>
+        <gmd:dateStamp>
+            <gco:DateTime>2000-01-01T12:00:00</gco:DateTime>
+        </gmd:dateStamp>
+        <gmd:metadataStandardName>
+            <gco:CharacterString>NERC profile of ISO19115:2003</gco:CharacterString>
+        </gmd:metadataStandardName>
+        <gmd:metadataStandardVersion>
+            <gco:CharacterString>1.0</gco:CharacterString>
+        </gmd:metadataStandardVersion>
+        <gmd:dataSetURI>
+            <gco:CharacterString>http://data.bgs.ac.uk/id/dataHolding/13480091</gco:CharacterString>
+        </gmd:dataSetURI>
+        <gmd:referenceSystemInfo>
+            <gmd:MD_ReferenceSystem>
+                <gmd:referenceSystemIdentifier>
+                    <gmd:RS_Identifier>
+                        <gmd:authority>
+                            <gmd:CI_Citation>
+                                <gmd:title>
+                                    <gco:CharacterString>www.epsg.org</gco:CharacterString>
+                                </gmd:title>
+                                <gmd:date>
+                                    <gmd:CI_Date>
+                                        <gmd:date>
+                                            <gco:Date>2005</gco:Date>
+                                        </gmd:date>
+                                        <gmd:dateType>
+                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                        </gmd:dateType>
+                                    </gmd:CI_Date>
+                                </gmd:date>
+                            </gmd:CI_Citation>
+                        </gmd:authority>
+                        <gmd:code>
+                            <gco:CharacterString>urn:ogc:def:crs:EPSG::27700</gco:CharacterString>
+                        </gmd:code>
+                        <gmd:codeSpace>
+                            <gco:CharacterString>OGP</gco:CharacterString>
+                        </gmd:codeSpace>
+                    </gmd:RS_Identifier>
+                </gmd:referenceSystemIdentifier>
+            </gmd:MD_ReferenceSystem>
+        </gmd:referenceSystemInfo>
+        <gmd:identificationInfo>
+            <gmd:MD_DataIdentification>
+                <gmd:citation>
+                    <gmd:CI_Citation>
+                        <gmd:title>
+                            <gco:CharacterString>Index To Specimens Transferred From The John Smith Collection To The UK (North) Type and Stratigraphical Collection</gco:CharacterString>
+                        </gmd:title>
+                        <gmd:alternateTitle>
+                            <gco:CharacterString>alternate title</gco:CharacterString>
+                        </gmd:alternateTitle>
+                        <gmd:date>
+                            <gmd:CI_Date>
+                                <gmd:date>
+                                    <gco:Date>1990</gco:Date>
+                                </gmd:date>
+                                <gmd:dateType>
+                                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+                                </gmd:dateType>
+                            </gmd:CI_Date>
+                        </gmd:date>
+                        <gmd:identifier>
+                            <gmd:MD_Identifier>
+                                <gmd:code>
+                                    <gco:CharacterString>http://data.bgs.ac.uk/id/dataHolding/13480091</gco:CharacterString>
+                                </gmd:code>
+                            </gmd:MD_Identifier>
+                        </gmd:identifier>
+                    </gmd:CI_Citation>
+                </gmd:citation>
+                <gmd:abstract>
+                    <gco:CharacterString>abstract here</gco:CharacterString>
+                </gmd:abstract>
+                <gmd:pointOfContact>
+                    <gmd:CI_ResponsibleParty>
+                        <gmd:individualName>
+                            <gco:CharacterString>Tony</gco:CharacterString>
+                        </gmd:individualName>
+                        <gmd:organisationName>
+                            <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                        </gmd:organisationName>
+                        <gmd:contactInfo>
+                            <gmd:CI_Contact>
+                                <gmd:phone>
+                                    <gmd:CI_Telephone>
+                                        <gmd:voice>
+                                            <gco:CharacterString>+44 131 667 1000 Ex:354</gco:CharacterString>
+                                        </gmd:voice>
+                                    </gmd:CI_Telephone>
+                                </gmd:phone>
+                                <gmd:address>
+                                    <gmd:CI_Address>
+                                        <gmd:deliveryPoint>
+                                            <gco:CharacterString>Murchison House,West Mains Road</gco:CharacterString>
+                                        </gmd:deliveryPoint>
+                                        <gmd:city>
+                                            <gco:CharacterString>EDINBURGH</gco:CharacterString>
+                                        </gmd:city>
+                                        <gmd:administrativeArea>
+                                            <gco:CharacterString>LOTHIAN</gco:CharacterString>
+                                        </gmd:administrativeArea>
+                                        <gmd:postalCode>
+                                            <gco:CharacterString>EH9 3LA</gco:CharacterString>
+                                        </gmd:postalCode>
+                                        <gmd:country>
+                                            <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                        </gmd:country>
+                                        <gmd:electronicMailAddress>
+                                            <gco:CharacterString>enquiries@bgs.ac.uk</gco:CharacterString>
+                                        </gmd:electronicMailAddress>
+                                    </gmd:CI_Address>
+                                </gmd:address>
+                            </gmd:CI_Contact>
+                        </gmd:contactInfo>
+                        <gmd:role>
+                            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+                        </gmd:role>
+                    </gmd:CI_ResponsibleParty>
+                </gmd:pointOfContact>
+                <gmd:pointOfContact>
+                    <gmd:CI_ResponsibleParty>
+                        <gmd:organisationName>
+                            <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                        </gmd:organisationName>
+                        <gmd:contactInfo>
+                            <gmd:CI_Contact>
+                                <gmd:phone>
+                                    <gmd:CI_Telephone>
+                                        <gmd:voice>
+                                            <gco:CharacterString>+44 115 936 3100 Ex:3105</gco:CharacterString>
+                                        </gmd:voice>
+                                    </gmd:CI_Telephone>
+                                </gmd:phone>
+                                <gmd:address>
+                                    <gmd:CI_Address>
+                                        <gmd:deliveryPoint>
+                                            <gco:CharacterString>Environmental Science Centre,Keyworth</gco:CharacterString>
+                                        </gmd:deliveryPoint>
+                                        <gmd:city>
+                                            <gco:CharacterString>NOTTINGHAM</gco:CharacterString>
+                                        </gmd:city>
+                                        <gmd:administrativeArea>
+                                            <gco:CharacterString>NOTTINGHAMSHIRE</gco:CharacterString>
+                                        </gmd:administrativeArea>
+                                        <gmd:postalCode>
+                                            <gco:CharacterString>NG12 5GG</gco:CharacterString>
+                                        </gmd:postalCode>
+                                        <gmd:country>
+                                            <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                        </gmd:country>
+                                        <gmd:electronicMailAddress>
+                                            <gco:CharacterString>enquiries@bgs.ac.uk</gco:CharacterString>
+                                        </gmd:electronicMailAddress>
+                                    </gmd:CI_Address>
+                                </gmd:address>
+                            </gmd:CI_Contact>
+                        </gmd:contactInfo>
+                        <gmd:role>
+                            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+                        </gmd:role>
+                    </gmd:CI_ResponsibleParty>
+                </gmd:pointOfContact>
+                <gmd:pointOfContact>
+                    <gmd:CI_ResponsibleParty>
+                        <gmd:organisationName>
+                            <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                        </gmd:organisationName>
+                        <gmd:contactInfo>
+                            <gmd:CI_Contact>
+                                <gmd:phone>
+                                    <gmd:CI_Telephone>
+                                        <gmd:voice>
+                                            <gco:CharacterString>+44 115 936 3143</gco:CharacterString>
+                                        </gmd:voice>
+                                        <gmd:facsimile>
+                                            <gco:CharacterString>+44 115 936 3276</gco:CharacterString>
+                                        </gmd:facsimile>
+                                    </gmd:CI_Telephone>
+                                </gmd:phone>
+                                <gmd:address>
+                                    <gmd:CI_Address>
+                                        <gmd:deliveryPoint>
+                                            <gco:CharacterString>Environmental Science Centre,Keyworth</gco:CharacterString>
+                                        </gmd:deliveryPoint>
+                                        <gmd:city>
+                                            <gco:CharacterString>NOTTINGHAM</gco:CharacterString>
+                                        </gmd:city>
+                                        <gmd:administrativeArea>
+                                            <gco:CharacterString>NOTTINGHAMSHIRE</gco:CharacterString>
+                                        </gmd:administrativeArea>
+                                        <gmd:postalCode>
+                                            <gco:CharacterString>NG12 5GG</gco:CharacterString>
+                                        </gmd:postalCode>
+                                        <gmd:country>
+                                            <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                        </gmd:country>
+                                        <gmd:electronicMailAddress>
+                                            <gco:CharacterString>enquiries@bgs.ac.uk</gco:CharacterString>
+                                        </gmd:electronicMailAddress>
+                                    </gmd:CI_Address>
+                                </gmd:address>
+                            </gmd:CI_Contact>
+                        </gmd:contactInfo>
+                        <gmd:role>
+                            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+                        </gmd:role>
+                    </gmd:CI_ResponsibleParty>
+                </gmd:pointOfContact>
+                <gmd:pointOfContact>
+                    <gmd:CI_ResponsibleParty>
+                        <gmd:organisationName>
+                            <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                        </gmd:organisationName>
+                        <gmd:contactInfo>
+                            <gmd:CI_Contact>
+                                <gmd:phone>
+                                    <gmd:CI_Telephone>
+                                        <gmd:voice>
+                                            <gco:CharacterString>+44 131 667 1000 Ex:354</gco:CharacterString>
+                                        </gmd:voice>
+                                    </gmd:CI_Telephone>
+                                </gmd:phone>
+                                <gmd:address>
+                                    <gmd:CI_Address>
+                                        <gmd:deliveryPoint>
+                                            <gco:CharacterString>Murchison House,West Mains Road</gco:CharacterString>
+                                        </gmd:deliveryPoint>
+                                        <gmd:city>
+                                            <gco:CharacterString>EDINBURGH</gco:CharacterString>
+                                        </gmd:city>
+                                        <gmd:administrativeArea>
+                                            <gco:CharacterString>LOTHIAN</gco:CharacterString>
+                                        </gmd:administrativeArea>
+                                        <gmd:postalCode>
+                                            <gco:CharacterString>EH9 3LA</gco:CharacterString>
+                                        </gmd:postalCode>
+                                        <gmd:country>
+                                            <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                        </gmd:country>
+                                        <gmd:electronicMailAddress>
+                                            <gco:CharacterString>enquiries@bgs.ac.uk</gco:CharacterString>
+                                        </gmd:electronicMailAddress>
+                                    </gmd:CI_Address>
+                                </gmd:address>
+                            </gmd:CI_Contact>
+                        </gmd:contactInfo>
+                        <gmd:role>
+                            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+                        </gmd:role>
+                    </gmd:CI_ResponsibleParty>
+                </gmd:pointOfContact>
+                <gmd:resourceMaintenance>
+                    <gmd:MD_MaintenanceInformation>
+                        <gmd:maintenanceAndUpdateFrequency>
+                            <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="notPlanned">notPlanned</gmd:MD_MaintenanceFrequencyCode>
+                        </gmd:maintenanceAndUpdateFrequency>
+                    </gmd:MD_MaintenanceInformation>
+                </gmd:resourceMaintenance>
+                <gmd:descriptiveKeywords>
+                    <gmd:MD_Keywords>
+                        <gmd:keyword>
+                            <gmx:Anchor xmlns:gmx="http://www.isotc211.org/2005/gmx" xlink:href="http://www.eionet.europa.eu/gemet/concept?cp=13&amp;langcode=en&amp;ns=5" xlink:title="Geology">Geology</gmx:Anchor>
+                        </gmd:keyword>
+
+                    </gmd:MD_Keywords>
+                </gmd:descriptiveKeywords>
+                <gmd:descriptiveKeywords>
+                    <gmd:MD_Keywords>
+                        <gmd:keyword>
+                            <gco:CharacterString>Palaeontology</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:keyword>
+                            <gco:CharacterString>Graphic logs</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:keyword>
+                            <gco:CharacterString>Biostratigraphy</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:keyword>
+                            <gco:CharacterString>Specimen collecting</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:keyword>
+                            <gco:CharacterString>Fossils</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:keyword>
+                            <gco:CharacterString>Type specimen</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:thesaurusName>
+                            <gmd:CI_Citation>
+                                <gmd:title>
+                                    <gco:CharacterString>BGS Thesaurus of Geosciences</gco:CharacterString>
+                                </gmd:title>
+                                <gmd:date>
+                                    <gmd:CI_Date>
+                                        <gmd:date>
+                                            <gco:Date>2011</gco:Date>
+                                        </gmd:date>
+                                        <gmd:dateType>
+                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                        </gmd:dateType>
+                                    </gmd:CI_Date>
+                                </gmd:date>
+                            </gmd:CI_Citation>
+                        </gmd:thesaurusName>
+                    </gmd:MD_Keywords>
+                </gmd:descriptiveKeywords>
+                <gmd:descriptiveKeywords>
+                    <gmd:MD_Keywords>
+                        <gmd:keyword>
+                            <gco:CharacterString>NERC_DDC</gco:CharacterString>
+                        </gmd:keyword>
+                        <gmd:thesaurusName>
+                            <gmd:CI_Citation>
+                                <gmd:title>
+                                    <gco:CharacterString>GEMET - INSPIRE themes</gco:CharacterString>
+                                </gmd:title>
+                                <gmd:date>
+                                    <gmd:CI_Date>
+                                        <gmd:date>
+                                            <gco:Date>2008-06-01</gco:Date>
+                                        </gmd:date>
+                                        <gmd:dateType>
+                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                        </gmd:dateType>
+                                    </gmd:CI_Date>
+                                </gmd:date>
+                            </gmd:CI_Citation>
+                        </gmd:thesaurusName>
+                    </gmd:MD_Keywords>
+                </gmd:descriptiveKeywords>
+                <gmd:resourceConstraints>
+                    <gmd:MD_LegalConstraints>
+                        <gmd:useLimitation>
+                            <gco:CharacterString>Either: (i) the dataset is made freely available, e.g. via the Internet, for a restricted category of use (e.g. educational use only); or (ii) the dataset has not been formally approved by BGS for access and use by external clients under licence, but its use may be permitted under alternative formal arrangements; or (iii) the dataset contains 3rd party data or information obtained by BGS under terms and conditions that must be consulted in order to determine the permitted usage of the dataset. Refer to the BGS staff member responsible for the creation of the dataset if further advice is required. He / she should be familiar with the composition of the dataset, particularly with regard to 3rd party IPR contained in it, and any resultant use restrictions. This staff member should revert to the IPR Section (ipr@bgs.ac.uk) for advice, should the position not be clear.</gco:CharacterString>
+                        </gmd:useLimitation>
+                        <gmd:accessConstraints>
+                            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+                        </gmd:accessConstraints>
+                        <gmd:otherConstraints>
+                            <gco:CharacterString>otherRestrictions</gco:CharacterString>
+                        </gmd:otherConstraints>
+                    </gmd:MD_LegalConstraints>
+                </gmd:resourceConstraints>
+                <gmd:resourceConstraints>
+                    <gmd:MD_Constraints>
+                        <gmd:useLimitation>
+                            <gco:CharacterString>This dataset was derived from an Isle of Mull soil survey, but not enough information available to ascertain if soil map contains any residual data from the Ordnance Survey? If it can be determined that there is, please read click the url below to read the Ordnance Survey Data Sub-licence Agreement with Digimap. http://edina.ac.uk/digimap/osterms.html</gco:CharacterString>
+                        </gmd:useLimitation>
+                    </gmd:MD_Constraints>
+                </gmd:resourceConstraints>
+                <gmd:spatialResolution>
+                    <gmd:MD_Resolution>
+                        <gmd:equivalentScale>
+                            <gmd:MD_RepresentativeFraction>
+                                <gmd:denominator>
+                                    <gco:Integer>10000</gco:Integer>
+                                </gmd:denominator>
+                            </gmd:MD_RepresentativeFraction>
+                        </gmd:equivalentScale>
+                    </gmd:MD_Resolution>
+                </gmd:spatialResolution>
+                <gmd:spatialResolution>
+                    <gmd:MD_Resolution>
+                        <gmd:distance>
+                            <gco:Distance uom="urn:ogc:def:uom:EPSG::9001">0.0</gco:Distance>
+                        </gmd:distance>
+                    </gmd:MD_Resolution>
+                </gmd:spatialResolution>
+                <gmd:language>
+                    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng">English</gmd:LanguageCode>
+                </gmd:language>
+                <gmd:topicCategory>
+                    <gmd:MD_TopicCategoryCode>geoscientificInformation</gmd:MD_TopicCategoryCode>
+                </gmd:topicCategory>
+                <gmd:extent>
+                    <gmd:EX_Extent>
+                        <gmd:geographicElement>
+                            <gmd:EX_GeographicDescription>
+                                <gmd:geographicIdentifier>
+                                    <gmd:MD_Identifier>
+                                        <gmd:authority>
+                                            <gmd:CI_Citation>
+                                                <gmd:title>
+                                                    <gco:CharacterString>ISO 3166_1 alpha-3</gco:CharacterString>
+                                                </gmd:title>
+                                                <gmd:date>
+                                                    <gmd:CI_Date>
+                                                        <gmd:date>
+                                                            <gco:Date>2009</gco:Date>
+                                                        </gmd:date>
+                                                        <gmd:dateType>
+                                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                                        </gmd:dateType>
+                                                    </gmd:CI_Date>
+                                                </gmd:date>
+                                            </gmd:CI_Citation>
+                                        </gmd:authority>
+                                        <gmd:code>
+                                            <gco:CharacterString>GB</gco:CharacterString>
+                                        </gmd:code>
+                                    </gmd:MD_Identifier>
+                                </gmd:geographicIdentifier>
+                            </gmd:EX_GeographicDescription>
+                        </gmd:geographicElement>
+                        <gmd:geographicElement>
+                            <gmd:EX_GeographicDescription>
+                                <gmd:geographicIdentifier>
+                                    <gmd:MD_Identifier>
+                                        <gmd:authority>
+                                            <gmd:CI_Citation>
+                                                <gmd:title>
+                                                    <gco:CharacterString>ritish Geological Survey Gazetteer: Geographical hierarchy from Geosaurus</gco:CharacterString>
+                                                </gmd:title>
+                                                <gmd:date>
+                                                    <gmd:CI_Date>
+                                                        <gmd:date>
+                                                            <gco:Date>1979</gco:Date>
+                                                        </gmd:date>
+                                                        <gmd:dateType>
+                                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+                                                        </gmd:dateType>
+                                                    </gmd:CI_Date>
+                                                </gmd:date>
+                                            </gmd:CI_Citation>
+                                        </gmd:authority>
+                                        <gmd:code>
+                                            <gco:CharacterString>UK [id=139300]</gco:CharacterString>
+                                        </gmd:code>
+                                    </gmd:MD_Identifier>
+                                </gmd:geographicIdentifier>
+                            </gmd:EX_GeographicDescription>
+                        </gmd:geographicElement>
+                        <gmd:geographicElement>
+                            <gmd:EX_GeographicDescription>
+                                <gmd:geographicIdentifier>
+                                    <gmd:MD_Identifier>
+                                        <gmd:authority>
+                                            <gmd:CI_Citation>
+                                                <gmd:title>
+                                                    <gco:CharacterString>ISO 3166_2</gco:CharacterString>
+                                                </gmd:title>
+                                                <gmd:date>
+                                                    <gmd:CI_Date>
+                                                        <gmd:date>
+                                                            <gco:Date>2009</gco:Date>
+                                                        </gmd:date>
+                                                        <gmd:dateType>
+                                                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                                        </gmd:dateType>
+                                                    </gmd:CI_Date>
+                                                </gmd:date>
+                                            </gmd:CI_Citation>
+                                        </gmd:authority>
+                                        <gmd:code>
+                                            <gco:CharacterString>UKM</gco:CharacterString>
+                                        </gmd:code>
+                                    </gmd:MD_Identifier>
+                                </gmd:geographicIdentifier>
+                            </gmd:EX_GeographicDescription>
+                        </gmd:geographicElement>
+                        <gmd:geographicElement>
+                            <gmd:EX_GeographicBoundingBox>
+                                <gmd:westBoundLongitude>
+                                    <gco:Decimal>-8.6500</gco:Decimal>
+                                </gmd:westBoundLongitude>
+                                <gmd:eastBoundLongitude>
+                                    <gco:Decimal>1.7800</gco:Decimal>
+                                </gmd:eastBoundLongitude>
+                                <gmd:southBoundLatitude>
+                                    <gco:Decimal>49.7700</gco:Decimal>
+                                </gmd:southBoundLatitude>
+                                <gmd:northBoundLatitude>
+                                    <gco:Decimal>60.8600</gco:Decimal>
+                                </gmd:northBoundLatitude>
+                            </gmd:EX_GeographicBoundingBox>
+                        </gmd:geographicElement>
+
+						<gmd:temporalElement>
+							<gmd:EX_TemporalExtent>
+								<gmd:extent>
+									<gml:TimePeriod gml:id="IDcd3b1c4f-b5f7-439a-afc4-3317a4cd89be"
+										xsi:type="gml:TimePeriodType">
+										<gml:beginPosition>2015-02-11</gml:beginPosition>
+										<gml:endPosition>2015-02-12</gml:endPosition>
+									</gml:TimePeriod>
+								</gmd:extent>
+							</gmd:EX_TemporalExtent>
+						</gmd:temporalElement>
+
+                    </gmd:EX_Extent>
+                </gmd:extent>
+                <gmd:supplementalInformation>
+                    <gco:CharacterString>Start date of data capture strictly not known, possibly 1993. Not added to since 1993. Data is being incorporated into Palaeosaurus.</gco:CharacterString>
+                </gmd:supplementalInformation>
+            </gmd:MD_DataIdentification>
+        </gmd:identificationInfo>
+        <gmd:distributionInfo>
+            <gmd:MD_Distribution>
+                <gmd:distributionFormat>
+                    <gmd:MD_Format>
+                        <gmd:name>
+                            <gco:CharacterString>PAPER - Paper format</gco:CharacterString>
+                        </gmd:name>
+                        <gmd:version>
+                            <gco:CharacterString>Not applicable</gco:CharacterString>
+                        </gmd:version>
+                    </gmd:MD_Format>
+                </gmd:distributionFormat>
+                <gmd:distributor>
+                    <gmd:MD_Distributor>
+                        <gmd:distributorContact>
+                            <gmd:CI_ResponsibleParty>
+                                <gmd:organisationName>
+                                    <gco:CharacterString>British Geological Survey</gco:CharacterString>
+                                </gmd:organisationName>
+                                <gmd:contactInfo>
+                                    <gmd:CI_Contact>
+                                        <gmd:phone>
+                                            <gmd:CI_Telephone>
+                                                <gmd:voice>
+                                                    <gco:CharacterString>+44 115 936 3143</gco:CharacterString>
+                                                </gmd:voice>
+                                                <gmd:facsimile>
+                                                    <gco:CharacterString>+44 115 936 3276</gco:CharacterString>
+                                                </gmd:facsimile>
+                                            </gmd:CI_Telephone>
+                                        </gmd:phone>
+                                        <gmd:address>
+                                            <gmd:CI_Address>
+                                                <gmd:deliveryPoint>
+                                                    <gco:CharacterString>Environmental Science Centre,Keyworth</gco:CharacterString>
+                                                </gmd:deliveryPoint>
+                                                <gmd:city>
+                                                    <gco:CharacterString>NOTTINGHAM</gco:CharacterString>
+                                                </gmd:city>
+                                                <gmd:administrativeArea>
+                                                    <gco:CharacterString>NOTTINGHAMSHIRE</gco:CharacterString>
+                                                </gmd:administrativeArea>
+                                                <gmd:postalCode>
+                                                    <gco:CharacterString>NG12 5GG</gco:CharacterString>
+                                                </gmd:postalCode>
+                                                <gmd:country>
+                                                    <gco:CharacterString>United Kingdom</gco:CharacterString>
+                                                </gmd:country>
+                                                <gmd:electronicMailAddress>
+                                                    <gco:CharacterString>enquiries@bgs.ac.uk</gco:CharacterString>
+                                                </gmd:electronicMailAddress>
+                                            </gmd:CI_Address>
+                                        </gmd:address>
+                                    </gmd:CI_Contact>
+                                </gmd:contactInfo>
+                                <gmd:role>
+                                    <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+                                </gmd:role>
+                            </gmd:CI_ResponsibleParty>
+                        </gmd:distributorContact>
+                    </gmd:MD_Distributor>
+                </gmd:distributor>
+                <gmd:transferOptions>
+                    <gmd:MD_DigitalTransferOptions>
+                        <gmd:onLine>
+                            <gmd:CI_OnlineResource>
+                                <gmd:linkage>
+                                    <gmd:URL>http://www.bgs.ac.uk/collections/home.html</gmd:URL>
+                                </gmd:linkage>
+                                <gmd:name>
+                                    <gco:CharacterString>BGS Collections Homepage</gco:CharacterString>
+                                </gmd:name>
+                                <gmd:function>
+                                    <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information">information</gmd:CI_OnLineFunctionCode>
+                                </gmd:function>
+                            </gmd:CI_OnlineResource>
+                        </gmd:onLine>
+                    </gmd:MD_DigitalTransferOptions>
+                </gmd:transferOptions>
+            </gmd:MD_Distribution>
+        </gmd:distributionInfo>
+        <gmd:dataQualityInfo>
+            <gmd:DQ_DataQuality>
+                <gmd:scope>
+                    <gmd:DQ_Scope>
+                        <gmd:level>
+                            <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+                        </gmd:level>
+                    </gmd:DQ_Scope>
+                </gmd:scope>
+                <gmd:report>
+                    <gmd:DQ_DomainConsistency>
+                        <gmd:result>
+                            <gmd:DQ_ConformanceResult>
+                                <gmd:specification>
+                                    <gmd:CI_Citation>
+                                        <gmd:title>
+                                            <gco:CharacterString>INSPIRE Implementing rules laying down technical arrangements for the interoperability and harmonisation of Geology</gco:CharacterString>
+                                        </gmd:title>
+                                        <gmd:date>
+                                            <gmd:CI_Date>
+                                                <gmd:date>
+                                                    <gco:Date>2011</gco:Date>
+                                                </gmd:date>
+                                                <gmd:dateType>
+                                                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                </gmd:dateType>
+                                            </gmd:CI_Date>
+                                        </gmd:date>
+                                    </gmd:CI_Citation>
+                                </gmd:specification>
+                                <gmd:explanation>
+                                    <gco:CharacterString>See the referenced specification</gco:CharacterString>
+                                </gmd:explanation>
+                                <gmd:pass>
+                                    <gco:Boolean>false</gco:Boolean>
+                                </gmd:pass>
+                            </gmd:DQ_ConformanceResult>
+                        </gmd:result>
+                    </gmd:DQ_DomainConsistency>
+                </gmd:report>
+                <gmd:report>
+                    <gmd:DQ_DomainConsistency>
+                        <gmd:result>
+                            <gmd:DQ_ConformanceResult>
+                                <gmd:specification>
+                                    <gmd:CI_Citation>
+                                        <gmd:title>
+                                            <gco:CharacterString>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
+                                        </gmd:title>
+                                        <gmd:date>
+                                            <gmd:CI_Date>
+                                                <gmd:date>
+                                                    <gco:Date>2010-12-08</gco:Date>
+                                                </gmd:date>
+                                                <gmd:dateType>
+                                                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                </gmd:dateType>
+                                            </gmd:CI_Date>
+                                        </gmd:date>
+                                    </gmd:CI_Citation>
+                                </gmd:specification>
+                                <gmd:explanation>
+                                    <gco:CharacterString>See http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2010:323:0011:0102:EN:PDF</gco:CharacterString>
+                                </gmd:explanation>
+                                <gmd:pass>
+                                    <gco:Boolean>false</gco:Boolean>
+                                </gmd:pass>
+                            </gmd:DQ_ConformanceResult>
+                        </gmd:result>
+                    </gmd:DQ_DomainConsistency>
+                </gmd:report>
+                <gmd:lineage>
+                    <gmd:LI_Lineage>
+                        <gmd:statement>
+                            <gco:CharacterString>The original data are specimens and slides, index data from these were then transferred to an MS Access database. Dataset adjusted with time as hardware updated. Subject to future revision.</gco:CharacterString>
+                        </gmd:statement>
+                    </gmd:LI_Lineage>
+                </gmd:lineage>
+            </gmd:DQ_DataQuality>
+        </gmd:dataQualityInfo>
+    </gmd:MD_Metadata>
+</csw:GetRecordByIdResponse>

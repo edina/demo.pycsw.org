@@ -15,10 +15,12 @@ if (argv['h']) {
   console.log("Help");
   console.log("-p arg the port to serve the www directory");
   console.log("-c arg the url of the pycsw server.");
+  console.log("-t arg to run the unit tests");
   console.log("example ...");
   console.log("node index.js -p 8070 -c 'http://localhost:8000/csw'");
   return;
 }
+
 
 
 var port = argv['p'];
@@ -26,6 +28,14 @@ var cswUrl = argv['c'];
 
 port = port || defaultPort;
 cswUrl = cswUrl || defaultCswUrl;
+
+
+if (argv['t']) {
+
+  var open = require('open');
+  open('http://localhost:' + port + '/viewer/tests.html' );
+  return;
+}
 
 var express = require('express');
 var request = require('request');

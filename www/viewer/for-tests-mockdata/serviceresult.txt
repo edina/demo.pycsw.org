@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- pycsw 1.11-dev -->
+<csw:GetRecordByIdResponse xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dct="http://purl.org/dc/terms/" xmlns:ows="http://www.opengis.net/ows" xmlns:apiso="http://www.opengis.net/cat/csw/apiso/1.0" xmlns:gml="http://www.opengis.net/gml" xmlns:dif="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:ogc="http://www.opengis.net/ogc" xmlns:fgdc="http://www.opengis.net/cat/csw/csdgm" xmlns:inspire_ds="http://inspire.ec.europa.eu/schemas/inspire_ds/1.0" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:os="http://a9.com/-/spec/opensearch/1.1/" xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd"><gmd:MD_Metadata xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.isotc211.org/2005/gmx http://eden.ign.fr/xsd/isotc211/isofull/20090316/gmx/gmx.xsd http://www.isotc211.org/2005/srv http://eden.ign.fr/xsd/isotc211/isofull/20090316/srv/srv.xsd">
+      <gmd:fileIdentifier>
+        <gco:CharacterString>fda1332a-0436-4949-863a-eb1a2bf8d6ff</gco:CharacterString>
+      </gmd:fileIdentifier>
+      <gmd:language>
+        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng">eng</gmd:LanguageCode>
+      </gmd:language>
+      <gmd:hierarchyLevel>
+        <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="service">service</gmd:MD_ScopeCode>
+      </gmd:hierarchyLevel>
+      <gmd:hierarchyLevelName>
+        <gco:CharacterString>Service</gco:CharacterString>
+      </gmd:hierarchyLevelName>
+      <gmd:contact>
+        <gmd:CI_ResponsibleParty>
+          <gmd:individualName gco:nilReason="missing">
+            <gco:CharacterString/>
+          </gmd:individualName>
+          <gmd:organisationName>
+            <gco:CharacterString>Scottish Government</gco:CharacterString>
+          </gmd:organisationName>
+          <gmd:positionName>
+            <gco:CharacterString>Geographic Information Science and Analysis (GI-SAT), Digital Public Services, DG Enterprise, Environment and Digital</gco:CharacterString>
+          </gmd:positionName>
+          <gmd:contactInfo>
+            <gmd:CI_Contact>
+              <gmd:address>
+                <gmd:CI_Address>
+                  <gmd:deliveryPoint>
+                    <gco:CharacterString>Victoria Quay</gco:CharacterString>
+                  </gmd:deliveryPoint>
+                  <gmd:city>
+                    <gco:CharacterString>Edinburgh</gco:CharacterString>
+                  </gmd:city>
+                  <gmd:administrativeArea>
+                    <gco:CharacterString>Scotland</gco:CharacterString>
+                  </gmd:administrativeArea>
+                  <gmd:postalCode>
+                    <gco:CharacterString>EH6 6QQ</gco:CharacterString>
+                  </gmd:postalCode>
+                  <gmd:country>
+                    <gco:CharacterString>United Kingdom</gco:CharacterString>
+                  </gmd:country>
+                  <gmd:electronicMailAddress>
+                    <gco:CharacterString>GI-SAT@scotland.gsi.gov.uk</gco:CharacterString>
+                  </gmd:electronicMailAddress>
+                </gmd:CI_Address>
+              </gmd:address>
+            </gmd:CI_Contact>
+          </gmd:contactInfo>
+          <gmd:role>
+            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+          </gmd:role>
+        </gmd:CI_ResponsibleParty>
+      </gmd:contact>
+      <gmd:dateStamp>
+        <gco:DateTime>2014-03-25T18:46:59</gco:DateTime>
+      </gmd:dateStamp>
+      <gmd:referenceSystemInfo>
+        <gmd:MD_ReferenceSystem>
+          <gmd:referenceSystemIdentifier>
+            <gmd:RS_Identifier>
+              <gmd:code>
+                <gco:CharacterString>OSGB 1936 / British National Grid (EPSG:27700)</gco:CharacterString>
+              </gmd:code>
+              <gmd:codeSpace>
+                <gco:CharacterString>EPSG</gco:CharacterString>
+              </gmd:codeSpace>
+              <gmd:version>
+                <gco:CharacterString>7.4</gco:CharacterString>
+              </gmd:version>
+            </gmd:RS_Identifier>
+          </gmd:referenceSystemIdentifier>
+        </gmd:MD_ReferenceSystem>
+      </gmd:referenceSystemInfo>
+      <gmd:identificationInfo>
+        <srv:SV_ServiceIdentification>
+          <gmd:citation>
+            <gmd:CI_Citation>
+              <gmd:title>
+                <gco:CharacterString>Scottish Government Protected Sites View Service (WMS)</gco:CharacterString>
+              </gmd:title>
+              <gmd:date>
+                <gmd:CI_Date>
+                  <gmd:date>
+                    <gco:Date>2014-02-07</gco:Date>
+                  </gmd:date>
+                  <gmd:dateType>
+                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                  </gmd:dateType>
+                </gmd:CI_Date>
+              </gmd:date>
+            </gmd:CI_Citation>
+          </gmd:citation>
+          <gmd:abstract>
+            <gco:CharacterString>This view service provides spatial data relating to protected sites held by the Scottish Government.  The following layers are included:
+
+• Cairngorms National Park Boundary
+• Loch Lomond and the Trossachs National Park Boundary
+• Environmentally Sensative Areas (ESA)
+• National Scenic Areas (NSA)</gco:CharacterString>
+          </gmd:abstract>
+          <gmd:pointOfContact>
+            <gmd:CI_ResponsibleParty>
+              <gmd:individualName gco:nilReason="missing">
+                <gco:CharacterString/>
+              </gmd:individualName>
+              <gmd:organisationName>
+                <gco:CharacterString>Scottish Government</gco:CharacterString>
+              </gmd:organisationName>
+              <gmd:positionName>
+                <gco:CharacterString>Geographic Information Science and Analysis (GI-SAT), Digital Public Services, DG Enterprise, Environment and Digital</gco:CharacterString>
+              </gmd:positionName>
+              <gmd:contactInfo>
+                <gmd:CI_Contact>
+                  <gmd:address>
+                    <gmd:CI_Address>
+                      <gmd:deliveryPoint>
+                        <gco:CharacterString>Victoria Quay</gco:CharacterString>
+                      </gmd:deliveryPoint>
+                      <gmd:city>
+                        <gco:CharacterString>Edinburgh</gco:CharacterString>
+                      </gmd:city>
+                      <gmd:administrativeArea>
+                        <gco:CharacterString>Scotland</gco:CharacterString>
+                      </gmd:administrativeArea>
+                      <gmd:postalCode>
+                        <gco:CharacterString>EH6 6QQ</gco:CharacterString>
+                      </gmd:postalCode>
+                      <gmd:country>
+                        <gco:CharacterString>United Kingdom</gco:CharacterString>
+                      </gmd:country>
+                      <gmd:electronicMailAddress>
+                        <gco:CharacterString>GI-SAT@scotland.gsi.gov.uk</gco:CharacterString>
+                      </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                  </gmd:address>
+                </gmd:CI_Contact>
+              </gmd:contactInfo>
+              <gmd:role>
+                <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+              </gmd:role>
+            </gmd:CI_ResponsibleParty>
+          </gmd:pointOfContact>
+          <gmd:resourceMaintenance>
+            <gmd:MD_MaintenanceInformation>
+              <gmd:maintenanceAndUpdateFrequency>
+                <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="asNeeded">asNeeded</gmd:MD_MaintenanceFrequencyCode>
+              </gmd:maintenanceAndUpdateFrequency>
+            </gmd:MD_MaintenanceInformation>
+          </gmd:resourceMaintenance>
+          <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+              <gmd:keyword>
+                <gco:CharacterString>Protected sites</gco:CharacterString>
+              </gmd:keyword>
+              <gmd:thesaurusName>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
+                        <gco:Date>2008-06-01</gco:Date>
+                      </gmd:date>
+                      <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:thesaurusName>
+            </gmd:MD_Keywords>
+          </gmd:descriptiveKeywords>
+          <gmd:resourceConstraints>
+            <gmd:MD_LegalConstraints>
+              <gmd:useLimitation>
+                <gco:CharacterString>The following attribution statement must be used to acknowledge the source of the information: Copyright Scottish Government, contains Ordnance Survey data © Crown copyright and database right (insert year)</gco:CharacterString>
+              </gmd:useLimitation>
+              <gmd:accessConstraints>
+                <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+              </gmd:accessConstraints>
+              <gmd:otherConstraints>
+                <gco:CharacterString>Available under the Ordnance Survey (OS) Open Data Licence (www.ordnancesurvey.co.uk/opendata/licence)</gco:CharacterString>
+              </gmd:otherConstraints>
+            </gmd:MD_LegalConstraints>
+          </gmd:resourceConstraints>
+          <gmd:resourceConstraints>
+            <gmd:MD_Constraints>
+              <gmd:useLimitation>
+                <gco:CharacterString>See individual dataset metadata records for conditions</gco:CharacterString>
+              </gmd:useLimitation>
+            </gmd:MD_Constraints>
+          </gmd:resourceConstraints>
+          <srv:serviceType>
+            <gco:LocalName>view</gco:LocalName>
+          </srv:serviceType>
+          <srv:extent>
+            <gmd:EX_Extent>
+              <gmd:geographicElement>
+                <gmd:EX_GeographicBoundingBox>
+                  <gmd:westBoundLongitude>
+                    <gco:Decimal>-7.75714</gco:Decimal>
+                  </gmd:westBoundLongitude>
+                  <gmd:eastBoundLongitude>
+                    <gco:Decimal>-0.53202</gco:Decimal>
+                  </gmd:eastBoundLongitude>
+                  <gmd:southBoundLatitude>
+                    <gco:Decimal>54.53297</gco:Decimal>
+                  </gmd:southBoundLatitude>
+                  <gmd:northBoundLatitude>
+                    <gco:Decimal>61.46459</gco:Decimal>
+                  </gmd:northBoundLatitude>
+                </gmd:EX_GeographicBoundingBox>
+              </gmd:geographicElement>
+              <gmd:temporalElement>
+                <gmd:EX_TemporalExtent>
+                  <gmd:extent>
+                    <gml32:TimePeriod xmlns:gml32="http://www.opengis.net/gml/3.2" gml32:id="T1">
+                      <gml32:beginPosition/>
+                      <gml32:endPosition/>
+                    </gml32:TimePeriod>
+                  </gmd:extent>
+                </gmd:EX_TemporalExtent>
+              </gmd:temporalElement>
+            </gmd:EX_Extent>
+          </srv:extent>
+                   <srv:couplingType>
+            <srv:SV_CouplingType codeListValue="tight"
+                                 codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType"/>
+         </srv:couplingType>
+          <srv:containsOperations gco:nilReason="missing"/>
+                   <srv:operatesOn xlink:title="Aquifer classification"
+                         xlink:href="url to record"
+                         uuidref="9df8df53-2aa9-37a8-e044-0003ba9b0d98"/>
+          <srv:operatesOn uuidref="af0755a1-2841-4d51-8b16-c95fd921908b" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id=af0755a1-2841-4d51-8b16-c95fd921908b"/>
+          <srv:operatesOn uuidref="21e648e4-d8c7-482d-bb42-985f311f8d19" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id=21e648e4-d8c7-482d-bb42-985f311f8d19"/>
+          <srv:operatesOn uuidref="89a2f20f-8592-4e8c-b6ad-34cf2d4fad06" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id=89a2f20f-8592-4e8c-b6ad-34cf2d4fad06"/>
+          <srv:operatesOn uuidref="13396739-7602-4428-85fd-95a5d7e208a1" xlink:href="http://scotgovsdi.edina.ac.uk/srv/en/csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id=13396739-7602-4428-85fd-95a5d7e208a1"/>
+        </srv:SV_ServiceIdentification>
+      </gmd:identificationInfo>
+      <gmd:distributionInfo>
+        <gmd:MD_Distribution>
+          <gmd:distributionFormat>
+            <gmd:MD_Format>
+              <gmd:name>
+                <gco:CharacterString>WMS</gco:CharacterString>
+              </gmd:name>
+              <gmd:version>
+                <gco:CharacterString>1.3.0</gco:CharacterString>
+              </gmd:version>
+            </gmd:MD_Format>
+          </gmd:distributionFormat>
+          <gmd:transferOptions>
+            <gmd:MD_DigitalTransferOptions>
+              <gmd:onLine>
+                <gmd:CI_OnlineResource>
+                  <gmd:linkage>
+                    <gmd:URL>http://sedsh127.sedsh.gov.uk/arcgis/services/ScotGov/ProtectedSites/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS</gmd:URL>
+                  </gmd:linkage>
+                </gmd:CI_OnlineResource>
+              </gmd:onLine>
+            </gmd:MD_DigitalTransferOptions>
+          </gmd:transferOptions>
+        </gmd:MD_Distribution>
+      </gmd:distributionInfo>
+      <gmd:dataQualityInfo>
+        <gmd:DQ_DataQuality>
+          <gmd:scope>
+            <gmd:DQ_Scope>
+              <gmd:level>
+                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="service">service</gmd:MD_ScopeCode>
+              </gmd:level>
+              <gmd:levelDescription>
+                <gmd:MD_ScopeDescription>
+                  <gmd:other>
+                    <gco:CharacterString>Service</gco:CharacterString>
+                  </gmd:other>
+                </gmd:MD_ScopeDescription>
+              </gmd:levelDescription>
+            </gmd:DQ_Scope>
+          </gmd:scope>
+        </gmd:DQ_DataQuality>
+      </gmd:dataQualityInfo>
+    </gmd:MD_Metadata></csw:GetRecordByIdResponse>

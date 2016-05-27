@@ -43,4 +43,9 @@ open a browser point to
 
 http://localhost:8070/viewer/index.html
 
+#Run the unit tests
 
+node ./index.js -t
+
+
+ 

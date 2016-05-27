@@ -188,7 +188,7 @@ define(['modules/parseiso', 'jquery'], function (iso) {
     },
     getWmsLayers = function (wmsUrl, results) {
 
-      var thruProxy = "proxy.htm?getcaps=" + wmsUrl;
+      var thruProxy = "/GetCapabilities=" + wmsUrl;
 
       $.ajax({
         type: "GET",
